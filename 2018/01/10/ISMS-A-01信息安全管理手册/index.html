@@ -1,0 +1,2229 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="手册文件," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="参考模版，仅供参考 1.  概述1.1颁布令为保障AAAA有限公司技术部（以下简称“AAA”）信息资源的安全性，确保AAA在不断变化的信息安全风险环境中，能够通过科学的方法和持续的改进，使AAA所面临的信息安全风险达到管理者可接受的水平。决定引入信息安全管理体系，建立可控的信息安全风险管理架构及保障机制。 AAA严格按照ISO/IEC 27001：2013《信息安全管理体系要求》以及技术部业务特点">
+<meta name="keywords" content="手册文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ISMS-A-01信息安全管理手册">
+<meta property="og:url" content="http://www.ksowo.com/2018/01/10/ISMS-A-01信息安全管理手册/index.html">
+<meta property="og:site_name" content="Lyy&#39;s Blog">
+<meta property="og:description" content="参考模版，仅供参考 1.  概述1.1颁布令为保障AAAA有限公司技术部（以下简称“AAA”）信息资源的安全性，确保AAA在不断变化的信息安全风险环境中，能够通过科学的方法和持续的改进，使AAA所面临的信息安全风险达到管理者可接受的水平。决定引入信息安全管理体系，建立可控的信息安全风险管理架构及保障机制。 AAA严格按照ISO/IEC 27001：2013《信息安全管理体系要求》以及技术部业务特点">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/is27001/1/2.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/is27001/1/3.jpg">
+<meta property="og:updated_time" content="2018-01-12T09:04:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ISMS-A-01信息安全管理手册">
+<meta name="twitter:description" content="参考模版，仅供参考 1.  概述1.1颁布令为保障AAAA有限公司技术部（以下简称“AAA”）信息资源的安全性，确保AAA在不断变化的信息安全风险环境中，能够通过科学的方法和持续的改进，使AAA所面临的信息安全风险达到管理者可接受的水平。决定引入信息安全管理体系，建立可控的信息安全风险管理架构及保障机制。 AAA严格按照ISO/IEC 27001：2013《信息安全管理体系要求》以及技术部业务特点">
+<meta name="twitter:image" content="http://www.ksowo.com/images/blog/is27001/1/2.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.ksowo.com/2018/01/10/ISMS-A-01信息安全管理手册/"/>
+
+
+
+
+
+  <title>ISMS-A-01信息安全管理手册 | Lyy's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lyy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.ksowo.com/2018/01/10/ISMS-A-01信息安全管理手册/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ISMS-A-01信息安全管理手册</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-10T17:16:59+08:00">
+                2018-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ISO27001/" itemprop="url" rel="index">
+                    <span itemprop="name">ISO27001</span>
+                  </a>
+                </span>             
+                
+              
+                <span class="post-meta-divider">|</span>
+                  
+                    <span class="post-meta-item-icon">
+                      <i class="fa fa-tags"> </i>
+                    </span>
+                  <a href="/tags/手册文件/" rel="tag"> 手册文件</a>
+                  
+              
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>参考模版，仅供参考</strong></p>
+<h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.  概述"></a>1.  <strong>概述</strong></h2><h3 id="1-1颁布令"><a href="#1-1颁布令" class="headerlink" title="1.1颁布令"></a>1.1颁布令</h3><p>为保障AAAA有限公司技术部（以下简称“AAA”）信息资源的安全性，确保AAA在不断变化的信息安全风险环境中，能够通过科学的方法和持续的改进，使AAA所面临的信息安全风险达到管理者可接受的水平。决定引入信息安全管理体系，建立可控的信息安全风险管理架构及保障机制。</p>
+<p>AAA严格按照ISO/IEC 27001：2013《信息安全管理体系要求》以及技术部业务特点编制《信息安全管理手册V1.0》，建立与技术部业务一致的信息安全与IT服务管理体系，贯彻IT服务管理理念方针和服务目标。为实现信息安全管理，开展持续改进服务质量，不断提高客户满意度活动，加强信息安全建设的纲领性文件和行动准则，是全体员工必须遵守的原则性规范，体现AAA对社会承诺，通过有效的PDCA活动向客户提供满足要求的信息安全管理。</p>
+<p>本手册贯穿了AAA信息安全管理体系各条款的要求，体现了AAA对信息安全的承诺及持续改进的要求，符合本公司的实际运作情况，AAA将依据本手册内容，向客户或者第三方组织提供信息安全保证和进行信息安全管理体系审核的依据。</p>
+<p>为确保信息安全管理体系的有效运作，AAA在技术部之下成立信息安全部。信息安全部负责组织建立并维护信息安全管理体系，全体员工必须严格按照本手册的内容要求，遵守本手册的各项规定，实现AAA信息安全管理的方针和目标。</p>
+<p>CTO（公司管技术老大）：XXX</p>
+<p>二〇一X年X月X日</p>
+<h3 id="1-2手册说明"><a href="#1-2手册说明" class="headerlink" title="1.2手册说明"></a>1.2手册说明</h3><p>1.2.1总则</p>
+<p>《信息安全管理手册》的编制，是用以证明已建立并实施了一个完整的文件化的信息安全管理体系。通过对各项业务进行风险评估，识别出技术部的关键资产，并根据资产的不同风险级别采取与之相对应的处理措施。</p>
+<p>《信息安全管理手册》为审核信息安全管理体系提供了文件依据。</p>
+<p>《信息安全管理手册》证明技术部已经按照ISO/IEC 27001：2013版标准的要求建立并实际运行一套信息安全管理体系。《信息安全管理手册》的编制及颁布可以对技术部信息安全管理各项活动进行控制，指导技术部在开展各项业务活动时需要遵循的信息安全规范，并通过不断的持续改进来优化信息安全管理体系。</p>
+<p>1.2.2信息安全管理手册的批准</p>
+<p>信息安全部负责组织编制《信息安全管理手册》及其相关规章制度，CTO（公司管技术老大）负责批准。</p>
+<p>1.2.3信息安全管理手册的发放、作废与销毁</p>
+<ol>
+<li><p>信息安全部负责按《文件控制制度》的要求，进行《信息安全管理手册》的发放、回收、归档、作废与销毁工作。</p>
+</li>
+<li><p>各相关部门按照受控文件的管理要求对收到的《信息安全管理手册》进行使用和保管。</p>
+</li>
+<li><p>信息安全部按照规定发放修改后的《信息安全管理手册》，并收回失效的文件做出标识统一处理，确保有效文件的唯一性。</p>
+</li>
+<li><p>信息安全部保留《信息安全管理手册》修改内容的记录。</p>
+</li>
+</ol>
+<p>1.2.4信息安全管理手册的修改</p>
+<p>《信息安全管理手册》如根据实际情况发生变化时，应由信息安全部负责人提出申请，经技术部总监召集各部门讨论、商议，信息安全代表审核、CTO（公司管技术老大）批准后方可进行修改。为保证修改后的手册能够及时发放给相关人员，信息安全部对手册实施修改后，应及时发布修改信息，通知相关人员。</p>
+<p>《信息安全管理手册》的修改分为两种：</p>
+<p>一是少量的文字性修改。此种修改不改变手册的版本号，只需在本手册的“文档修改记录”如实记录即可，不需保存手册修改前的文档原件。</p>
+<p>二是大范围的信息安全管理体系版本升级，即改版。在本手册经过多次修改、信息安全管理体系建立依据的标准发生变化、技术部的业务范围有较大调整的情况下，需要对本手册进行改版。本手册的改版应该对改版前的《信息安全管理手册》原件进行保存。</p>
+<p>在出现下列情况时，《信息安全管理手册》可以进行修改：</p>
+<ul>
+<li><p>信息安全管理体系运行过程中发现问题或信息安全管理体系需进一步改进</p>
+</li>
+<li><p>出现新的信息安全需求</p>
+</li>
+<li><p>组织机构和职能发生变化</p>
+</li>
+<li><p>发现本手册中的存在差错或不明确之处</p>
+</li>
+<li><p>体系审核或管理评审提出改进要求</p>
+</li>
+<li><p>当依据的ISO/IEC27001：2013信息安全管理体系有重大变化时，如组织结构、内外部环境、开发技术、信息安全风险等发生重大改变的</p>
+</li>
+<li><p>相应的法律法规发生重大变化时，如国家法律法规、政策、标准等发生改变的</p>
+</li>
+<li><p>《信息安全管理手册》发生需修改部分超过1/3时</p>
+</li>
+<li><p>《信息安全管理手册》执行已满三年时</p>
+</li>
+</ul>
+<p>本手册的更改控制按《文件控制制度》执行。</p>
+<p>1.2.5信息安全管理手册的控制</p>
+<p>(1)信息安全管理文档体系文件分为受控文件和非受控文件：</p>
+<ul>
+<li><p>受控文件发放范围为技术部领导、各相关部分的负责人、审计部或者内审员。</p>
+</li>
+<li><p>非受控文件可发给受控范围以外的其他相关人员。</p>
+</li>
+</ul>
+<p>(2)信息安全管理文档体系文件分为书面文件和电子文件两种。</p>
+<h2 id="2-规范性引用文件"><a href="#2-规范性引用文件" class="headerlink" title="2.  规范性引用文件"></a>2.  <strong>规范性引用文件</strong></h2><pre><code>ISO9001:2008《质量管理体系要求》；
+
+ISO27001:2013《信息技术安全技术 信息安全管理体系要求》；
+
+ISO19011:2011《审核管理体系的指南》；
+
+与技术部运营相关的法律法规和技术标准。
+</code></pre><h2 id="3-术语和定义"><a href="#3-术语和定义" class="headerlink" title="3.  术语和定义"></a>3.  <strong>术语和定义</strong></h2><ul>
+<li><p>本手册采用ISO27001:2013标准的术语和定义，并根据需要在相应章节所描述的要求中，增补了所涉及的术语和定义；</p>
+</li>
+<li><p>本手册出现的术语“客户”指的是除技术部以外的其他部门或技术部客户；</p>
+</li>
+<li><p>ISMS-Information Security Management System的缩写，代表“信息安全管理体系”；</p>
+</li>
+</ul>
+<h2 id="4-组织环境"><a href="#4-组织环境" class="headerlink" title="4.  组织环境"></a>4.  <strong>组织环境</strong></h2><h3 id="4-1理解组织及其环境"><a href="#4-1理解组织及其环境" class="headerlink" title="4.1理解组织及其环境"></a>4.1理解组织及其环境</h3><p>技术部定期识别与信息安全及IT服务管理目标相关，并影响实现信息安全及IT服务管理预期结果的内外部问题。</p>
+<h3 id="4-2理解第三方的需求和期望"><a href="#4-2理解第三方的需求和期望" class="headerlink" title="4.2理解第三方的需求和期望"></a>4.2理解第三方的需求和期望</h3><ul>
+<li><p>定期开展风险评估；</p>
+</li>
+<li><p>定期开展内审管理评审；</p>
+</li>
+<li><p>定期开展服务评审。</p>
+</li>
+</ul>
+<h3 id="4-3确定ISMS的范围"><a href="#4-3确定ISMS的范围" class="headerlink" title="4.3确定ISMS的范围"></a>4.3确定ISMS的范围</h3><p>4.3.1适用覆盖范围</p>
+<p>本手册适用于本公司所有业务范围的管理支持过程及相关服务活动及场所。</p>
+<p>4.3.2适用产品范围</p>
+<p>本手册描述的ISMS管理体系要求适用于：<strong>与应用软件开发、软硬件运维服务相关的信息安全管理。</strong>（每个公司定的范围不一样，主要看公司的服务对象、面对的群体，选择适合自己公司的范围，咨询公司有列表，在规定范围内选择。）</p>
+<p>外包过程也按ISMS标准的要求进行控制。</p>
+<h3 id="4-4ISMS体系"><a href="#4-4ISMS体系" class="headerlink" title="4.4ISMS体系"></a>4.4ISMS体系</h3><p>4.4.1总则</p>
+<p>为了建立、实施、运行、监视、评审、持续改进信息管理管理体系，提高全员的信息安全意识，对信息安全风险进行有效管理，使技术部全体贯彻落实安全方针和各项安全措施，保护用户信息和资料，保证信息资产免遭破坏，防止安全事故的发生，树立技术部良好的服务形象，增强用户对xxxIT技术和管理水平的信心，保证技术部业务可持续开展，特制定本《信息安全管理手册》。</p>
+<p>4.4.2ISMS体系过程方法</p>
+<p>![]/images/blog/is27001/1/1.png)</p>
+<h3 id="4-5相关文件"><a href="#4-5相关文件" class="headerlink" title="4.5相关文件"></a>4.5相关文件</h3><p>《信息安全体系运行评审制度》</p>
+<p>《文件控制制度》</p>
+<h2 id="5-领导作用"><a href="#5-领导作用" class="headerlink" title="5.  领导作用"></a>5.  <strong>领导作用</strong></h2><h3 id="5-1领导作用和承诺"><a href="#5-1领导作用和承诺" class="headerlink" title="5.1领导作用和承诺"></a>5.1领导作用和承诺</h3><ul>
+<li><p>公司成立信息安全管理小组来领导信息安全工作，并确定相应的职责和作用。</p>
+</li>
+<li><p>制定信息安全方针和信息安全目标，建立和完善公司的信息安全管理体系。</p>
+</li>
+<li><p>向公司传达满足信息安全目标以及信息安全方针，以及法律责任和持续改进的重要性。</p>
+</li>
+<li><p>提供足够的资源建立、实施、运行、监控、评审、为何和改进ISMS；</p>
+</li>
+<li><p>决定可接受风险的标准和可接受风险的等级；</p>
+</li>
+<li><p>确保按照标准严格执行ISMS内部审核并进行管理评审。</p>
+</li>
+</ul>
+<h4 id="5-1-1信息安全管理小组"><a href="#5-1-1信息安全管理小组" class="headerlink" title="5.1.1信息安全管理小组"></a>5.1.1信息安全管理小组</h4><ul>
+<li><p>信息安全小组组长由信息安全主管领导担任</p>
+</li>
+<li><p>信息安全小组成员由各个部门领导组成</p>
+</li>
+<li><p>信息安全部全体成员均为该小组成员，且为整个信息安全体系建设的执行者和实施者</p>
+</li>
+</ul>
+<h3 id="5-2ISMS管理方针"><a href="#5-2ISMS管理方针" class="headerlink" title="5.2ISMS管理方针"></a>5.2ISMS管理方针</h3><p><strong>信息安全方针和信息安全目标</strong></p>
+<p>为了保障AAA各种信息资产的安全，给客户提供更加安心的服务，提升客户服务满意度，我们严格根据ISO/IEC 27001：2013标准，建立信息安全管理体系，全面保护技术部的信息安全。</p>
+<p>一、信息安全管理方针</p>
+<p>确保xxx信息安全管理体系满足法律法规、行业规范、客户以及业务可持续性的不断发展的需求。</p>
+<p>二、信息安全管理目标</p>
+<p>为提高xxx全体员工的信息安全意识，积极做好预防工作以及风险管理，贯彻落实各项安全方针政策，保护客户信息和提交的各种材料免受外部威胁，防止安全事故的发生，提高客户满意度，体现xxx核心竞争力，保证公司系统开发、实施、集成以及运维等业务持续开展。</p>
+<p>三、信息安全管理适用范围</p>
+<p>本信息安全管理方针适用于xxx公司全体员工、业务合作伙伴、外聘人员及第三方的工作人员等所有与信息资产相关的部门与人员。</p>
+<p>四、信息安全管理的目的</p>
+<p>（1）不可接受风险的处理率：100%；</p>
+<p>（2）重大信息安全事件为0次；</p>
+<p>（3）信息安全体系执行过程中发现的不符合项处理率：100%；</p>
+<p>五、信息安全管理服务原则以及措施</p>
+<p>响应及时性原则：设立技术支持小组提供7*13.5小时（8:30~22:00）时响应服务。</p>
+<p>服务规范性原则：实施工程师和技术支持、维护工程师具有专业技术技能，严格按照ISO/IEC27001：2013标准，保证信息安全，提供客户服务，提升客户满意度。</p>
+<p>解决问题高效性原则：遵循解决问题高效性原则，一是通过现场支持工程师的专业技能快速定位和解决问题；二是提供问题迅速解决能力。</p>
+<h3 id="5-3组织架构、职责和权限"><a href="#5-3组织架构、职责和权限" class="headerlink" title="5.3组织架构、职责和权限"></a>5.3组织架构、职责和权限</h3><p>5.3.1ISMS管理体系组织架构图  </p>
+<pre><code>**放入你公司的组织架构图**
+</code></pre><p><img src="/images/blog/is27001/1/2.jpg" alt=""></p>
+<p>注：人事专员为总部人力资源指派技术部专员</p>
+<p>5.3.2ISMS管理职能分配</p>
+<p>5.3.2.1职责和权限</p>
+<p>（1）CTO（公司管技术老大）</p>
+<ul>
+<li><p>全面负责信息安全工作，负责批准信息安全方针，确定信息安全要求，提供信息安全资源。</p>
+</li>
+<li><p>任命技术部总监负责建立、实施、检查、改进信息安全管理体系，保证信息安全管理体系的持续适应性和有效性。</p>
+</li>
+<li><p>开展内部协调活动，确保合适的方针到位。</p>
+</li>
+<li><p>主持信息安全体系运行评审程序，包括体系的范围、方针、目标的符合性及控制措施有效性的评审，以确保信息安全管理体系持续的适宜性、充分性和有效性，管理评审严格按照《信息安全体系运行评审制度》执行。</p>
+</li>
+<li><p>向技术部传达满足信息安全管理的目标和持续改进的重要性，向公司管理层报告信息安全管体系的业绩以及信息安全管理体系的运行情况和必要的改进措施，同时组织相关部门、资源，建立、实施和保持信息安全管理体系，不断改进信息安全管理体系，确保该体系具有有效性、适应性和符合性。</p>
+</li>
+</ul>
+<p>（2）技术部总监</p>
+<ul>
+<li><p>在整体上对技术部信息安全风险的管理和控制承担最终的责任，全面负责建立、实施、检查、改进信息安全管理体系，保证信息安全管理体系的持续适应性和有效性。</p>
+</li>
+<li><p>负责与信息安全体系有关的协调和联络工作。</p>
+</li>
+<li><p>确保按照标准要求，进行资产评估识别和风险评估，全面建立、实施和保持信息安全管理体系。</p>
+</li>
+<li><p>支持信息安全管理体系内部审核，任命审核组长，批准内审工作报告，对内审发现的不符合项进行纠正和预报。</p>
+</li>
+<li><p>向技术部CTO（公司管技术老大）报告信息安全管理体系的现状和改进要求，包括信息安全管理体系运行情况、内外审核情况。</p>
+</li>
+<li><p>定义技术和非技术的信息安全标准、程序和作业指导；收集、分析和评价信息安全数据和事态、事件。</p>
+</li>
+<li><p>必要时与有关的内部职能联络，如IT运作、风险管理、符合性和内部审核，以及与诸如警方的外部职能联络。</p>
+</li>
+<li><p>协调各个部门上报的信息资产责任人的分配，支持信息资产责任人调查和补救信息安全事故或其他方针违反造成的影响。</p>
+</li>
+<li><p>组织人员的安全意识宣传活动，以加强安全文化和开发对ISO/IEC27001：2013广泛的理解。</p>
+</li>
+<li><p>在定义和实施控制、处理和工具方面支持信息资产责任人及各部门信息安全负责人，以服从方针手册，以管理信息安全风险。</p>
+</li>
+</ul>
+<p>（3）信息安全部</p>
+<ul>
+<li><p>负责制定信息安全管理各项规章制度，同时建立识别适用于信息安全管理体系和已经识别的业务信息安全、法律和法规要求的风险评估方法，建立接受风险的准则并识别风险的可接受等级。</p>
+</li>
+<li><p>执行信息安全管理体系的内部审核。</p>
+</li>
+<li><p>监督各部门对信息安全各项规章制度的执行，并对关键信息文件进行备份，及时查处信息安全隐患，并负责对有效避免信息安全事故的人员和行为进行奖励，对违反信息安全方针和制度的人员和行为进行处罚。</p>
+</li>
+<li><p>负责做好有关内审资料的原始调查的收集、整理、建档工作。</p>
+</li>
+<li><p>监督各部门信息安全执行情况，监督不符合事项的责任部门负责采取纠正措施。</p>
+</li>
+<li><p>在信息安全内部审计过程中，详细记载发生异常时的现象、时间和处理方式，并及时上报。</p>
+</li>
+<li><p>负责保存内审记录，并对所有涉及的审计事项，编写内部审计报告，及时上报审核，并提出处理意见和建议。</p>
+</li>
+<li><p>负责信息安全技术活动，适当分类和保护信息资产。</p>
+</li>
+<li><p>定期组织风险评估，以识别变化的风险，并通过关注变化显著的风险来识别预防措施要求。识别技术部信息安全风险的重大趋势和变化，并酌情提出修改控制框架和/或方针，例如，为加强信息安全发起重大战略举措。</p>
+</li>
+</ul>
+<p>（4）人力资源部</p>
+<ul>
+<li><p>负责部门人力资源方面的相关信息、事务;</p>
+</li>
+<li><p>组织开展技术部人员招聘、离职等人员异动工作;</p>
+</li>
+<li><p>信息安全小组成员的任命；</p>
+</li>
+<li><p>组织开展信息安全方面的培训工作。</p>
+</li>
+</ul>
+<p>（5）研发部</p>
+<ul>
+<li><p>在开发生命周期的每个环节都需要考虑信息安全;</p>
+</li>
+<li><p>按照开发管理流程和规范来来管理个要求进行开发;</p>
+</li>
+<li><p>负责对发现风险的系统进行整改（开发系统）.</p>
+</li>
+</ul>
+<p>（6）运维部</p>
+<ul>
+<li><p>对于开发阶段的新应用系统，承担或运作信息安全风险评估，以确保信息安全要求在早期合适定义和记载成文；</p>
+</li>
+<li><p>负责信息处理设施的技术选型，设备调试、设备维护等。</p>
+</li>
+<li><p>根据分类和业务需求，授权新资产的访问，并确保及时完成访问的定期评审。</p>
+</li>
+<li><p>负责应用系统、服务器的管理，对应用系统、服务器等信息进行数据备份，对机房进行管理。</p>
+</li>
+<li><p>负责对发现风险的系统进行整改（服务器、网络）</p>
+</li>
+</ul>
+<p>（7）行政部</p>
+<ul>
+<li><p>负责按照信息安全体系要求，执行人员来访、文档管理；</p>
+</li>
+<li><p>负责收集技术部在生产活动中涉及的法律法规和相关要求，并形成文档保存。</p>
+</li>
+</ul>
+<p>（8）其他各部门</p>
+<ul>
+<li><p>提供解决本部门信息安全问题所必要的支持和资源，确保技术部的信息资产得到保护。</p>
+</li>
+<li><p>与其它部门共同协调和共享信息，确保信息安全方针在整个技术部内执行一致。</p>
+</li>
+<li><p>依据要求，识别本部门信息资产，并对信息资产进行评估，确定重要信息资产。</p>
+</li>
+<li><p>对确定的重要信息资产进行分类，并提名和调整合适的信息资产责任人，经本部门批准后，上报信息安全部。</p>
+</li>
+<li><p>收集在其职权范围内，信息安全控制的整体效能数据和其他信息，并汇报信息安全部。<br>5.3.4管理者代表</p>
+</li>
+</ul>
+<p><strong>授权书</strong></p>
+<p>为贯彻执行ISO/IEC27001：2013《信息安全管理体系》，加强对信息管理体系运行的领导，特授权：</p>
+<p>（1）授权 <em>BBB</em> 为管理者代表，其主要职责和权限为：</p>
+<ul>
+<li><p>代表CTO（公司管技术老大）负责按标准要求建立、实施、运行以及持续改进心浙江怡科技供应链管理有限技术部的信息安全管理体系，实现AAA的服务管理、质量管理、信息安全管理体系的方针和目标，确保信息安全业务风险得到有效控制。</p>
+</li>
+<li><p>协助CTO（公司管技术老大）开展管理评审，并向CTO（公司管技术老大）报告信息安全管理体系业绩，为CTO（公司管技术老大）评审信息安全工作提供依据。</p>
+</li>
+<li><p>负责组织AAA《信息安全管理手册》的编写、修订和审核工作。</p>
+</li>
+<li><p>提高技术部全体人员的信息安全意识，并负责技术部管理体系有关事宜的外部联络工作。</p>
+</li>
+<li><p>确保满足顾客和相关方要求的信息安全意识和信息安全风险意识在技术部内得到形成和提高。</p>
+</li>
+</ul>
+<p>（2）授权各部门CTO（公司管技术老大）/经理为信息安全管理体系在本部门的负责人，对信息安全管理体系要求在本部门开展得到基础保障。</p>
+<p>CTO（公司管技术老大）：XXX</p>
+<p>二〇一X年X月X日</p>
+<h2 id="6-规划"><a href="#6-规划" class="headerlink" title="6.  规划"></a>6.  <strong>规划</strong></h2><h3 id="6-1风险和机遇的应对措施"><a href="#6-1风险和机遇的应对措施" class="headerlink" title="6.1风险和机遇的应对措施"></a>6.1风险和机遇的应对措施</h3><p>信息安全部组织有关部门根据风险评估结果，形成《风险处理计划》，该计划明确了风险处理责任部门、负责人、处理方法及完成时间。</p>
+<p>对于信息安全风险和给予，应考虑控制措施与费用的平衡原则，选用以下适当的措施：</p>
+<ul>
+<li><p>控制风险，采用适当的内部控制措施</p>
+</li>
+<li><p>接受风险（不可能将所有风险降低为零）；</p>
+</li>
+<li><p>避免风险（如物理隔离）；</p>
+</li>
+<li><p>转移风险（如将风险转移给保险者、供方、分包商）。</p>
+</li>
+</ul>
+<h3 id="6-2ISMS目标及策划"><a href="#6-2ISMS目标及策划" class="headerlink" title="6.2ISMS目标及策划"></a>6.2ISMS目标及策划</h3><p>6.2.1ISMS目标以及分解</p>
+<p>CTO（公司管技术老大）每年组织、策划和制定下一年度的经营和管理的目标，形成公司年度的信息安全管理目标并分解至各个部门。ISMS目标与ISMS方需要针含有的持续改进的承诺保持协调一致，ISMS目标应包括为满足要求所需的内容，并逐层分解加以落实。同时，公司管理者代表对ISMS目标的实施和实现情况进行监督，及时采取必要的改进措施，ISMS信息安全目标分解如下：</p>
+<ul>
+<li><p>不可接受风险的处理率：100%</p>
+</li>
+<li><p>重大信息安全事件：0次</p>
+</li>
+<li><p>信息安全体系执行过程中发现的不符合项处理率：100%</p>
+</li>
+</ul>
+<p>ISMS信息安全目标分解如下：</p>
+<ul>
+<li>信息安全部</li>
+</ul>
+<blockquote>
+<p>  信息安全事件处理率：100%</p>
+<p>  完成信息安全本职工作</p>
+<p>  信息安全预警响应及时率：95%</p>
+</blockquote>
+<ul>
+<li>人事专员</li>
+</ul>
+<blockquote>
+<p>  年度信息安全培训人员覆盖率100%</p>
+</blockquote>
+<ul>
+<li>研发部</li>
+</ul>
+<blockquote>
+<p>  内部和秘密信息泄漏事件每年不超过1次</p>
+</blockquote>
+<ul>
+<li>运维部</li>
+</ul>
+<blockquote>
+<p>  秘密信息设备丢失每年不超过1起</p>
+<p>  内部和秘密信息泄漏事件每年不超过1次</p>
+</blockquote>
+<ul>
+<li>其他各部门</li>
+</ul>
+<blockquote>
+<p>  配合以及协助信息安全部执行安全工作</p>
+</blockquote>
+<p>6.2.2ISMS策划</p>
+<p>CTO（公司管技术老大）及管理者代表应确保识别和策划实现ISMS方针、ISMS目标，在策划目标的实现时，应确定：</p>
+<ul>
+<li><p>组织信息安全结构与职责</p>
+</li>
+<li><p>选择控制目标与控制方式</p>
+</li>
+<li><p>编写控制概要</p>
+</li>
+<li><p>制定业务持续性计划</p>
+</li>
+</ul>
+<p>策划的输出应形成文件。</p>
+<p>技术部ISMS体系的建立采用PDCA方法。PDCA描述如下：</p>
+<p>P（计划）：根据客户要求和技术部策略建立目标和流程；</p>
+<p>D（实施）：实施过程；</p>
+<p>C（检查）：根据策略、目标和要求对过程和服务进行监控、测量，并报告结果；</p>
+<p>A（改进）：采取措施以持续改进流程的性能。</p>
+<h3 id="6-3相关文件"><a href="#6-3相关文件" class="headerlink" title="6.3相关文件"></a>6.3相关文件</h3><ul>
+<li>《信息安全风险管理程序》</li>
+</ul>
+<h2 id="7-支持"><a href="#7-支持" class="headerlink" title="7.  支持"></a>7.  <strong>支持</strong></h2><h3 id="7-1资源"><a href="#7-1资源" class="headerlink" title="7.1资源"></a>7.1资源</h3><p>7.1.1总则</p>
+<p>CTO（公司管技术老大）以及部门经理应确定、提供为建立、实施、保持和改进ISMS管理体系所需的资源，应考虑现有的资源、能力、局限；</p>
+<p>7.1.2基础设施</p>
+<p>组织应识别、提供并保持实现产品/服务符合性所需的基础设施，这些设施包括：</p>
+<ul>
+<li><p>工作场所相应的设施（办公室、机房、工作站点、清分场地、储存室等）；</p>
+</li>
+<li><p>服务过程设备，如各种通讯设备、监控设备和客户服务管理系统、业务系统（软件）等；</p>
+</li>
+<li><p>维修保养和保障设施（各种辅助设施、安全防护设施等）；</p>
+</li>
+<li><p>支持性服务，如运输、通讯和信息系统等。</p>
+</li>
+</ul>
+<p>7.1.3过程环境</p>
+<p>技术部各部门应识别提供产品/服务所需环境中人和物的因素，并对其加以有效的控制，保证提供产品/服务过程中的人员、财产安全。</p>
+<p>过程环境可包括物理的、社会的、心理的和环境的因素。</p>
+<p>7.1.4监视和测量设备</p>
+<p>对照国际或国家的测量标准，在规定的时间间隔或在使用前进行校准和检定，如果没有上述标准的，应记录校准或检定（验证）的依据，以确保下列设备处于正常状态：</p>
+<ul>
+<li><p>开发用途的电脑设备；</p>
+</li>
+<li><p>测试用途的电脑设备；</p>
+</li>
+<li><p>开发用途的软件；</p>
+</li>
+<li><p>测试用途的软件；</p>
+</li>
+<li><p>集成项目使用的设备。</p>
+</li>
+</ul>
+<p>处于正常状态的设备应具备下列特征：</p>
+<ul>
+<li><p>设备的型号能够符合预期的使用目的；</p>
+</li>
+<li><p>无论设备处于待用状态还是处于使用状态，设备均是正常的；</p>
+</li>
+<li><p>设备得到周期性的养护和校正，并标识其校准状态；</p>
+</li>
+<li><p>必要时，各部门使用设备进行测量前，应再次校准设备；</p>
+</li>
+<li><p>测试软件应确认其具有满足预期用途的能力，初次使用前应进行确认，必要时可以进行重新确认。</p>
+</li>
+</ul>
+<p>当发现软件或设备不符合要求时，应对以往的测量结果进行有效性评价和记录，并对受影响的产品采取适当的措施。</p>
+<p>校准和检定结果的记录应予保存。</p>
+<p>7.1.5知识</p>
+<p>技术部应确保ISMS管理体系运行过程中，提供产品/服务的符合性和顾客满意所需的知识。这些知识应得到保持、保护、需要时便于获取。</p>
+<p>在应对变化的需求和趋势时，组织应考虑现有的知识基础，确定如何获取必需的更多知识。</p>
+<h3 id="7-2能力"><a href="#7-2能力" class="headerlink" title="7.2能力"></a>7.2能力</h3><p>技术部应根据岗位所需的教育、培训、技能和经验要求，安排人员，以确保影响产品/服务质量和信息安全的人员素质满足岗位的需要，能胜任其工作。</p>
+<p>对于人员的配置，技术部应定岗定编并制定完善的岗位说明文件。</p>
+<p>技术部在《人力资源管理程序》中对在职培训、人员的意识的灌输和工作能力的增长作了要求，以便：</p>
+<ul>
+<li><p>确定从事影响产品/服务质量和信息安全的人员（包含营销、服务提供、质量检查、IT开发、顾客沟通、顾客信息反馈等）所必须的工作能力及培训需求；</p>
+</li>
+<li><p>提供培训或采取其他措施，以满足所确定的需求并确保达成必须的能力；</p>
+</li>
+<li><p>对培训的有效性进行评价；</p>
+</li>
+<li><p>确保员工能意识到他们工作的相关性和重要性，以及他们如何为达到ISMS目标做出努力；</p>
+</li>
+<li><p>保存有关教育、经验、培训、资格的适当的记录。</p>
+</li>
+</ul>
+<h3 id="7-3意识"><a href="#7-3意识" class="headerlink" title="7.3意识"></a>7.3意识</h3><p>技术部应确保工作的人员意识到：</p>
+<ul>
+<li><p>ISMS管理方针；</p>
+</li>
+<li><p>相关的质量目标；</p>
+</li>
+<li><p>他们对质量管理体系有效性的贡献，包括改进质量绩效的益处；</p>
+</li>
+<li><p>偏离质量管理体系要求的后果。</p>
+</li>
+</ul>
+<h3 id="7-4沟通"><a href="#7-4沟通" class="headerlink" title="7.4沟通"></a>7.4沟通</h3><p>技术部应明确内部沟通的管理要求，沟通的内容包括：</p>
+<ul>
+<li><p>沟通的内容</p>
+</li>
+<li><p>沟通的时机</p>
+</li>
+<li><p>沟通的对象</p>
+</li>
+</ul>
+<h3 id="7-5文件记录信息"><a href="#7-5文件记录信息" class="headerlink" title="7.5文件记录信息"></a>7.5文件记录信息</h3><p>7.5.1文件体系结构</p>
+<p>AAA公司信息安全管理体系的文件由上而下分为四个层次，如下图所示：</p>
+<p><img src="/images/blog/is27001/1/3.jpg" alt=""></p>
+<p>信息安全管理体系文件包括：</p>
+<p>（1）管理手册（信息安全手册、信息安全策略）：规定AAA信息安全管理体系的文件，是AAA内部的信息安全法规，阐述了信息安全管理体系的方针、目标、范围、组织结构和职责权限，同时描述了信息安全管理体系的主体文件，是信息安全管理体系的纲领性文件。</p>
+<p>（2）程序文件:是信息安全手册的支持性文件，规定了实施与信息安全管理体系有关的各项活动的途径和方法，是各项活动得以有效实施的保障。与信息安全管理体系有关的各项活动必须按照程序文件规定实施，并定期对其进行评审，保持其有效性。</p>
+<p>（3）作业指导、规范规章制度、计划等文件：是信息安全手册的支持性文件，对策略中的要求进行细化和落地化，规定了实施与信息安全管理体系有关的各项活动的途径和方法，是各项活动得以有效实施的保障。与信息安全管理体系有关的各项活动必须按照程序文件规定实施，并定期对其进行评审，保持其有效性。</p>
+<p>（4）记录文件：通过表单或模板，对信息安全管理体系实施的一系列活动进行规范，形成记录文件，用于作为管理评审、内部审核、外部审核、持续改进的客观证据。</p>
+<p>信息安全手册、程序文件和作业指导、规范规章制度、计划、表单记录等四层文件由信息安全委员组织协调各相关部门共同完成编写。</p>
+<p>支持文件：</p>
+<ul>
+<li>《文件控制制度》</li>
+</ul>
+<p>7.5.2文件控制</p>
+<p>信息安全部组织编制《文件控制制度》，确保信息安全管理体系的文件在以下几个方面得到控制：</p>
+<p>（1）文件发布前得到批准，以确保文件是充分与适宜的。</p>
+<p>（2）管理体系文件应定期进行评审、修订完善，并再次批准以保持文件要求与实际运作的一致性，充分保障文件的有效性、充分性和适宜性。</p>
+<p>（3）确保文件的更改和现行修订状态得到识别。</p>
+<p>（4）确保在使用处可获得适用文件的有关版本。</p>
+<p>（5）确保文件保持清晰、易于识别。</p>
+<p>（6）确保信息安全部确定的体系所需的外来文件得到识别，并控制其分发。</p>
+<p>（7）防止作废文件的非预期使用，若因任何原因而保留作废文件时，对这些文件进行适当的标识。</p>
+<p>（8）具体执行按《文件控制制度》的规定，对文件的审核、批准、发布、变更、修改、废止等环节进行控制。</p>
+<p>支持文件：</p>
+<ul>
+<li>《文件控制制度》</li>
+</ul>
+<p>7.5.3记录控制</p>
+<p>信息安全管理体系所要求的记录是体系符合标准要求和有效运行的依据，对记录的标识、储存、保护、检索、保管、废弃等事项进行了规定，各部门应妥善保管信息安全记录，具体记录如下：</p>
+<p>（1）建立并保持记录，以提供符合要求和信息安全管理体系有效运行的证据。</p>
+<p>（2）保护并控制记录。信息安全管理体系应考虑相关的法律要求和合同责任。记录应保持合法，易于识别和检索。</p>
+<p>（3）编制形成文件的程序，以规定记录的标识、储存、保护、检索、保存期限和处置所需的控制。</p>
+<p>（4）记录的要求和管理：</p>
+<ul>
+<li><p>记录文件尽量用电子版保存；</p>
+</li>
+<li><p>记录文件应做到真实、完整，可识别是何种产品或项目的何种活动。</p>
+</li>
+<li><p>填写及时、可识别更改时间、更改人及版本记录。</p>
+</li>
+<li><p>记录文件的电子版最终版本至少保留1年以上。</p>
+</li>
+</ul>
+<h2 id="8-运行"><a href="#8-运行" class="headerlink" title="8.  运行"></a>8.  <strong>运行</strong></h2><h3 id="8-1运行的策划和控制"><a href="#8-1运行的策划和控制" class="headerlink" title="8.1运行的策划和控制"></a>8.1运行的策划和控制</h3><p>公司规定了实现与应用软件开发、软硬件运维服务相关的信息安全管理所需的过程，这些过程与公司ISMS管理体系中的其他要求相一致并对其顺序和相互作用予以确定，并确保营运活动中每个质量特性都受到有效控制。</p>
+<p>8.1.1ISMS运行总要求</p>
+<ul>
+<li><p>通过信息安全年度计划等形式对信息安全体系运行进行整体策划</p>
+</li>
+<li><p>明确信息安全体系的可量化目标和具体要求；</p>
+</li>
+<li><p>明确各岗位的信息安全职责；</p>
+</li>
+<li><p>质量目标和要求；</p>
+</li>
+<li><p>服务标准；</p>
+</li>
+<li><p>明确信息安全管理过程控制的准则和方法，制定必要的作业指导文件，为产品和服务实现提供资源和设施，保证其所需的工作环境；</p>
+</li>
+<li><p>保留服务过程提供及过程测量和检查结果的记录。</p>
+</li>
+</ul>
+<h3 id="8-2信息安全风险评估"><a href="#8-2信息安全风险评估" class="headerlink" title="8.2信息安全风险评估"></a>8.2信息安全风险评估</h3><p>8.2.1风险评估的方法</p>
+<p>管理者代表负责组织编制《信息安全风险评估管理程序》，建立识别适用于信息安全管理体系和已经识别的业务信息安全、法律法规要求的风险评估方法，在决定风险的可接受范围内，采取适当的风险控制措施。</p>
+<p>8.2.2识别风险</p>
+<p>在信息安全管理体系范围内，对所有信息资产进行识别和评估，包括：识别资产面临的威胁以及脆弱性、识别保密性完整性和可用性对资产造成的影响程度、识别资产面临的风险。</p>
+<p>8.2.3分析和评价风险</p>
+<p>针对每一项信息资产，识别出其面临的所有威胁，并考虑现有的控制措施，识别出被该威胁可能利用的薄弱点。</p>
+<p>针对每一项威胁、薄弱点，对资产造成的影响，考虑现有的控制措施，判断安全失效发生的可能性。</p>
+<p>根据《信息安全风险管理程序》计算风险等级以及风险接受准则，判断风险为可接受或需要处理。</p>
+<p>8.2.4识别和评价风险处理的选择</p>
+<p>信息资产风险的识别贯穿整个业务活动过程，明确哪些风险可能影响信息安全目标的达成，记录这些风险的各方面特征。在记录风险的基础上对信息资产进行初步分析，依据影响对信息资产面临的风险进行优先级排序。</p>
+<p>信息安全部根据风险评估的结果，形成《信息安全风险评估表（含\&lt;风险处理计划>）》，该计划明确了风险处理责任部门、负责人、目的、范围以及处理策略，具体措施如下：</p>
+<ol>
+<li><p>适时适当的控制措施。</p>
+</li>
+<li><p>规避风险，采取有效的控制措施避免风险的发生。</p>
+</li>
+<li><p>接受风险，在一定程度上有意识、有目的地接受风险。</p>
+</li>
+<li><p>风险转移，转移相关业务风险到其他方面。</p>
+</li>
+<li><p>消减风险，通过适当的控制措施降低风险发生的可能性。</p>
+</li>
+</ol>
+<h3 id="8-3信息安全风险处置"><a href="#8-3信息安全风险处置" class="headerlink" title="8.3信息安全风险处置"></a>8.3信息安全风险处置</h3><p>组织应实施信息安全风险处置计划。保留信息安全风险处置结果的文件记录信息。详见《信息安全风险管理程序》</p>
+<h3 id="8-4相关文件"><a href="#8-4相关文件" class="headerlink" title="8.4相关文件"></a>8.4相关文件</h3><ul>
+<li>《信息安全风险管理程序》</li>
+</ul>
+<h2 id="9-绩效评价"><a href="#9-绩效评价" class="headerlink" title="9.  绩效评价"></a>9.  <strong>绩效评价</strong></h2><h3 id="9-1监视、测量、分析和评价"><a href="#9-1监视、测量、分析和评价" class="headerlink" title="9.1监视、测量、分析和评价"></a>9.1监视、测量、分析和评价</h3><p>信息安全部应组织相关部门，对信息安全措施的绩效和体系的有效性进行评价。</p>
+<p>信息安全部应与技术部各部门协调，根据技术部管理的实际需要，建立恰当的度量体系，以度量各部门、员工的信息安全工作业绩。</p>
+<p>由信息安全部组织实施监视和测量，每年至少一次对监视和测量的结果进行分析和评价，由技术部总监、CTO（公司管技术老大）组织各部门分析和评价这些结果，保留相关的监视和测量证据。</p>
+<h3 id="9-2内部审核"><a href="#9-2内部审核" class="headerlink" title="9.2内部审核"></a>9.2内部审核</h3><p>信息安全部应每年至少开展一次ISMS内部审核，以确定控制目标、控制措施、过程和程序是否：</p>
+<ul>
+<li><p>符合标准及相关法律法规的要求；</p>
+</li>
+<li><p>符合确定的信息安全要求；</p>
+</li>
+<li><p>得到有效地实施和维护；</p>
+</li>
+<li><p>按期望运行。</p>
+</li>
+</ul>
+<p>内部审核程序应事先进行安排，并考虑受审核的状况、重要性和受审核的区域以及上次审核结果，应规定审核准则、范围和方式。信息安全部经理及信息安全工程师负责内部审核过程。（审核员的选择和审核活动应保证审核过程的客观和公正，审核员不能审核自己的工作）</p>
+<h3 id="9-3管理评审"><a href="#9-3管理评审" class="headerlink" title="9.3管理评审"></a>9.3管理评审</h3><p>9.3.1总则</p>
+<p>为确保信息安全管理体系持续运行，具体如下：</p>
+<p>（1）技术部总监组织并编制《信息安全体系运行评审制度》，指导管理评审工作的执行。</p>
+<p>（2）管理评审由CTO（公司管技术老大）或技术部总监组织，每年至少一次。一般情况下，采取会议的形式，安排在内部审核之后。当出现下列情况之一时，应及时进行管理评审：</p>
+<ul>
+<li><p>技术部管理体系发生重大变化。</p>
+</li>
+<li><p>国家法律法规、相关标准发生重大变化。</p>
+</li>
+<li><p>外审之前。</p>
+</li>
+<li><p>其他认为需要评审时。</p>
+</li>
+</ul>
+<p>（3）各部门经理均需参加管理评审活动，需要时，由CTO（公司管技术老大）或其授权人员决定具体的参加人员。</p>
+<p>（4）管理评审会议的决议事项以会议纪要形式体现，由各相关部门负责配合执行，并对执行状况予以跟踪评估。</p>
+<p>9.3.2评审输入</p>
+<p>信息安全部经理组织有管部门按照计划的要求收集整理有关文件和数据资料提交管理评审，包括以下内容：</p>
+<ol>
+<li><p>信息安全方针的适宜性。</p>
+</li>
+<li><p>上一次管理评审的结论和整改意见的跟踪。</p>
+</li>
+<li><p>内部和外部审核的结果。</p>
+</li>
+<li><p>相关方/第三方的反馈，如政府机关、客户、供应商、内部员工等。</p>
+</li>
+<li><p>纠正和预防措施的实施情况。</p>
+</li>
+<li><p>管理目标的有效性测量结果。</p>
+</li>
+<li><p>客户满意度调查信息反馈以及客户投诉。</p>
+</li>
+<li><p>全年的管理体系运作情况以及各信息系统安全运行情况。</p>
+</li>
+<li><p>风险评估的结果与风险管理情况。</p>
+</li>
+<li><p>安全事故与故障的处理情况。</p>
+</li>
+<li><p>法律法规的符合性与法律法规要求的变化。</p>
+</li>
+<li><p>经营策划的变化可能影响管理任何可能影响信息安全管理体系变更的事项。</p>
+</li>
+<li><p>各种改进措施的建议。</p>
+</li>
+</ol>
+<p>9.3.3评审输出</p>
+<p>按照服务管理与安全方针和目标对上述信息进行全面的讨论、评价、分析，管理评审输出包括以下方面有关的任何决定和措施：</p>
+<ol>
+<li><p>信息安全管理体系有效性的改进，应考虑业务需求、安全需求、影响已有业务需求的业务过程、法律法规环境、合同责任义务、风险以及风险接受等级等。</p>
+</li>
+<li><p>信息安全管理方针和目标的修订。</p>
+</li>
+<li><p>与相关方/第三方有关的改进措施等。</p>
+</li>
+<li><p>风险的等级或可接受风险的水平，更新风险评估和风险评估表等。</p>
+</li>
+<li><p>业务需求的变更。</p>
+</li>
+<li><p>安全需求的变更。</p>
+</li>
+<li><p>资源需求以及影响现有业务需求的业务过程；</p>
+</li>
+<li><p>改进测量控制措施有效性的方式。</p>
+</li>
+<li><p>对现有信息安全管理体系的评价结论以及对现有服务是否符合要求的评价。</p>
+</li>
+</ol>
+<p>9.3.4评审程序</p>
+<p>参照支持文件《信息安全体系运行评审制度》。</p>
+<p>9.3.5相关文件</p>
+<ul>
+<li><p>《内部审核管理程序》</p>
+</li>
+<li><p>《信息安全体系运行评审制度》</p>
+</li>
+</ul>
+<h2 id="10-改进"><a href="#10-改进" class="headerlink" title="10.  改进"></a>10.  <strong>改进</strong></h2><h3 id="10-1不符合和纠正措施"><a href="#10-1不符合和纠正措施" class="headerlink" title="10.1不符合和纠正措施"></a>10.1不符合和纠正措施</h3><p>当发现不符合项时，信息安全部应：</p>
+<blockquote>
+<p>  对不符合项作出反应，</p>
+</blockquote>
+<pre><code>（1）采取措施控制并纠正不符合项；
+
+（2）处理不符合项造成的后果；
+</code></pre><blockquote>
+<p>  评价消除产生不符合项原因的措施的需求，通过采取以下措施防止不符合项再次发生或在其他区域发生：</p>
+</blockquote>
+<pre><code>（1）评审不符合项；
+
+（2）确定不符合项产生的原因；
+
+（3）确定类似不符合项是否存在，或可能潜在发生
+</code></pre><blockquote>
+<p>  实施所需的措施；</p>
+<p>  评审所采取纠正措施的有效性；</p>
+<p>  必要时，对体系实施变更。</p>
+</blockquote>
+<p>应将以下信息形成文件：</p>
+<blockquote>
+<p>  不符合项的性质及随后采取的措施</p>
+<p>  纠正措施的结果</p>
+</blockquote>
+<p>上述要求参见《内部审核管理程序》。</p>
+<h3 id="10-2持续改进"><a href="#10-2持续改进" class="headerlink" title="10.2持续改进"></a>10.2持续改进</h3><p>AAA通过制定和改进管理方针和管理目标、进行管理评审、进行内部/外部审核、落实纠正与预防措施工作、对信息安全事件和服务异常事件的监控分析等方式开展信息安全管理体系的改进工作，必要时征求所有相关方对管理体系的意见，从而保证管理体系的持续有效性和运行效率。</p>
+<p>AAA关注客户的投诉、抱怨、记录、评估服务改进建议，制定服务改进计划，评估服务改进情况，确保各项服务改进措施均已落实执行，并实现预期的目标，从而改进完善服务过程，提升服务质量，提高客户的满意度。</p>
+<p>AAA规定各部门在持续改进活动中的角色和职责，并从服务过程的所有方面考虑服务改进要求。</p>
+<p>计划通过以下途径持续改进信息安群管理的有效性：</p>
+<ol>
+<li><p>通过信息安全管理体系方针的建立与实施，对持续改进做出正式的承诺。</p>
+</li>
+<li><p>通过信息安全管理体系目标的建立与实施，对持续改进进行评价。</p>
+</li>
+<li><p>通过内部审核不断发现问题，寻找体系改进的机会并予以实施。</p>
+</li>
+<li><p>通过数据分析不断寻求改进的机会，并做出适当的改进活动安排。</p>
+</li>
+<li><p>通过实施纠正和预防措施实现改进的活动。</p>
+</li>
+<li><p>监控安全事件并对事件进行分析。</p>
+</li>
+<li><p>确定纠正措施和预防措施的有效性。</p>
+</li>
+<li><p>根据管理评审的结果寻求改进体系的机会。</p>
+</li>
+</ol>
+<p>支持文件：</p>
+<blockquote>
+<p>  《内部审核管理程序》</p>
+</blockquote>
+<h3 id="10-3纠正措施"><a href="#10-3纠正措施" class="headerlink" title="10.3纠正措施"></a>10.3纠正措施</h3><p>对于发现的不合格项，不仅要求责任人要纠正不合格行为，而且为了消除不合格项、与实施和运行信息安全管理体系有关的原因，信息安全部要求责任人应该制定纠正措施，以便防止不合格的再次发生。纠正措施的控制应该满足如下要求：</p>
+<ol>
+<li><p>识别实施和运行信息安全管理体系的不合格事件。</p>
+</li>
+<li><p>分析并确定不合格的原因。</p>
+</li>
+<li><p>评价确保不合格不再发生的相关因素。</p>
+</li>
+<li><p>确定和实施所需的纠正措施。</p>
+</li>
+<li><p>检查、验证纠正措施的结果。</p>
+</li>
+<li><p>评审所采取的纠正措施的有效性。</p>
+</li>
+</ol>
+<p>支持文件：</p>
+<blockquote>
+<p>  《内部审核管理程序》</p>
+</blockquote>
+<h3 id="10-4预防措施"><a href="#10-4预防措施" class="headerlink" title="10.4预防措施"></a>10.4预防措施</h3><p>在信息安全管理体系运行的过程中，通过日常的过程控制、结果验证、体系审核等方式发现的一些可能影响体系运行的、不受控制将会导致不合格产生的安全事件，应该及时采取预防措施控制事态的进一步扩大。预防措施应该满足如下几方面的要求：</p>
+<ol>
+<li><p>识别潜在的信息安全事件及其原因，并确定。</p>
+</li>
+<li><p>评价预防不合格发生的措施的需求。</p>
+</li>
+<li><p>确定和实施所需的预防措施。</p>
+</li>
+<li><p>评价预防措施的有效性，并对所采取措施的结果进行记录。</p>
+</li>
+<li><p>识别并控制重大的已变更的防线。</p>
+</li>
+</ol>
+<p>支持文件：</p>
+<blockquote>
+<p>  《内部审核管理程序》</p>
+</blockquote>
+<h2 id="11-附录"><a href="#11-附录" class="headerlink" title="11.  附录"></a>11.  <strong>附录</strong></h2><h3 id="附件1：文件清单"><a href="#附件1：文件清单" class="headerlink" title="附件1：文件清单"></a>附件1：文件清单</h3><table>
+<thead>
+<tr>
+<th><strong>序号</strong></th>
+<th><strong>文件名称</strong></th>
+<th><strong>文件编号</strong></th>
+<th><strong>编制人</strong></th>
+<th><strong>审核人</strong></th>
+<th><strong>批准人</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>信息安全法律法规策略</td>
+<td>[ISMS-B-01]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>2</td>
+<td>人力资源安全管理策略</td>
+<td>[ISMS-B-02]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>3</td>
+<td>第三方安全管理策略</td>
+<td>[ISMS-B-03]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>4</td>
+<td>密码技术管理策略</td>
+<td>[ISMS-B-04]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>5</td>
+<td>访问控制策略</td>
+<td>[ISMS-B-05]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>6</td>
+<td>资产安全管理策略</td>
+<td>[ISMS-B-06]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>7</td>
+<td>物理安全管理策略</td>
+<td>[ISMS-B-07]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>8</td>
+<td>设备安全管理策略</td>
+<td>[ISMS-B-08]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>9</td>
+<td>网络安全管理策略</td>
+<td>[ISMS-B-09]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>10</td>
+<td>计算机管理策略</td>
+<td>[ISMS-B-10]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>11</td>
+<td>移动设备和介质管理策略</td>
+<td>[ISMS-B-11]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>12</td>
+<td>安全运维管理策略</td>
+<td>[ISMS-B-12]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>13</td>
+<td>软件开发安全策略</td>
+<td>[ISMS-B-13]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>14</td>
+<td>安全变更管理策略</td>
+<td>[ISMS-B-14]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>15</td>
+<td>信息备份管理策略</td>
+<td>[ISMS-B-15]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>16</td>
+<td>安全审计管理策略</td>
+<td>[ISMS-B-16]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>17</td>
+<td>业务连续性安全管理策略</td>
+<td>[ISMS-B-17]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>18</td>
+<td>信息安全事件管理策略</td>
+<td>[ISMS-B-18]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>19</td>
+<td>文件控制制度</td>
+<td>[ISMS-C-01]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>20</td>
+<td>信息安全体系运行评审制度</td>
+<td>[ISMS-C-02]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>21</td>
+<td>信息安全内部审核管理程序</td>
+<td>[ISMS-C-03]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>22</td>
+<td>信息安全法律法规管理程序</td>
+<td>[ISMS-C-04]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>23</td>
+<td>人力资源安全管理程序</td>
+<td>[ISMS-C-05]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>24</td>
+<td>资产安全管理程序</td>
+<td>[ISMS-C-06]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>25</td>
+<td>账号权限管理程序</td>
+<td>[ISMS-C-07]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>26</td>
+<td>机房安全管理程序</td>
+<td>[ISMS-C-08]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>27</td>
+<td>办公区域出入访问管理程序</td>
+<td>[ISMS-C-09]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>28</td>
+<td>视频监控管理程序</td>
+<td>[ISMS-C-10]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>29</td>
+<td>vpn接入管理程序</td>
+<td>[ISMS-C-11]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>30</td>
+<td>防火墙策略管理程序</td>
+<td>[ISMS-C-12]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>31</td>
+<td>移动存储介质管理程序</td>
+<td>[ISMS-C-13]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>32</td>
+<td>安全运维管理程序</td>
+<td>[ISMS-C-14]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>33</td>
+<td>软件开发安全管理程序</td>
+<td>[ISMS-C-15]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>34</td>
+<td>软件开发版本安全管理程序</td>
+<td>[ISMS-C-16]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>35</td>
+<td>安全变更管理程序</td>
+<td>[ISMS-C-17]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>36</td>
+<td>数据备份恢复管理程序</td>
+<td>[ISMS-C-18]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>37</td>
+<td>信息安全风险管理程序</td>
+<td>[ISMS-C-19]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>38</td>
+<td>信息安全事件管理程序</td>
+<td>[ISMS-C-20]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>39</td>
+<td>信息安全奖惩管理程序</td>
+<td>[ISMS-C-21]</td>
+<td>CCC</td>
+<td>BBB</td>
+<td>XXX</td>
+</tr>
+</tbody>
+</table>
+<h3 id="附件2：ISMS管理职能分配表"><a href="#附件2：ISMS管理职能分配表" class="headerlink" title="附件2：ISMS管理职能分配表"></a>附件2：ISMS管理职能分配表</h3><p>具体见《信息安全管理手册-附件-职责分配表》</p>
+<h3 id="附件3：网络拓扑图"><a href="#附件3：网络拓扑图" class="headerlink" title="附件3：网络拓扑图"></a>附件3：网络拓扑图</h3><pre><code>**放入你公司的网络拓扑**
+</code></pre><h3 id="附录4-：文件修改记录"><a href="#附录4-：文件修改记录" class="headerlink" title="附录4 ：文件修改记录"></a>附录4 ：文件修改记录</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>版本</th>
+<th>更改者</th>
+<th>修订日期</th>
+<th>简要说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>⭐您的支持将鼓励我继续创作⭐</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Lyy WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lyy Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/手册文件/" rel="tag"># 手册文件</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/10/ISMS-A-02信息安全适用性声明/" rel="next" title="ISMS-A-02信息安全适用性声明">
+                <i class="fa fa-chevron-left"></i> ISMS-A-02信息安全适用性声明
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/11/信息安全管理手册-附件-职责分配表/" rel="prev" title="信息安全管理手册-附件-职责分配表">
+                信息安全管理手册-附件-职责分配表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Lyy" />
+          <p class="site-author-name" itemprop="name">Lyy</p>
+           
+              <p class="site-description motion-element" itemprop="description">运气就是机会碰巧撞到了你的努力</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.dx-sven.info/" title="Sven" target="_blank">Sven</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://pirogue.org/" title="pirogue" target="_blank">pirogue</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://superhua.cc/" title="superhua" target="_blank">superhua</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.lovesec.com/" title="超级菜鸟" target="_blank">超级菜鸟</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text"><a href="#1-&#x6982;&#x8FF0;" class="headerlink" title="1.  &#x6982;&#x8FF0;"></a>1.  <strong>&#x6982;&#x8FF0;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1颁布令"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#1-1&#x9881;&#x5E03;&#x4EE4;" class="headerlink" title="1.1&#x9881;&#x5E03;&#x4EE4;"></a>1.1&#x9881;&#x5E03;&#x4EE4;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2手册说明"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#1-2&#x624B;&#x518C;&#x8BF4;&#x660E;" class="headerlink" title="1.2&#x624B;&#x518C;&#x8BF4;&#x660E;"></a>1.2&#x624B;&#x518C;&#x8BF4;&#x660E;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-规范性引用文件"><span class="nav-number">2.</span> <span class="nav-text"><a href="#2-&#x89C4;&#x8303;&#x6027;&#x5F15;&#x7528;&#x6587;&#x4EF6;" class="headerlink" title="2.  &#x89C4;&#x8303;&#x6027;&#x5F15;&#x7528;&#x6587;&#x4EF6;"></a>2.  <strong>&#x89C4;&#x8303;&#x6027;&#x5F15;&#x7528;&#x6587;&#x4EF6;</strong></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-术语和定义"><span class="nav-number">3.</span> <span class="nav-text"><a href="#3-&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;" class="headerlink" title="3.  &#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;"></a>3.  <strong>&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</strong></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-组织环境"><span class="nav-number">4.</span> <span class="nav-text"><a href="#4-&#x7EC4;&#x7EC7;&#x73AF;&#x5883;" class="headerlink" title="4.  &#x7EC4;&#x7EC7;&#x73AF;&#x5883;"></a>4.  <strong>&#x7EC4;&#x7EC7;&#x73AF;&#x5883;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1理解组织及其环境"><span class="nav-number">4.1.</span> <span class="nav-text"><a href="#4-1&#x7406;&#x89E3;&#x7EC4;&#x7EC7;&#x53CA;&#x5176;&#x73AF;&#x5883;" class="headerlink" title="4.1&#x7406;&#x89E3;&#x7EC4;&#x7EC7;&#x53CA;&#x5176;&#x73AF;&#x5883;"></a>4.1&#x7406;&#x89E3;&#x7EC4;&#x7EC7;&#x53CA;&#x5176;&#x73AF;&#x5883;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2理解第三方的需求和期望"><span class="nav-number">4.2.</span> <span class="nav-text"><a href="#4-2&#x7406;&#x89E3;&#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x9700;&#x6C42;&#x548C;&#x671F;&#x671B;" class="headerlink" title="4.2&#x7406;&#x89E3;&#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x9700;&#x6C42;&#x548C;&#x671F;&#x671B;"></a>4.2&#x7406;&#x89E3;&#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x9700;&#x6C42;&#x548C;&#x671F;&#x671B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3确定ISMS的范围"><span class="nav-number">4.3.</span> <span class="nav-text"><a href="#4-3&#x786E;&#x5B9A;ISMS&#x7684;&#x8303;&#x56F4;" class="headerlink" title="4.3&#x786E;&#x5B9A;ISMS&#x7684;&#x8303;&#x56F4;"></a>4.3&#x786E;&#x5B9A;ISMS&#x7684;&#x8303;&#x56F4;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4ISMS体系"><span class="nav-number">4.4.</span> <span class="nav-text"><a href="#4-4ISMS&#x4F53;&#x7CFB;" class="headerlink" title="4.4ISMS&#x4F53;&#x7CFB;"></a>4.4ISMS&#x4F53;&#x7CFB;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5相关文件"><span class="nav-number">4.5.</span> <span class="nav-text"><a href="#4-5&#x76F8;&#x5173;&#x6587;&#x4EF6;" class="headerlink" title="4.5&#x76F8;&#x5173;&#x6587;&#x4EF6;"></a>4.5&#x76F8;&#x5173;&#x6587;&#x4EF6;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-领导作用"><span class="nav-number">5.</span> <span class="nav-text"><a href="#5-&#x9886;&#x5BFC;&#x4F5C;&#x7528;" class="headerlink" title="5.  &#x9886;&#x5BFC;&#x4F5C;&#x7528;"></a>5.  <strong>&#x9886;&#x5BFC;&#x4F5C;&#x7528;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1领导作用和承诺"><span class="nav-number">5.1.</span> <span class="nav-text"><a href="#5-1&#x9886;&#x5BFC;&#x4F5C;&#x7528;&#x548C;&#x627F;&#x8BFA;" class="headerlink" title="5.1&#x9886;&#x5BFC;&#x4F5C;&#x7528;&#x548C;&#x627F;&#x8BFA;"></a>5.1&#x9886;&#x5BFC;&#x4F5C;&#x7528;&#x548C;&#x627F;&#x8BFA;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-1信息安全管理小组"><span class="nav-number">5.1.1.</span> <span class="nav-text"><a href="#5-1-1&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x7BA1;&#x7406;&#x5C0F;&#x7EC4;" class="headerlink" title="5.1.1&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x7BA1;&#x7406;&#x5C0F;&#x7EC4;"></a>5.1.1&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x7BA1;&#x7406;&#x5C0F;&#x7EC4;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2ISMS管理方针"><span class="nav-number">5.2.</span> <span class="nav-text"><a href="#5-2ISMS&#x7BA1;&#x7406;&#x65B9;&#x9488;" class="headerlink" title="5.2ISMS&#x7BA1;&#x7406;&#x65B9;&#x9488;"></a>5.2ISMS&#x7BA1;&#x7406;&#x65B9;&#x9488;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3组织架构、职责和权限"><span class="nav-number">5.3.</span> <span class="nav-text"><a href="#5-3&#x7EC4;&#x7EC7;&#x67B6;&#x6784;&#x3001;&#x804C;&#x8D23;&#x548C;&#x6743;&#x9650;" class="headerlink" title="5.3&#x7EC4;&#x7EC7;&#x67B6;&#x6784;&#x3001;&#x804C;&#x8D23;&#x548C;&#x6743;&#x9650;"></a>5.3&#x7EC4;&#x7EC7;&#x67B6;&#x6784;&#x3001;&#x804C;&#x8D23;&#x548C;&#x6743;&#x9650;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-规划"><span class="nav-number">6.</span> <span class="nav-text"><a href="#6-&#x89C4;&#x5212;" class="headerlink" title="6.  &#x89C4;&#x5212;"></a>6.  <strong>&#x89C4;&#x5212;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1风险和机遇的应对措施"><span class="nav-number">6.1.</span> <span class="nav-text"><a href="#6-1&#x98CE;&#x9669;&#x548C;&#x673A;&#x9047;&#x7684;&#x5E94;&#x5BF9;&#x63AA;&#x65BD;" class="headerlink" title="6.1&#x98CE;&#x9669;&#x548C;&#x673A;&#x9047;&#x7684;&#x5E94;&#x5BF9;&#x63AA;&#x65BD;"></a>6.1&#x98CE;&#x9669;&#x548C;&#x673A;&#x9047;&#x7684;&#x5E94;&#x5BF9;&#x63AA;&#x65BD;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2ISMS目标及策划"><span class="nav-number">6.2.</span> <span class="nav-text"><a href="#6-2ISMS&#x76EE;&#x6807;&#x53CA;&#x7B56;&#x5212;" class="headerlink" title="6.2ISMS&#x76EE;&#x6807;&#x53CA;&#x7B56;&#x5212;"></a>6.2ISMS&#x76EE;&#x6807;&#x53CA;&#x7B56;&#x5212;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3相关文件"><span class="nav-number">6.3.</span> <span class="nav-text"><a href="#6-3&#x76F8;&#x5173;&#x6587;&#x4EF6;" class="headerlink" title="6.3&#x76F8;&#x5173;&#x6587;&#x4EF6;"></a>6.3&#x76F8;&#x5173;&#x6587;&#x4EF6;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-支持"><span class="nav-number">7.</span> <span class="nav-text"><a href="#7-&#x652F;&#x6301;" class="headerlink" title="7.  &#x652F;&#x6301;"></a>7.  <strong>&#x652F;&#x6301;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1资源"><span class="nav-number">7.1.</span> <span class="nav-text"><a href="#7-1&#x8D44;&#x6E90;" class="headerlink" title="7.1&#x8D44;&#x6E90;"></a>7.1&#x8D44;&#x6E90;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2能力"><span class="nav-number">7.2.</span> <span class="nav-text"><a href="#7-2&#x80FD;&#x529B;" class="headerlink" title="7.2&#x80FD;&#x529B;"></a>7.2&#x80FD;&#x529B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3意识"><span class="nav-number">7.3.</span> <span class="nav-text"><a href="#7-3&#x610F;&#x8BC6;" class="headerlink" title="7.3&#x610F;&#x8BC6;"></a>7.3&#x610F;&#x8BC6;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4沟通"><span class="nav-number">7.4.</span> <span class="nav-text"><a href="#7-4&#x6C9F;&#x901A;" class="headerlink" title="7.4&#x6C9F;&#x901A;"></a>7.4&#x6C9F;&#x901A;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5文件记录信息"><span class="nav-number">7.5.</span> <span class="nav-text"><a href="#7-5&#x6587;&#x4EF6;&#x8BB0;&#x5F55;&#x4FE1;&#x606F;" class="headerlink" title="7.5&#x6587;&#x4EF6;&#x8BB0;&#x5F55;&#x4FE1;&#x606F;"></a>7.5&#x6587;&#x4EF6;&#x8BB0;&#x5F55;&#x4FE1;&#x606F;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-运行"><span class="nav-number">8.</span> <span class="nav-text"><a href="#8-&#x8FD0;&#x884C;" class="headerlink" title="8.  &#x8FD0;&#x884C;"></a>8.  <strong>&#x8FD0;&#x884C;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1运行的策划和控制"><span class="nav-number">8.1.</span> <span class="nav-text"><a href="#8-1&#x8FD0;&#x884C;&#x7684;&#x7B56;&#x5212;&#x548C;&#x63A7;&#x5236;" class="headerlink" title="8.1&#x8FD0;&#x884C;&#x7684;&#x7B56;&#x5212;&#x548C;&#x63A7;&#x5236;"></a>8.1&#x8FD0;&#x884C;&#x7684;&#x7B56;&#x5212;&#x548C;&#x63A7;&#x5236;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2信息安全风险评估"><span class="nav-number">8.2.</span> <span class="nav-text"><a href="#8-2&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x98CE;&#x9669;&#x8BC4;&#x4F30;" class="headerlink" title="8.2&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x98CE;&#x9669;&#x8BC4;&#x4F30;"></a>8.2&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x98CE;&#x9669;&#x8BC4;&#x4F30;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3信息安全风险处置"><span class="nav-number">8.3.</span> <span class="nav-text"><a href="#8-3&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x98CE;&#x9669;&#x5904;&#x7F6E;" class="headerlink" title="8.3&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x98CE;&#x9669;&#x5904;&#x7F6E;"></a>8.3&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x98CE;&#x9669;&#x5904;&#x7F6E;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4相关文件"><span class="nav-number">8.4.</span> <span class="nav-text"><a href="#8-4&#x76F8;&#x5173;&#x6587;&#x4EF6;" class="headerlink" title="8.4&#x76F8;&#x5173;&#x6587;&#x4EF6;"></a>8.4&#x76F8;&#x5173;&#x6587;&#x4EF6;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-绩效评价"><span class="nav-number">9.</span> <span class="nav-text"><a href="#9-&#x7EE9;&#x6548;&#x8BC4;&#x4EF7;" class="headerlink" title="9.  &#x7EE9;&#x6548;&#x8BC4;&#x4EF7;"></a>9.  <strong>&#x7EE9;&#x6548;&#x8BC4;&#x4EF7;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1监视、测量、分析和评价"><span class="nav-number">9.1.</span> <span class="nav-text"><a href="#9-1&#x76D1;&#x89C6;&#x3001;&#x6D4B;&#x91CF;&#x3001;&#x5206;&#x6790;&#x548C;&#x8BC4;&#x4EF7;" class="headerlink" title="9.1&#x76D1;&#x89C6;&#x3001;&#x6D4B;&#x91CF;&#x3001;&#x5206;&#x6790;&#x548C;&#x8BC4;&#x4EF7;"></a>9.1&#x76D1;&#x89C6;&#x3001;&#x6D4B;&#x91CF;&#x3001;&#x5206;&#x6790;&#x548C;&#x8BC4;&#x4EF7;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2内部审核"><span class="nav-number">9.2.</span> <span class="nav-text"><a href="#9-2&#x5185;&#x90E8;&#x5BA1;&#x6838;" class="headerlink" title="9.2&#x5185;&#x90E8;&#x5BA1;&#x6838;"></a>9.2&#x5185;&#x90E8;&#x5BA1;&#x6838;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3管理评审"><span class="nav-number">9.3.</span> <span class="nav-text"><a href="#9-3&#x7BA1;&#x7406;&#x8BC4;&#x5BA1;" class="headerlink" title="9.3&#x7BA1;&#x7406;&#x8BC4;&#x5BA1;"></a>9.3&#x7BA1;&#x7406;&#x8BC4;&#x5BA1;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-改进"><span class="nav-number">10.</span> <span class="nav-text"><a href="#10-&#x6539;&#x8FDB;" class="headerlink" title="10.  &#x6539;&#x8FDB;"></a>10.  <strong>&#x6539;&#x8FDB;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1不符合和纠正措施"><span class="nav-number">10.1.</span> <span class="nav-text"><a href="#10-1&#x4E0D;&#x7B26;&#x5408;&#x548C;&#x7EA0;&#x6B63;&#x63AA;&#x65BD;" class="headerlink" title="10.1&#x4E0D;&#x7B26;&#x5408;&#x548C;&#x7EA0;&#x6B63;&#x63AA;&#x65BD;"></a>10.1&#x4E0D;&#x7B26;&#x5408;&#x548C;&#x7EA0;&#x6B63;&#x63AA;&#x65BD;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2持续改进"><span class="nav-number">10.2.</span> <span class="nav-text"><a href="#10-2&#x6301;&#x7EED;&#x6539;&#x8FDB;" class="headerlink" title="10.2&#x6301;&#x7EED;&#x6539;&#x8FDB;"></a>10.2&#x6301;&#x7EED;&#x6539;&#x8FDB;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-3纠正措施"><span class="nav-number">10.3.</span> <span class="nav-text"><a href="#10-3&#x7EA0;&#x6B63;&#x63AA;&#x65BD;" class="headerlink" title="10.3&#x7EA0;&#x6B63;&#x63AA;&#x65BD;"></a>10.3&#x7EA0;&#x6B63;&#x63AA;&#x65BD;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-4预防措施"><span class="nav-number">10.4.</span> <span class="nav-text"><a href="#10-4&#x9884;&#x9632;&#x63AA;&#x65BD;" class="headerlink" title="10.4&#x9884;&#x9632;&#x63AA;&#x65BD;"></a>10.4&#x9884;&#x9632;&#x63AA;&#x65BD;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-附录"><span class="nav-number">11.</span> <span class="nav-text"><a href="#11-&#x9644;&#x5F55;" class="headerlink" title="11.  &#x9644;&#x5F55;"></a>11.  <strong>&#x9644;&#x5F55;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#附件1：文件清单"><span class="nav-number">11.1.</span> <span class="nav-text"><a href="#&#x9644;&#x4EF6;1&#xFF1A;&#x6587;&#x4EF6;&#x6E05;&#x5355;" class="headerlink" title="&#x9644;&#x4EF6;1&#xFF1A;&#x6587;&#x4EF6;&#x6E05;&#x5355;"></a>&#x9644;&#x4EF6;1&#xFF1A;&#x6587;&#x4EF6;&#x6E05;&#x5355;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附件2：ISMS管理职能分配表"><span class="nav-number">11.2.</span> <span class="nav-text"><a href="#&#x9644;&#x4EF6;2&#xFF1A;ISMS&#x7BA1;&#x7406;&#x804C;&#x80FD;&#x5206;&#x914D;&#x8868;" class="headerlink" title="&#x9644;&#x4EF6;2&#xFF1A;ISMS&#x7BA1;&#x7406;&#x804C;&#x80FD;&#x5206;&#x914D;&#x8868;"></a>&#x9644;&#x4EF6;2&#xFF1A;ISMS&#x7BA1;&#x7406;&#x804C;&#x80FD;&#x5206;&#x914D;&#x8868;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附件3：网络拓扑图"><span class="nav-number">11.3.</span> <span class="nav-text"><a href="#&#x9644;&#x4EF6;3&#xFF1A;&#x7F51;&#x7EDC;&#x62D3;&#x6251;&#x56FE;" class="headerlink" title="&#x9644;&#x4EF6;3&#xFF1A;&#x7F51;&#x7EDC;&#x62D3;&#x6251;&#x56FE;"></a>&#x9644;&#x4EF6;3&#xFF1A;&#x7F51;&#x7EDC;&#x62D3;&#x6251;&#x56FE;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附录4-：文件修改记录"><span class="nav-number">11.4.</span> <span class="nav-text"><a href="#&#x9644;&#x5F55;4-&#xFF1A;&#x6587;&#x4EF6;&#x4FEE;&#x6539;&#x8BB0;&#x5F55;" class="headerlink" title="&#x9644;&#x5F55;4 &#xFF1A;&#x6587;&#x4EF6;&#x4FEE;&#x6539;&#x8BB0;&#x5F55;"></a>&#x9644;&#x5F55;4 &#xFF1A;&#x6587;&#x4EF6;&#x4FEE;&#x6539;&#x8BB0;&#x5F55;</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016-2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lyy</span>
+  <span class="post-meta-divider">|</span>
+  您是第<span id="busuanzi_value_site_uv"></span>位小伙伴/
+  Total:<span id="busuanzi_value_site_pv"></span>
+</div>
+
+
+<div class="powered-by">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span>
+  <span class="post-meta-divider">|</span>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+    </a> 
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

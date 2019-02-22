@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="lyy, ksowo.com" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1、RAID 0RAID 0是最早出现的RAID模式，即Data Stripping数据分条技术。RAID 0是组建磁盘阵列中最简单的一种形式，只需要2块以上的硬盘即可，成本低，可以提高整个磁盘的性能和吞吐量。RAID 0没有提供冗余或错误修复能力，但实现成本是最低的。 RAID 0最简单的实现方式就是把N块同样的硬盘用硬件的形式通过智能磁盘控制器或用操作系统中的磁盘驱动程序以软件的方式串联在一起">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RAID">
+<meta property="og:url" content="http://www.ksowo.com/2017/12/20/RAID/index.html">
+<meta property="og:site_name" content="Lyy&#39;s Blog">
+<meta property="og:description" content="1、RAID 0RAID 0是最早出现的RAID模式，即Data Stripping数据分条技术。RAID 0是组建磁盘阵列中最简单的一种形式，只需要2块以上的硬盘即可，成本低，可以提高整个磁盘的性能和吞吐量。RAID 0没有提供冗余或错误修复能力，但实现成本是最低的。 RAID 0最简单的实现方式就是把N块同样的硬盘用硬件的形式通过智能磁盘控制器或用操作系统中的磁盘驱动程序以软件的方式串联在一起">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/raid/raid-1.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/raid/raid-2.jpg">
+<meta property="og:updated_time" content="2017-12-28T04:14:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RAID">
+<meta name="twitter:description" content="1、RAID 0RAID 0是最早出现的RAID模式，即Data Stripping数据分条技术。RAID 0是组建磁盘阵列中最简单的一种形式，只需要2块以上的硬盘即可，成本低，可以提高整个磁盘的性能和吞吐量。RAID 0没有提供冗余或错误修复能力，但实现成本是最低的。 RAID 0最简单的实现方式就是把N块同样的硬盘用硬件的形式通过智能磁盘控制器或用操作系统中的磁盘驱动程序以软件的方式串联在一起">
+<meta name="twitter:image" content="http://www.ksowo.com/images/blog/raid/raid-1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.ksowo.com/2017/12/20/RAID/"/>
+
+
+
+
+
+  <title>RAID | Lyy's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lyy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.ksowo.com/2017/12/20/RAID/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RAID</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T14:26:59+08:00">
+                2017-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>             
+                
+              
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1、RAID-0"><a href="#1、RAID-0" class="headerlink" title="1、RAID 0"></a>1、RAID 0</h2><p>RAID 0是最早出现的RAID模式，即Data Stripping数据分条技术。RAID 0是组建磁盘阵列中最简单的一种形式，只需要2块以上的硬盘即可，成本低，可以提高整个磁盘的性能和吞吐量。RAID 0没有提供冗余或错误修复能力，但实现成本是最低的。</p>
+<p>RAID 0最简单的实现方式就是把N块同样的硬盘用硬件的形式通过智能磁盘控制器或用操作系统中的磁盘驱动程序以软件的方式串联在一起创建一个大的卷集。在使用中电脑数据依次写入到各块硬盘中，它的最大优点就是可以整倍的提高硬盘的容量。如使用了三块80GB的硬盘组建成RAID 0模式，那么磁盘容量就会是240GB。其速度方面，各单独一块硬盘的速度完全相同。最大的缺点在于任何一块硬盘出现故障，整个系统将会受到破坏，可靠性仅为单独一块硬盘的1/N。</p>
+<p>为了解决这一问题，便出一了RAID 0的另一种模式。即在N块硬盘上选择合理的带区来创建带区集。其原理就是将原先顺序写入的数据被分散到所有的四块硬盘中同时进行读写。四块硬盘的并行操作使同一时间内磁盘读写的速度提升了4倍。</p>
+<p>在创建带区集时，合理的选择带区的大小非常重要。如果带区过大，可能一块磁盘上的带区空间就可以满足大部分的I/O操作，使数据的读写仍然只局限在少数的一、两块硬盘上，不能充分的发挥出并行操作的优势。另一方面，如果带区过小，任何I/O指令都可能引发大量的读写操作，占用过多的控制器总线带宽。因此，在创建带区集时，我们应当根据实际应用的需要，慎重的选择带区的大小。</p>
+<p>带区集虽然可以把数据均匀的分配到所有的磁盘上进行读写。但如果我们把所有的硬盘都连接到一个控制器上的话，可能会带来潜在的危害。这是因为当我们频繁进行读写操作时，很容易使控制器或总线的负荷 超载。为了避免出现上述问题，建议用户可以使用多个磁盘控制器。最好解决方法还是为每一块硬盘都配备一个专门的磁盘控制器。<br>虽然RAID 0可以提供更多的空间和更好的性能，但是整个系统是非常不可靠的，如果出现故障，无法进行任何补救。所以，RAID 0一般只是在那些对数据安全性要求不高的情况下才被人们使用。</p>
+<h2 id="2、RAID-1"><a href="#2、RAID-1" class="headerlink" title="2、RAID 1"></a>2、RAID 1</h2><p><img src="/images/blog/raid/raid-1.jpg" alt=""><br>RAID 1示意图<br>ID 1称为磁盘镜像，原理是把一个磁盘的数据镜像到另一个磁盘上，也就是说数据在写入一块磁盘的同时，会在另一块闲置的磁盘上生成镜像文件，在不影响性能情况下最大限度的保证系统的可靠性和可修复性上，只要系统中任何一对镜像盘中至少有一块磁盘可以使用，甚至可以在一半数量的硬盘出现问题时系统都可以正常运行,当一块硬盘失效时，系统会忽略该硬盘，转而使用剩余的镜像盘读写数据，具备很好的磁盘冗余能力。虽然这样对数据来讲绝对安全，但是成本也会明显增加，磁盘利用率为50%，以四块80GB容量的硬盘来讲，可利用的磁盘空间仅为160GB。另外，出现硬盘故障的RAID系统不再可靠，应当及时的更换损坏的硬盘，否则剩余的镜像盘也出现问题，那么整个系统就会崩溃。更换新盘后原有数据会需要很长时间同步镜像，外界对数据的访问不会受到影响，只是这时整个系统的性能有所下降。因此，RAID 1多用在保存关键性的重要数据的场合。</p>
+<p>RAID 1主要是通过二次读写实现磁盘镜像，所以磁盘控制器的负载也相当大，尤其是在需要频繁写入数据的环境中。为了避免出现性能瓶颈，使用多个磁盘控制器就显得很有必要。</p>
+<h2 id="3、RAID0-1"><a href="#3、RAID0-1" class="headerlink" title="3、RAID0+1"></a>3、RAID0+1</h2><p><img src="/images/blog/raid/raid-2.jpg" alt=""><br>RAID0+1示意图<br>ID 0+1名称上我们便可以看出是RAID0与RAID1的结合体。在我们单独使用RAID 1也会出现类似单独使用RAID 0那样的问题，即在同一时间内只能向一块磁盘写入数据，不能充分利用所有的资源。为了解决这一问题，我们可以在磁盘镜像中建立带区集。因为这种配置方式综合了带区集和镜像的优势，所以被称为RAID 0+1。把RAID0和RAID1技术结合起来，数据除分布在多个盘上外，每个盘都有其物理镜像盘，提供全冗余能力，允许一个以下磁盘故障，而不影响数据可用性，并具有快速读/写能力。RAID0+1要在磁盘镜像中建立带区集至少4个硬盘。</p>
+<h2 id="4、RAID-LSI-MegaRAID、Nytro和Syncro"><a href="#4、RAID-LSI-MegaRAID、Nytro和Syncro" class="headerlink" title="4、RAID: LSI MegaRAID、Nytro和Syncro"></a>4、RAID: LSI MegaRAID、Nytro和Syncro</h2><p>MegaRAID、Nytro和Syncro都是LSI 针对RAID而推出的解决方案，并且一直在创造更新。<br>LSI MegaRAID的主要定位是保护数据，通过高性能、高可靠的RAID控制器功能，为数据提供高级别的保护。LSI MegaRAID在业界有口皆碑。</p>
+<p>LSI Nytro的主要定位是数据加速，它充分利用当今备受追捧的闪存技术，极大地提高数据I/O速度。LSI Nytro包括三个系列：LSI Nytro WarpDrive加速卡、LSI Nytro XD 应用加速存储解决方案和LSI Nytro MegaRAID 应用加速卡。Nytro MegaRAID主要用于DAS环境，Nytro WarpDrive加速卡主要用于SAN和NAS环境，Nytro XD解决方案由NytroWarpDrive加速卡和Nytro XD 智能高速缓存软件两部分构成。</p>
+<p>LSI Syncro的定位主要用于数据共享，提高系统的可用性、可扩展性，降低成本。<br>LSI通过MegaRAID提供基本的可靠性保障;通过Nytro实现加速;通过Syncro突破容量瓶颈，让价格低廉的存储解决方案可以大规模扩展，并且进一步提高可靠性。</p>
+<h2 id="5、RAID2：带海明码校验"><a href="#5、RAID2：带海明码校验" class="headerlink" title="5、RAID2：带海明码校验"></a>5、RAID2：带海明码校验</h2><p>从概念上讲，RAID 2 同RAID 3类似， 两者都是将数据条块化分布于不同的硬盘上， 条块单位为位或字节。然而RAID 2 使用一定的编码技术来提供错误检查及恢复。这种编码技术需要多个磁盘存放检查及恢复信息，使得RAID 2技术实施更复杂。因此,在商业环境中很少使用。下图左边的各个磁盘上是数据的各个位，由一个数据不同的位运算得到的海明校验码可以保存另一组磁盘上。由于海明码的特点，它可以在数据发生错误的情况下将错误校正，以保证输出的正确。它的数据传送速率相当高，如果希望达到比较理想的速度，那最好提高保存校验码ECC码的硬盘，对于控制器的设计来说，它又比RAID3，4或5要简单。没有免费的午餐，这里也一样，要利用海明码，必须要付出数据冗余的代价。输出数据的速率与驱动器组中速度最慢的相等。</p>
+<h2 id="6-、RAID3：带奇偶校验码的并行传送"><a href="#6-、RAID3：带奇偶校验码的并行传送" class="headerlink" title="6 、RAID3：带奇偶校验码的并行传送"></a>6 、RAID3：带奇偶校验码的并行传送</h2><p>这种校验码与RAID2不同，只能查错不能纠错。它访问数据时一次处理一个带区，这样可以提高读取和写入速度。校验码在写入数据时产生并保存在另一个磁盘上。需要实现时用户必须要有三个以上的驱动器，写入速率与读出速率都很高，因为校验位比较少，因此计算时间相对而言比较少。用软件实现RAID控制将是十分困难的，控制器的实现也不是很容易。它主要用于图形（包括动画）等要求吞吐率比较高的场合。不同于RAID 2，RAID 3使用单块磁盘存放奇偶校验信息。如果一块磁盘失效，奇偶盘及其他数据盘可以重新产生数据。 如果奇偶盘失效，则不影响数据使用。RAID 3对于大量的连续数据可提供很好的传输率，但对于随机数据，奇偶盘会成为写操作的瓶颈。</p>
+<h2 id="7、RAID4：带奇偶校验码的独立磁盘结构"><a href="#7、RAID4：带奇偶校验码的独立磁盘结构" class="headerlink" title="7、RAID4：带奇偶校验码的独立磁盘结构"></a>7、RAID4：带奇偶校验码的独立磁盘结构</h2><p>RAID4和RAID3很象，不同的是，它对数据的访问是按数据块进行的，也就是按磁盘进行的，每次是一个盘。在图上可以这么看，RAID3是一次一横条，而RAID4一次一竖条。它的特点和RAID3也挺象，不过在失败恢复时，它的难度可要比RAID3大得多了，控制器的设计难度也要大许多，而且访问数据的效率不怎么好。</p>
+<h2 id="8、RAID5：分布式奇偶校验的独立磁盘结构"><a href="#8、RAID5：分布式奇偶校验的独立磁盘结构" class="headerlink" title="8、RAID5：分布式奇偶校验的独立磁盘结构"></a>8、RAID5：分布式奇偶校验的独立磁盘结构</h2><p>从它的示意图上可以看到，它的奇偶校验码存在于所有磁盘上，其中的p0代表第0带区的奇偶校验值，其它的意思也相同。RAID5的读出效率很高，写入效率一般，块式的集体访问效率不错。因为奇偶校验码在不同的磁盘上，所以提高了可靠性。但是它对数据传输的并行性解决不好，而且控制器的设计也相当困难。RAID 3 与RAID 5相比，重要的区别在于RAID 3每进行一次数据传输，需涉及到所有的阵列盘。而对于RAID 5来说，大部分数据传输只对一块磁盘操作，可进行并行操作。在RAID 5中有“写损失”，即每一次写操作，将产生四个实际的读/写操作，其中两次读旧的数据及奇偶信息，两次写新的数据及奇偶信息。</p>
+<h2 id="9、RAID6：带有两种分布存储的奇偶校验码的独立磁盘结构"><a href="#9、RAID6：带有两种分布存储的奇偶校验码的独立磁盘结构" class="headerlink" title="9、RAID6：带有两种分布存储的奇偶校验码的独立磁盘结构"></a>9、RAID6：带有两种分布存储的奇偶校验码的独立磁盘结构</h2><p>名字很长，但是如果看到图，大家立刻会明白是为什么，请注意p0代表第0带区的奇偶校验值，而pA代表数据块A的奇偶校验值。它是对RAID5的扩展，主要是用于要求数据绝对不能出错的场合。当然了，由于引入了第二种奇偶校验值，所以需要N+2个磁盘，同时对控制器的设计变得十分复杂，写入速度也不好，用于计算奇偶校验值和验证数据正确性所花费的时间比较多，造成了不必须的负载。我想除了军队没有人用得起这种东西。</p>
+<h2 id="10、RAID7：优化的高速数据传送磁盘结构"><a href="#10、RAID7：优化的高速数据传送磁盘结构" class="headerlink" title="10、RAID7：优化的高速数据传送磁盘结构"></a>10、RAID7：优化的高速数据传送磁盘结构</h2><p>RAID7所有的I/O传送均是同步进行的，可以分别控制，这样提高了系统的并行性，提高系统访问数据的速度；每个磁盘都带有高速缓冲存储器，实时操作系统可以使用任何实时操作芯片，达到不同实时系统的需要。允许使用SNMP协议进行管理和监视，可以对校验区指定独立的传送信道以提高效率。可以连接多台主机，因为加入高速缓冲存储器，当多用户访问系统时，访问时间几乎接近于0。由于采用并行结构，因此数据访问效率大大提高。需要注意的是它引入了一个高速缓冲存储器，这有利有弊，因为一旦系统断电，在高速缓冲存储器内的数据就会全部丢失，因此需要和UPS一起工作。当然了，这么快的东西，价格也非常昂贵。</p>
+<h2 id="11、RAID10：高可靠性与高效磁盘结构"><a href="#11、RAID10：高可靠性与高效磁盘结构" class="headerlink" title="11、RAID10：高可靠性与高效磁盘结构"></a>11、RAID10：高可靠性与高效磁盘结构</h2><p>这种结构无非是一个带区结构加一个镜象结构，因为两种结构各有优缺点，因此可以相互补充，达到既高效又高速的目的。大家可以结合两种结构的优点和缺点来理解这种新结构。这种新结构的价格高，可扩充性不好。主要用于数据容量不大，但要求速度和差错控制的数据库中。</p>
+<h2 id="12、RAID53：高效数据传送磁盘结构"><a href="#12、RAID53：高效数据传送磁盘结构" class="headerlink" title="12、RAID53：高效数据传送磁盘结构"></a>12、RAID53：高效数据传送磁盘结构</h2><p>越到后面的结构就是对前面结构的一种重复和再利用，这种结构就是RAID3和带区结构的统一，因此它速度比较快，也有容错功能。但价格十分高，不易于实现。这是因为所有的数据必须经过带区和按位存储两种方法，在考虑到效率的情况下，要求这些磁盘同步真是不容易。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>⭐您的支持将鼓励我继续创作⭐</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Lyy WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lyy Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/20/CISSP知识点/" rel="next" title="CISSP知识点">
+                <i class="fa fa-chevron-left"></i> CISSP知识点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/20/Security+知识点/" rel="prev" title="Security+知识点">
+                Security+知识点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Lyy" />
+          <p class="site-author-name" itemprop="name">Lyy</p>
+           
+              <p class="site-description motion-element" itemprop="description">运气就是机会碰巧撞到了你的努力</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.dx-sven.info/" title="Sven" target="_blank">Sven</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://pirogue.org/" title="pirogue" target="_blank">pirogue</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://superhua.cc/" title="superhua" target="_blank">superhua</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.lovesec.com/" title="超级菜鸟" target="_blank">超级菜鸟</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、RAID-0"><span class="nav-number">1.</span> <span class="nav-text"><a href="#1&#x3001;RAID-0" class="headerlink" title="1&#x3001;RAID 0"></a>1&#x3001;RAID 0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、RAID-1"><span class="nav-number">2.</span> <span class="nav-text"><a href="#2&#x3001;RAID-1" class="headerlink" title="2&#x3001;RAID 1"></a>2&#x3001;RAID 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、RAID0-1"><span class="nav-number">3.</span> <span class="nav-text"><a href="#3&#x3001;RAID0-1" class="headerlink" title="3&#x3001;RAID0+1"></a>3&#x3001;RAID0+1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、RAID-LSI-MegaRAID、Nytro和Syncro"><span class="nav-number">4.</span> <span class="nav-text"><a href="#4&#x3001;RAID-LSI-MegaRAID&#x3001;Nytro&#x548C;Syncro" class="headerlink" title="4&#x3001;RAID: LSI MegaRAID&#x3001;Nytro&#x548C;Syncro"></a>4&#x3001;RAID: LSI MegaRAID&#x3001;Nytro&#x548C;Syncro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、RAID2：带海明码校验"><span class="nav-number">5.</span> <span class="nav-text"><a href="#5&#x3001;RAID2&#xFF1A;&#x5E26;&#x6D77;&#x660E;&#x7801;&#x6821;&#x9A8C;" class="headerlink" title="5&#x3001;RAID2&#xFF1A;&#x5E26;&#x6D77;&#x660E;&#x7801;&#x6821;&#x9A8C;"></a>5&#x3001;RAID2&#xFF1A;&#x5E26;&#x6D77;&#x660E;&#x7801;&#x6821;&#x9A8C;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-、RAID3：带奇偶校验码的并行传送"><span class="nav-number">6.</span> <span class="nav-text"><a href="#6-&#x3001;RAID3&#xFF1A;&#x5E26;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x7801;&#x7684;&#x5E76;&#x884C;&#x4F20;&#x9001;" class="headerlink" title="6 &#x3001;RAID3&#xFF1A;&#x5E26;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x7801;&#x7684;&#x5E76;&#x884C;&#x4F20;&#x9001;"></a>6 &#x3001;RAID3&#xFF1A;&#x5E26;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x7801;&#x7684;&#x5E76;&#x884C;&#x4F20;&#x9001;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、RAID4：带奇偶校验码的独立磁盘结构"><span class="nav-number">7.</span> <span class="nav-text"><a href="#7&#x3001;RAID4&#xFF1A;&#x5E26;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x7801;&#x7684;&#x72EC;&#x7ACB;&#x78C1;&#x76D8;&#x7ED3;&#x6784;" class="headerlink" title="7&#x3001;RAID4&#xFF1A;&#x5E26;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x7801;&#x7684;&#x72EC;&#x7ACB;&#x78C1;&#x76D8;&#x7ED3;&#x6784;"></a>7&#x3001;RAID4&#xFF1A;&#x5E26;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x7801;&#x7684;&#x72EC;&#x7ACB;&#x78C1;&#x76D8;&#x7ED3;&#x6784;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、RAID5：分布式奇偶校验的独立磁盘结构"><span class="nav-number">8.</span> <span class="nav-text"><a href="#8&#x3001;RAID5&#xFF1A;&#x5206;&#x5E03;&#x5F0F;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x7684;&#x72EC;&#x7ACB;&#x78C1;&#x76D8;&#x7ED3;&#x6784;" class="headerlink" title="8&#x3001;RAID5&#xFF1A;&#x5206;&#x5E03;&#x5F0F;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x7684;&#x72EC;&#x7ACB;&#x78C1;&#x76D8;&#x7ED3;&#x6784;"></a>8&#x3001;RAID5&#xFF1A;&#x5206;&#x5E03;&#x5F0F;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x7684;&#x72EC;&#x7ACB;&#x78C1;&#x76D8;&#x7ED3;&#x6784;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、RAID6：带有两种分布存储的奇偶校验码的独立磁盘结构"><span class="nav-number">9.</span> <span class="nav-text"><a href="#9&#x3001;RAID6&#xFF1A;&#x5E26;&#x6709;&#x4E24;&#x79CD;&#x5206;&#x5E03;&#x5B58;&#x50A8;&#x7684;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x7801;&#x7684;&#x72EC;&#x7ACB;&#x78C1;&#x76D8;&#x7ED3;&#x6784;" class="headerlink" title="9&#x3001;RAID6&#xFF1A;&#x5E26;&#x6709;&#x4E24;&#x79CD;&#x5206;&#x5E03;&#x5B58;&#x50A8;&#x7684;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x7801;&#x7684;&#x72EC;&#x7ACB;&#x78C1;&#x76D8;&#x7ED3;&#x6784;"></a>9&#x3001;RAID6&#xFF1A;&#x5E26;&#x6709;&#x4E24;&#x79CD;&#x5206;&#x5E03;&#x5B58;&#x50A8;&#x7684;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x7801;&#x7684;&#x72EC;&#x7ACB;&#x78C1;&#x76D8;&#x7ED3;&#x6784;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10、RAID7：优化的高速数据传送磁盘结构"><span class="nav-number">10.</span> <span class="nav-text"><a href="#10&#x3001;RAID7&#xFF1A;&#x4F18;&#x5316;&#x7684;&#x9AD8;&#x901F;&#x6570;&#x636E;&#x4F20;&#x9001;&#x78C1;&#x76D8;&#x7ED3;&#x6784;" class="headerlink" title="10&#x3001;RAID7&#xFF1A;&#x4F18;&#x5316;&#x7684;&#x9AD8;&#x901F;&#x6570;&#x636E;&#x4F20;&#x9001;&#x78C1;&#x76D8;&#x7ED3;&#x6784;"></a>10&#x3001;RAID7&#xFF1A;&#x4F18;&#x5316;&#x7684;&#x9AD8;&#x901F;&#x6570;&#x636E;&#x4F20;&#x9001;&#x78C1;&#x76D8;&#x7ED3;&#x6784;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11、RAID10：高可靠性与高效磁盘结构"><span class="nav-number">11.</span> <span class="nav-text"><a href="#11&#x3001;RAID10&#xFF1A;&#x9AD8;&#x53EF;&#x9760;&#x6027;&#x4E0E;&#x9AD8;&#x6548;&#x78C1;&#x76D8;&#x7ED3;&#x6784;" class="headerlink" title="11&#x3001;RAID10&#xFF1A;&#x9AD8;&#x53EF;&#x9760;&#x6027;&#x4E0E;&#x9AD8;&#x6548;&#x78C1;&#x76D8;&#x7ED3;&#x6784;"></a>11&#x3001;RAID10&#xFF1A;&#x9AD8;&#x53EF;&#x9760;&#x6027;&#x4E0E;&#x9AD8;&#x6548;&#x78C1;&#x76D8;&#x7ED3;&#x6784;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12、RAID53：高效数据传送磁盘结构"><span class="nav-number">12.</span> <span class="nav-text"><a href="#12&#x3001;RAID53&#xFF1A;&#x9AD8;&#x6548;&#x6570;&#x636E;&#x4F20;&#x9001;&#x78C1;&#x76D8;&#x7ED3;&#x6784;" class="headerlink" title="12&#x3001;RAID53&#xFF1A;&#x9AD8;&#x6548;&#x6570;&#x636E;&#x4F20;&#x9001;&#x78C1;&#x76D8;&#x7ED3;&#x6784;"></a>12&#x3001;RAID53&#xFF1A;&#x9AD8;&#x6548;&#x6570;&#x636E;&#x4F20;&#x9001;&#x78C1;&#x76D8;&#x7ED3;&#x6784;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016-2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lyy</span>
+  <span class="post-meta-divider">|</span>
+  您是第<span id="busuanzi_value_site_uv"></span>位小伙伴/
+  Total:<span id="busuanzi_value_site_pv"></span>
+</div>
+
+
+<div class="powered-by">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span>
+  <span class="post-meta-divider">|</span>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+    </a> 
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

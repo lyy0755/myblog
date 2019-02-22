@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="lyy, ksowo.com" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="考试涉及的知识点WEP Kdc 对称非法对称算法、密钥长度 towfish、diffie-hellman、ecc、Rsa 最强访问控制mac、tacacs、dac、rbac 3DES、blowfish、serpent、aes256 Aes、des、crc、rc4、ripemd、sha-512、md4 tpm、ntlm、rsa、chap、ecdhe、radius 智能卡 Eap-tls、eap-fa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Security+知识点">
+<meta property="og:url" content="http://www.ksowo.com/2017/12/20/Security+知识点/index.html">
+<meta property="og:site_name" content="Lyy&#39;s Blog">
+<meta property="og:description" content="考试涉及的知识点WEP Kdc 对称非法对称算法、密钥长度 towfish、diffie-hellman、ecc、Rsa 最强访问控制mac、tacacs、dac、rbac 3DES、blowfish、serpent、aes256 Aes、des、crc、rc4、ripemd、sha-512、md4 tpm、ntlm、rsa、chap、ecdhe、radius 智能卡 Eap-tls、eap-fa">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-27T03:23:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Security+知识点">
+<meta name="twitter:description" content="考试涉及的知识点WEP Kdc 对称非法对称算法、密钥长度 towfish、diffie-hellman、ecc、Rsa 最强访问控制mac、tacacs、dac、rbac 3DES、blowfish、serpent、aes256 Aes、des、crc、rc4、ripemd、sha-512、md4 tpm、ntlm、rsa、chap、ecdhe、radius 智能卡 Eap-tls、eap-fa">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.ksowo.com/2017/12/20/Security+知识点/"/>
+
+
+
+
+
+  <title>Security+知识点 | Lyy's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lyy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.ksowo.com/2017/12/20/Security+知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Security+知识点</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T14:28:59+08:00">
+                2017-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>             
+                
+              
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="考试涉及的知识点"><a href="#考试涉及的知识点" class="headerlink" title="考试涉及的知识点"></a>考试涉及的知识点</h2><p>WEP</p>
+<p>Kdc</p>
+<p>对称非法对称算法、密钥长度 towfish、diffie-hellman、ecc、Rsa</p>
+<p>最强访问控制mac、tacacs、dac、rbac</p>
+<p>3DES、blowfish、serpent、aes256</p>
+<p>Aes、des、crc、rc4、ripemd、sha-512、md4</p>
+<p>tpm、ntlm、rsa、chap、ecdhe、radius</p>
+<p>智能卡</p>
+<p>Eap-tls、eap-fast、peap-chap、peap-mschapv2</p>
+<p>364、393、395、907</p>
+<p>Wpa2-psk</p>
+<p>Wpa-eap-tls</p>
+<p>Wpa2-ccmp</p>
+<p>Wpa-ccmp</p>
+<p>Wpa-leap</p>
+<p>wep</p>
+<p>无线协议wpa-entrtprise</p>
+<p>无线网络的相互认证peap-mschapv2</p>
+<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><p>RADIUS服务器的1812端口负责认证，1813端口负责计费工作</p>
+<p>88/UDP（用户数据报协议）– Kerberos</p>
+<p>TACACS+使用TCP的49端口进行通信</p>
+<h2 id="blowfish"><a href="#blowfish" class="headerlink" title="blowfish"></a>blowfish</h2><p>BlowFish是一个容易使用的文件和文件夹加密软件，只要用鼠标把文件或文件夹拖到加密的文档地方。</p>
+<p>Blowfish算法是一个64位分组及可变密钥长度的对称密钥分组密码算法，可用来加密64比特长度的字符串。32位处理器诞生后，Blowfish算法因其在加密速度上超越了DES而引起人们的关注。Blowfish算法具有加密速度快、紧凑、密钥长度可变、可免费使用等特点，已被广泛使用于众多加密软件。</p>
+<p>Blowfish算法是一种对称的分组加密算法，算法核心在于子密钥生成，它将变长密钥扩展成总长4168 Byte的子密钥数组。算法中使用了大量的子密钥，而子密钥又依赖于用户密钥，实际加/解密过程中使用的是更新后的子密钥数组，子密钥即P数组和S盒。Blowfish算法有一个核心加密函数:BF_En()，该函数的输人是64位明文信息，经过运算，以64位密文信息的形式输出。用Blowfish算法加密信息，需要两个过程:密钥预处理和信息加密。同样，解密亦需要两个过程，密钥预处理和信息解密。</p>
+<p>Blowfish算法的源密钥——pbox和sbox是固定的，而我们要加密一个信息，需要自己选择一个key，用这个key对pbox和sbox进行变换，得到下一步信息加密所要用的key_pbox和key_sbox。解密亦是如此，由于Blowfish是对称加密算法，解密方在得到key后根据key生成解密所需的key_box和key_sbox。对同一个信息加密解密，选取的key的不同会导致密文的不同。因此，Blowfish算法的关键在于key的选择以及保密。</p>
+<p>由于Blowfish算法采用变长密钥，这在给用户带来极大便利的同时也有隐患。由于算法加/解密核心在于密钥的选择和保密，但在实际应用中经常使用一些弱密钥对信息资源进行加密，导致存在着很大的安全隐患</p>
+<h2 id="serpent"><a href="#serpent" class="headerlink" title="serpent"></a>serpent</h2><p>Serpent,是一个对称密钥块密码，这是在高级加密标准（AES）的较量，它被排在第二位，以Rijndael算法入围。Serpent是由罗斯·安德森，礼比哈姆，和Lars努森设计。像其他的AES意见书，Serpent具有128比特的块大小和支持的128,192或256位的密钥大小。[2]所述的密码是32轮取代-置换网络的4个32位字的块上操作。每轮适用的8个4比特至4比特S-box的并行32倍之一。Serpent的目的是使所有的操作可以并行执行时，采用32位的切片。这最大限度地提高并行性，而且还允许使用DES上进行的广泛的密码分析工作。包括Serpent-ECB,Serpent-CBC,Serpent-CTR,Serpent-OFB,Serpent-CFB</p>
+<h2 id="攻击名词"><a href="#攻击名词" class="headerlink" title="攻击名词"></a>攻击名词</h2><p>Spoofing 欺骗</p>
+<p>Impersonation 扮演管理员、用户、管理层</p>
+<p>Hoax 恐吓</p>
+<p>Phishing/Pharming 钓鱼/嫁接</p>
+<p>Vishing 电话钓鱼</p>
+<p>Whaling 面向管理层钓鱼</p>
+<p>URL hijacking/typo squatting URL劫持/误植域名</p>
+<p>Spam and spim 垃圾邮件/即时通信垃圾</p>
+<p>Shoulder surfing 肩窥</p>
+<p>Dumpster diving 垃圾搜寻</p>
+<p>Tailgating 尾随</p>
+<h2 id="wpa-leap"><a href="#wpa-leap" class="headerlink" title="wpa-leap"></a>wpa-leap</h2><p>思科的LEAP(轻型可扩展身份验证协议)是一个专有的、IEEE 802.1X端口访问协议标准批准之前的变体。802.1X是一个框架，让一台身份识别服务器在批准无线用户进入接入点的分布式网络(也就是接入点连接的有线网络)之前验证那个无线用户的证书。802.1X能够与许多不同的证书一起使用，如口令、令牌和证书等。这是通过让802.1X的请求和回答携带任何种类的EAP(可扩展身份验证协议)来完成的。</p>
+<h2 id="wpa-peap"><a href="#wpa-peap" class="headerlink" title="wpa-peap"></a>wpa-peap</h2><p>受保护的可扩展身份验证协议 (PEAP) 认证，是一种基于安全密码的认证协议，可以实现简单而又安全的身份验证功能。虽然PEAP也可以用于有线网络环境，但是一般来说，主 要用于无线局域网环境的网络接入保护(NAP)甚至Vista系统中的VPN认证。 虽然市面上还有一些验证协议可以实现与PEAP类似的功能，比如Funk Software的EAP-TTLS ，但是由 于PEAP与Windows操作系统的良好协调性，以及可以通过Windows组策略进行管理的特性，使得PEAP在部署时极其简单。</p>
+<h2 id="Kerberos"><a href="#Kerberos" class="headerlink" title="Kerberos"></a>Kerberos</h2><p>Kerberos 是一种网络认证协议，其设计目标是通过密钥系统为客户机 / 服务器应用程序提供强大的认证服务。该认证过程的实现不依赖于主机操作系统的认证，无需基于主机地址的信任，不要求网络上所有主机的物理安全，并假定网络上传送的数据包可以被任意地读取、修改和插入数据。在以上情况下， Kerberos 作为一种可信任的第三方认证服务，是通过传统的密码技术（如：共享密钥）执行认证服务的。</p>
+<p>认证过程具体如下：客户机向认证服务器（AS）发送请求，要求得到某服务器的证书，然后 AS 的响应包含这些用客户端密钥加密的证书。证书的构成为： 1) 服务器 “ticket” ； 2) 一个临时加密密钥（又称为会话密钥 “session key”） 。客户机将 ticket （包括用服务器密钥加密的客户机身份和一份会话密钥的拷贝）传送到服务器上。会话密钥可以（现已经由客户机和服务器共享）用来认证客户机或认证服务器，也可用来为通信双方以后的通讯提供加密服务，或通过交换独立子会话密钥为通信双方提供进一步的通信加密服务。</p>
+<p>上述认证交换过程需要只读方式访问 Kerberos 数据库。但有时，数据库中的记录必须进行修改，如添加新的规则或改变规则密钥时。修改过程通过客户机和第三方 Kerberos 服务器（Kerberos 管理器 KADM）间的协议完成。有关管理协议在此不作介绍。另外也有一种协议用于维护多份 Kerberos 数据库的拷贝，这可以认为是执行过程中的细节问题，并且会不断改变以适应各种不同数据库技术。<br>Kerberos又指麻省理工学院为这个协议开发的一套计算机网络安全系统。系统设计上采用客户端/服务器结构与DES加密技术，并且能够进行相互认证，即客户端和服务器端均可对对方进行身份认证。可以用于防止窃听、防止replay攻击、保护数据完整性等场合，是一种应用对称密钥体制进行密钥管理的系统。Kerberos的扩展产品也使用公开密钥加密方法进行认证。</p>
+<h2 id="TACACS"><a href="#TACACS" class="headerlink" title="TACACS+"></a>TACACS+</h2><p>TACACS+(Terminal Access Controller Access Control System)终端<br>访问控制器访问控制系统。与我们IDsentrie的Radius协议相近。不过TACACS+用的是TCP协议，Radius用的是UDP,不知道各有什么优点和缺点呢。它们的重要作用就是3A。 所谓3A, 即Authentication认证，Authorization授权，Accounting计费。 在测试Radius时，我对authentication已经比较了解，但是对authorization还比较模糊，这次测试tacacs+,使我对authorization也开始了解了。授权简单的说就是给用户开放某些资源。</p>
+<p>TACACS+ 使用TCP端口49，包括三种独立的协议，如果需要，能够在独立的服务器上实现。</p>
+<p>TACACS+提供了多协议支持，如IP和AppleTalk.一般操作都对数据包进行全部加密，以提供更安全的通信，这是一个Cisco对最初的TACACS协议提供的专有的改进。TACACS+ 操作中使用使用APPLETALK和 NETBIOS.</p>
+<h2 id="TACACS-1"><a href="#TACACS-1" class="headerlink" title="TACACS"></a>TACACS</h2><p>TACACS（终端访问控制器访问控制系统）对于Unix网络来说是一个比较老的认证协议，它允许远程访问服务器传送用户登陆密码给认证服务器，认证服务器决定该用户是否可以登陆系统。TACACS是一个加密协议，因此它的安全性不及之后的TACACS+和远程身份验证拨入用户服务协议。TACACS之后推出的版本是XTACACS。这两个协议均在RFC（请求注解）(是一系列以编号排定的文件。文件收集了有关互联网相关信息，以及UNIX和互联网社区的软件文件。可以理解是一个标准化的文档。)中进行了说明。</p>
+<p>TACACS+其实是一个全新的协议。TACACS+和RADIUS在现有网络里已经取代了早期的协议。TACACS+应用传输控制协议（TCP），而RADIUS使用用户数据报协议（UDP）。一些管理员推荐使用TACACS+协议，因为TCP更可靠些。RADIUS从用户角度结合了认证和授权，而TACACS+分离了这两个操作。</p>
+<p>TACACS协议和XTACACS协议至今还应用在许多老系统中。</p>
+<h2 id="RADIUS"><a href="#RADIUS" class="headerlink" title="RADIUS"></a>RADIUS</h2><p>RADIUS：Remote Authentication Dial In User Service，远程用户拨号认证系统由RFC2865，RFC2866定义，是目前应用最广泛的AAA协议。AAA是一种管理框架，因此，它可以用多种协议来实现。在实践中，人们最常使用远程访问拨号用户服务（Remote Authentication Dial In User Service，RADIUS）来实现AAA。</p>
+<p>RADIUS是一种C/S结构的协议，它的客户端最初就是NAS（Net Access Server）服务器，任何运行RADIUS客户端软件的计算机都可以成为RADIUS的客户端。RADIUS协议认证机制灵活，可以采用PAP、CHAP或者Unix登录认证等多种方式。RADIUS是一种可扩展的协议，它进行的全部工作都是基于Attribute-Length-Value的向量进行的。RADIUS也支持厂商扩充厂家专有属性。</p>
+<p>由于RADIUS协议简单明确，可扩充，因此得到了广泛应用，包括普通电话上网、ADSL上网、小区宽带上网、IP电话、VPDN（Virtual Private Dialup Networks，基于拨号用户的虚拟专用拨号网业务）、移动电话预付费等业务。IEEE提出了802.1x标准，这是一种基于端口的标准，用于对无线网络的接入认证，在认证时也采用RADIUS协议。</p>
+<h2 id="LDAP"><a href="#LDAP" class="headerlink" title="LDAP"></a>LDAP</h2><p>LDAP是轻量目录访问协议，英文全称是Lightweight Directory Access Protocol，一般都简称为LDAP。它是基于X.500标准的，但是简单多了并且可以根据需要定制。与X.500不同，LDAP支持TCP/IP，这对访问Internet是必须的。LDAP的核心规范在RFC中都有定义，所有与LDAP相关的RFC都可以在LDAPman RFC网页中找到。</p>
+<h2 id="HSM"><a href="#HSM" class="headerlink" title="HSM"></a>HSM</h2><p>HSM即Hierarchical Storage Management的简写，意为“分层存储管理”，指数据对象在存储设备之间自动迁移的过程，通常是被动进行的。分层存储管理建立在性价比存储层次的概念之上，只要愿意降低访问性能，就可以更低的代价来存储。</p>
+<h2 id="EFS"><a href="#EFS" class="headerlink" title="EFS"></a>EFS</h2><p>加密文件系统。 EFS加密是基于公钥策略的， 对用户是透明的。这也就是说，如果你加密了一些数据，那么你对这些数据的访问将是完全允许的，并不会受到任何限制。 选中NTFS分区中的一个文件，点击鼠标右键，选择“属性”命令，在出现的对话框中点击“常规”选项卡，然后点击“高级”按钮，在出现的对话框中选中“加密内容以便保护数据”选项，点击“确定”即可。</p>
+<h2 id="TPM"><a href="#TPM" class="headerlink" title="TPM"></a>TPM</h2><p>TPM(Trusted Platform Module)安全芯片，是指符合TPM（可信赖平台模块）标准的安全芯片，它能有效地保护PC、防止非法用户访问。</p>
+<p>TPM安全芯片用途十分广泛，配合专用软件可以实现以下用途：</p>
+<ol>
+<li>存储、管理BIOS开机密码以及硬盘密码<br>以往这些事务都是由BIOS做的，玩过的朋友可能知道，忘记了密码只要取下CMOS电池，给CMOS放电就清除密码了。如今这些密钥实际上是存储于固化在芯片的存储单元中，即便是掉电其信息亦不会丢失。相比于BIOS管理密码，TPM安全芯片的安全性要大为提高。</li>
+<li>TPM安全芯片可以进行范围较广的加密<br>TPM安全芯片除了能进行传统的开机加密以及对硬盘进行加密外，还能对系统登录、应用软件登录进行加密。比如MSN、QQ、网游以及网上银行的登录信息和密码，都可以通过TPM加密后再进行传输，这样就不用担心信息和密码被人窃取。</li>
+<li>加密硬盘的任意分区<br>我们可以加密本本上的任意一个硬盘分区，您可以将一些敏感的文件放入该分区以策安全。其实有些本本厂商采用的一键恢复功能，就是该用途的集中体现之一（其将系统镜像放在一个TPM加密的分区中）。还有一些大型商业软件公司(如：Microsoft)也会利用其作为加密分区的手段(如：著名的BitLocker)。<h2 id="TKIP"><a href="#TKIP" class="headerlink" title="TKIP"></a>TKIP</h2>TKIP是IEEE802.11i规范中负责处理无线安全问题的加密协议。</li>
+</ol>
+<p>在IEEE 802.11i规范中，TKIP: Temporal Key Integrity Protocol（临时密钥完整性协议）负责处理无线安全问题的加密部分。TKIP在设计时考虑了当时非常苛刻的限制因素：必须在现有硬件上运行，因此不能使用计算先进的加密算法。</p>
+<p>TKIP和WPA标准相关实施三个新的安全功能，以解决WEP保护的网络中遇到的安全问题。 首先，TKIP实现了密钥混合功能，结合秘密与根密钥初始化向量传递给它的RC4初始化之前。WEP的，相比之下，仅仅是连接到根密钥初始化向量，并通过这个值的RC4例程。二，WPA实现了一个序列计数器，以防止重放攻击。为了接收的数据包将被拒绝接入点。最后，TKIP实现了一个64位的消息完整性检查（MIC）。</p>
+<p>为了能够运行在传统的WEP次要升级硬件，TKIP使用的RC4作为其密码。TKIP还提供了密钥更新机制。TKIP的，确保每一个数据包发送了一个独特的加密密钥 。<br>关键混合增加解码的复杂性，给攻击者大大减少数据已被加密，使用任何一个键的键。WPA2也实现了一个新的消息完整性代码，MIC。消息完整性检查，防止伪造的数据包被接受。下的WEP是可以改变一个数据包，其内容被称为，即使它没有被解密。</p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>TKIP是包裹在已有WEP密码外围的一层“外壳”。TKIP由WEP使用的同样的加密引擎和RC4算法组成。不过，TKIP中密码使用的密钥长度为128位。这解决了WEP的第一个问题：过短的密钥长度。</p>
+<p>TKIP的一个重要特性，是它变化每个数据包所使用的密钥。这就是它名称中“动态”的出处。密钥通过将多种因素混合在一起生成，包括基本密钥（即TKIP中所谓的成对瞬时密钥）、发射站的MAC地址以及数据包的序列号。混合操作在设计上将对无线站和接入点的要求减少到最低程度，但仍具有足够的密码强度，使它不能被轻易破译。</p>
+<p>利用TKIP传送的每一个数据包都具有独有的48位序列号，这个序列号在每次传送新数据包时递增，并被用作初始化向量和密钥的一部分。将序列号加到密钥中，确保了每个数据包使用不同的密钥。这解决了WEP的另一个问题，即所谓的“碰撞攻击”。这种攻击发生在两个不同数据包使用同样的密钥时。在使用不同的密钥时，不会出现碰撞。</p>
+<p>以数据包序列号作为初始化向量，还解决了另一个WEP问题，即所谓的“重放攻击（replay attacks）”。由于48位序列号需要数千年时间才会出现重复，因此没有人可以重放来自无线连接的老数据包：由于序列号不正确，这些数据包将作为失序包被检测</p>
+<p>被混合到TKIP密钥中的最重要因素是基本密钥。如果没有一种生成独特的基本密钥的方法，TKIP尽管可以解决许多WEP存在的问题，但却不能解决最糟糕的问题：所有人都在无线局域网上不断重复使用一个众所周知的密钥。为了解决这个问题，TKIP生成混合到每个包密钥中的基本密钥。无线站每次与接入点建立联系时，就生成一个新基本密钥。这个基本密钥通过将特定的会话内容与用接入点和无线站生成的一些随机数以及接入点和无线站的MAC地址进行散列处理来产生。由于采用802.1x认证，这个会话内容是特定的，而且由认证服务器安全地传送给无线站。</p>
+<h2 id="基于角色的访问控制"><a href="#基于角色的访问控制" class="headerlink" title="基于角色的访问控制"></a>基于角色的访问控制</h2><p>其基本思想是，对系统操作的各种权限不是直接授予具体的用户，而是在用户集合与权限集合之间建立一个角色集合。每一种角色对应一组相应的权限。一旦用户被分配了适当的角色后，该用户就拥有此角色的所有操作权限。这样做的好处是，不必在每次创建用户时都进行分配权限的操作，只要分配用户相应的角色即可，而且角色的权限变更比用户的权限变更要少得多，这样将简化用户的权限管理，减少系统的开销。</p>
+<h2 id="鱼叉式网络钓鱼"><a href="#鱼叉式网络钓鱼" class="headerlink" title="鱼叉式网络钓鱼"></a>鱼叉式网络钓鱼</h2><p>鱼叉式网络钓鱼（Spear phishing）指一种源于亚洲与东欧只针对特定目标进行攻击的网络钓鱼攻击。</p>
+<p>由于鱼叉式网络钓鱼锁定之对象并非一般个人，而是特定公司、组织之成员，故受窃之资讯已非一般网络钓鱼所窃取之个人资料，而是其他高度敏感性资料，如智慧财产权及商业机密。</p>
+<p>网络钓鱼是指诱导人们连接那些黑客已经锁定的目标。这种攻击方法的成功率很高，也非常常见。点击链接、打开表格或者连接其他一些文件都会感染病毒。一次简单的点击相当于为攻击者开启了一扇电子门，这样他就可以接触到你的内部弱点了。因为你已经同意他进入，他能够接触弱点，然后挖掘信息和授权连接。</p>
+<h2 id="PBKDF2"><a href="#PBKDF2" class="headerlink" title="PBKDF2"></a>PBKDF2</h2><p>PBKDF2应用一个伪随机函数以导出密钥。导出密钥的长度本质上是没有限制的（但是，导出密钥的最大有效搜索空间受限于基本伪随机函数的结构）。</p>
+<h2 id="bcrypt"><a href="#bcrypt" class="headerlink" title="bcrypt"></a>bcrypt</h2><p>是一个跨平台的文件加密工具。由它加密的文件可在所有支持的操作系统和处理器上进行转移。它的口令必须是8至56个字符，并将在内部被转化为448位的密钥。</p>
+<p>所提供的所有字符都具有十分重要的意义。密码越强大，您的数据就越安全。<br>除了对您的数据进行加密，默认情况下，bcrypt 在删除数据之前将使用随机数据三次覆盖原始输入文件，以阻挠可能会获得您的计算机数据的人恢复数据的尝试。如果您不想使用此功能，可设定禁用此功能。<br>bcrypt 使用的是布鲁斯·施内尔在1993年发布的 Blowfish 加密算法。具体来说，bcrypt 使用保罗·柯切尔的算法实现。随 bcrypt 一起发布的源代码对原始版本作了略微改动。</p>
+<h2 id="TOTP、HOTP"><a href="#TOTP、HOTP" class="headerlink" title="TOTP、HOTP"></a>TOTP、HOTP</h2><p>TOTP一次性验证码</p>
+<p>HOTP:一种基于HMAC的一次性口令算法摘要本文描述了一种基于HMAC的一次性口令生成算法。</p>
+<h2 id="CHAP"><a href="#CHAP" class="headerlink" title="CHAP"></a>CHAP</h2><p>CHAP全称是PPP（点对点协议）询问握手认证协议 （Challenge Handshake Authentication Protocol）。该协议可通过三次握手周期性的校验对端的身份，可在初始链路建立时，完成时，在链路建立之后重复进行。通过递增改变的标识符和可变的询问值，可防止来自端点的重放攻击，限制暴露于单个攻击的时间。</p>
+<h2 id="PPTP和L2TP"><a href="#PPTP和L2TP" class="headerlink" title="PPTP和L2TP"></a>PPTP和L2TP</h2><p>PPTP（Point to Point Tunneling Protocol），即点对点隧道协议。该协议是在PPP协议的基础上开发的一种新的增强型安全协议，支持多协议虚拟专用网（VPN），可以通过密码验证协议（PAP）、可扩展认证协议（EAP）等方法增强安全性。可以使远程用户通过拨入ISP、通过直接连接Internet或其他网络安全地访问企业网。</p>
+<p>端口1723</p>
+<p>PPTP和L2TP都属于第二层隧道协议，使用PPP协议对数据进行封装，然后添加附加包头用于数据在互联网络上的传输。尽管两个协议非常相似，但是仍存在以下几方面的不同：</p>
+<ol>
+<li>PPTP要求互联网络为IP网络。L2TP只要求隧道媒介提供面向数据包的点对点的连接。L2TP可以在IP（使用UDP），帧中继永久虚拟电路（PVCs）、X.25虚拟电路（VCs）或ATM网络上使用</li>
+<li>PPTP只能在两端点间建立单一隧道。L2TP支持在两端点间使用多隧道。使用L2TP，用户可以针对不同的服务质量创建不同的隧道</li>
+<li>L2TP可以提供包头压缩。当压缩包头时，系统开销（overhead）占用4个字节，而PPTP协议下要占用6个字节</li>
+<li>L2TP自身不提供隧道验证，从L2TP的包头可以看出。隧道认证是由PPP（pap或chap）协议提供！而PPTP则支持隧道验证，PPTP自身就是PPP的扩展！但是当L2TP或PPTP与IPsec共同使用时，可以由IPsec提供隧道验证，不需要在第2层协议上验证隧道.<h2 id="Diameter"><a href="#Diameter" class="headerlink" title="Diameter"></a>Diameter</h2>Diameter协议被IETF的AAA工作组作为下一代的AAA协议标准。Diameter（为直径，意为着Diameter协议是RADIUS协议的升级版本）协议包括基本协议，NAS（网络接入服务）协议，EAP（可扩展鉴别）协议，MIP（移动IP）协议，CMS（密码消息语法）协议等。</li>
+</ol>
+<p>Diameter协议支持移动IP、NAS请求和移动代理的认证、授权和计费工作，协议的实现和RADIUS类似，也是采用AVP，属性值对（采用Attribute-Length-Value三元组形式）来实现，但是其中详细规定了错误处理， failover机制，采用TCP协议，支持分布式计费，克服了RADIUS的许多缺点，是最适合未来移动通信系统的AAA协议。</p>
+<h2 id="OCSP"><a href="#OCSP" class="headerlink" title="OCSP"></a>OCSP</h2><p>OCSP(Online Certificate Status Protocol，在线证书状态协议)是维护服务器和其它网络资源安全性的两种普遍模式之一。OCSP克服了证书注销列表（CRL）的主要缺陷：必须经常在客户端下载以确保列表的更新。当用户试图访问一个服务器时，在线证书状态协议发送一个对于证书状态信息的请求。服务器回复一个“有效”、“过期”或“未知”的响应。协议规定了服务器和客户端应用程序的通讯语法。在线证书状态协议给了用户的到期的证书一个宽限期，这样他们就可以在更新以前的一段时间内继续访问服务器。</p>
+<h2 id="SCADA"><a href="#SCADA" class="headerlink" title="SCADA"></a>SCADA</h2><p>SCADA(Supervisory Control And Data Acquisition)系统，即数据采集与监视控制系统。SCADA系统是以计算机为基础的DCS与电力自动化监控系统；它应用领域很广，可以应用于电力、冶金、石油、化工、燃气、铁路等领域的数据采集与监视控制以及过程控制等诸多领域[1]  。</p>
+<h2 id="可扩展身份验证协议-EAP"><a href="#可扩展身份验证协议-EAP" class="headerlink" title="可扩展身份验证协议 (EAP)"></a>可扩展身份验证协议 (EAP)</h2><p>可扩展身份验证协议 (EAP) 验证类型</p>
+<p>由于 Wi-Fi 局域网 (WLAN) 安全性是非常必要,EAP 验证类型提供了一种更好地保障 WLAN 连接的方式, 厂商正在迅速开发和添加 EAP 验证类型至他们的 WLAN 接入点。 最常部署的些 EAP 验证类型包括 EAP-MD-5 、 EAP-TLS 、 EAP-PEAP 、 EAP-TTLS 、 EAP-Fast 和 Cisco LEAP 。</p>
+<p>EAP-MD-5(消息摘要) 质询是一种提供基本级别 EAP 支持的 EAP 验证类型。 通常不建议将 EAP-MD-5 用于 Wi-Fi 局域网实施中, 因为它可能衍生用户密码。 它仅提供单向验证 -Wi-Fi 客户端和网络之间无法执行相互验证。 更为重要的是, 它不提供衍生动态、按对话有限对等保密 (WEP) 密钥的方法。</p>
+<p>EAP-TLS(传输层安全) 提供为客户端和网络提供基于证书及相互的验证。 它依赖于客户端和服务器端证书来执行身份验证, 可用于动态生成基于用户和通话的 WEP 密钥, 随后的安全 WLAN 客户端和的接入点之间的通信。 EAP-TLS 的不足之处在于必须由客户端和服务器端双方管理证书。 对于大型 WLAN 安装中, 这可能是一个非常繁琐的任务。</p>
+<p>EAP-TTLS (隧道传输层安全) 由 Funk 软件<em> 和 Certicom</em> 合作开发, 作为 EAP-TLS 的扩展。 此安全方法提供基于证书的相互验证的客户端和网络通过加密通道 (或 “ 隧道 “), 同时作为衍生动态及按用户和对话的 WEP 密钥的。 与 EAP-TLS 不同,EAP-TTLS 仅需要服务器方面的证书。</p>
+<p>EAP-FAST (通过安全隧道灵活验证) 由 Cisco* 开发。 通过 PAC(保护访问凭证) 而不是使用证书实现相互验证,PAC 可以由验证服务器动态管理。 PAC 既可手动也可自动配置 (次性分发) 到客户端。 手动配备是指通过磁盘或可靠的网络分发方法传送到客户端。 自动配置是指带内以无线方式分发。</p>
+<p>“ GSM 订购者身份” (EAP-SIM) 的可扩展身份验证协议方法是用于身份验证和会话密钥分发的种机制。 它使用“全球移动通信系统 (GSM) 订购者身份模块 (SIM) 。 EAP-SIM 使用动态的, 基于会话的 WEP 密钥 (从客户机适配器和 RADIUS 服务器、衍生而来) 为数据加密。 EAP-SIM 要求您输入用户验证代码, 或 PIN, 以便与“订购者身份模块” (SIM) 通讯。 SIM 卡是种特殊的智能卡, 用于基于“移动通信全球系统” (GSM) 的数字式手机网络。</p>
+<p>EAP-AKA(UMTS 身份验证和密钥协议的可扩展身份验证协议方法) 是用于身份验证和会话密钥分发的一种机制, 使用“ Universal Mobile Telecommunications System(UMTS) 订购者身份模块 (USIM) 。 此 USIM 卡是一种特殊的智能卡, 用于与蜂窝网络对网络给定用户进行验证。</p>
+<p>LEAP (轻量级可扩展验证协议) 是一种 EAP 验证类型, 主要用于 Cisco Aironet* WLANs。 它使用动态生成的 WEP 密钥对数据传输进行加密, 并支持相互验证。 至于其所有权,Cisco 已授权 LEAP 给其它制造商通过 Cisco Compatible Extensions 计划。</p>
+<p>PEAP (受保护的可扩展身份验证协议) 提供传输安全身份验证的数据的方法, 包括传统基于密码的协议, 通过 802.11Wi-Fi 网络。 PEAP 通过使用 PEAP 客户端和验证服务器之间的“隧道”来实现此目的。 喜欢同竞争对手标准“隧道传输层安全性” (TTLS), PEAP 验证 Wi-Fi 局域网客户端仅使用服务器端证书, 从而简化了安全 Wi-Fi 局域网的实现和管理。 Microsoft 、 Cisco 和 RSA Security 都开发了 PEAP。</p>
+<h2 id="MOU"><a href="#MOU" class="headerlink" title="MOU"></a>MOU</h2><p>MOU是英文缩写词。可以表示：谅解备忘录（Memorandum of Understanding）、压缩格式（MOU格式）、电信行业——平均每户每月通话时间MOU(minutes of usage)、最小经营体变革方案（Minimum Operation Unit）。</p>
+<h2 id="SLA"><a href="#SLA" class="headerlink" title="SLA"></a>SLA</h2><p>SLA：Service-Level Agreement的缩写，意思是服务等级协议。<br>是关于网络服务供应商和客户间的一份合同，其中定义了服务类型、服务质量和客户付款等术语。</p>
+<h2 id="ssl"><a href="#ssl" class="headerlink" title="ssl"></a>ssl</h2><p>SSL(Secure Sockets Layer 安全套接层),及其继任者传输层安全（Transport Layer Security，TLS）是为网络通信提供安全及数据完整性的一种安全协议。TLS与SSL在传输层对网络连接进行加密。</p>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>HTTPS（Hypertext Transfer Protocol Secure）安全超文本传输协议<br>它是由Netscape开发并内置于其浏览器中，用于对数据进行压缩和解压操作，并返回网络上传送回的结果。HTTPS实际上应用了Netscape的完全套接字层（SSL）作为HTTP应用层的子层。（HTTPS使用端口443，而不是象HTTP那样使用端口80来和TCP/IP进行通信。）SSL使用40 位关键字作为RC4流加密算法，这对于商业信息的加密是合适的。HTTPS和SSL支持使用X.509数字认证，如果需要的话用户可以确认发送者是谁。</p>
+<p>https是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，https的安全基础是SSL，因此加密的详细内容请看SSL。</p>
+<p>它是一个URI scheme(抽象标识符体系)，句法类同http:体系。用于安全的HTTP数据传输。https:URL表明它使用了HTTP，但HTTPS存在不同于HTTP的默认端口及一个加密/身份验证层（在HTTP与TCP之间）。这个系统的最初研发由网景公司进行，提供了身份验证与加密通讯方法，它被广泛用于万维网上安全敏感的通讯，例如交易支付方面。</p>
+<h3 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h3><p>它的安全保护依赖浏览器的正确实现以及服务器软件、实际加密算法的支持.<br>一种常见的误解是“银行用户在线使用https:就能充分彻底保障他们的银行卡号不被偷窃。”实际上，与服务器的加密连接中能保护银行卡号的部分，只有用户到服务器之间的连接及服务器自身。并不能绝对确保服务器自己是安全的，这点甚至已被攻击者利用，常见例子是模仿银行域名的钓鱼攻击。少数罕见攻击在网站传输客户数据时发生，攻击者尝试窃听数据于传输中。</p>
+<p>商业网站被人们期望迅速尽早引入新的特殊处理程序到金融网关，仅保留传输码(transaction number)。不过他们常常存储银行卡号在同一个数据库里。那些数据库和服务器少数情况有可能被未授权用户攻击和损害。</p>
+<h2 id="TLS"><a href="#TLS" class="headerlink" title="TLS"></a>TLS</h2><p>安全传输层协议（TLS）用于在两个通信应用程序之间提供保密性和数据完整性。<br>该协议由两层组成： TLS 记录协议（TLS Record）和 TLS 握手协议（TLS Handshake）。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>⭐您的支持将鼓励我继续创作⭐</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Lyy WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lyy Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/20/RAID/" rel="next" title="RAID">
+                <i class="fa fa-chevron-left"></i> RAID
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/28/CISSP考题回忆/" rel="prev" title="CISSP考题回忆">
+                CISSP考题回忆 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Lyy" />
+          <p class="site-author-name" itemprop="name">Lyy</p>
+           
+              <p class="site-description motion-element" itemprop="description">运气就是机会碰巧撞到了你的努力</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.dx-sven.info/" title="Sven" target="_blank">Sven</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://pirogue.org/" title="pirogue" target="_blank">pirogue</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://superhua.cc/" title="superhua" target="_blank">superhua</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.lovesec.com/" title="超级菜鸟" target="_blank">超级菜鸟</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#考试涉及的知识点"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x8003;&#x8BD5;&#x6D89;&#x53CA;&#x7684;&#x77E5;&#x8BC6;&#x70B9;" class="headerlink" title="&#x8003;&#x8BD5;&#x6D89;&#x53CA;&#x7684;&#x77E5;&#x8BC6;&#x70B9;"></a>&#x8003;&#x8BD5;&#x6D89;&#x53CA;&#x7684;&#x77E5;&#x8BC6;&#x70B9;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#端口"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x7AEF;&#x53E3;" class="headerlink" title="&#x7AEF;&#x53E3;"></a>&#x7AEF;&#x53E3;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blowfish"><span class="nav-number">3.</span> <span class="nav-text"><a href="#blowfish" class="headerlink" title="blowfish"></a>blowfish</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#serpent"><span class="nav-number">4.</span> <span class="nav-text"><a href="#serpent" class="headerlink" title="serpent"></a>serpent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#攻击名词"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x653B;&#x51FB;&#x540D;&#x8BCD;" class="headerlink" title="&#x653B;&#x51FB;&#x540D;&#x8BCD;"></a>&#x653B;&#x51FB;&#x540D;&#x8BCD;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wpa-leap"><span class="nav-number">6.</span> <span class="nav-text"><a href="#wpa-leap" class="headerlink" title="wpa-leap"></a>wpa-leap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wpa-peap"><span class="nav-number">7.</span> <span class="nav-text"><a href="#wpa-peap" class="headerlink" title="wpa-peap"></a>wpa-peap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kerberos"><span class="nav-number">8.</span> <span class="nav-text"><a href="#Kerberos" class="headerlink" title="Kerberos"></a>Kerberos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TACACS"><span class="nav-number">9.</span> <span class="nav-text"><a href="#TACACS" class="headerlink" title="TACACS+"></a>TACACS+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TACACS-1"><span class="nav-number">10.</span> <span class="nav-text"><a href="#TACACS-1" class="headerlink" title="TACACS"></a>TACACS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RADIUS"><span class="nav-number">11.</span> <span class="nav-text"><a href="#RADIUS" class="headerlink" title="RADIUS"></a>RADIUS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LDAP"><span class="nav-number">12.</span> <span class="nav-text"><a href="#LDAP" class="headerlink" title="LDAP"></a>LDAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HSM"><span class="nav-number">13.</span> <span class="nav-text"><a href="#HSM" class="headerlink" title="HSM"></a>HSM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EFS"><span class="nav-number">14.</span> <span class="nav-text"><a href="#EFS" class="headerlink" title="EFS"></a>EFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TPM"><span class="nav-number">15.</span> <span class="nav-text"><a href="#TPM" class="headerlink" title="TPM"></a>TPM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TKIP"><span class="nav-number">16.</span> <span class="nav-text"><a href="#TKIP" class="headerlink" title="TKIP"></a>TKIP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">16.1.</span> <span class="nav-text"><a href="#&#x7279;&#x6027;" class="headerlink" title="&#x7279;&#x6027;"></a>&#x7279;&#x6027;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于角色的访问控制"><span class="nav-number">17.</span> <span class="nav-text"><a href="#&#x57FA;&#x4E8E;&#x89D2;&#x8272;&#x7684;&#x8BBF;&#x95EE;&#x63A7;&#x5236;" class="headerlink" title="&#x57FA;&#x4E8E;&#x89D2;&#x8272;&#x7684;&#x8BBF;&#x95EE;&#x63A7;&#x5236;"></a>&#x57FA;&#x4E8E;&#x89D2;&#x8272;&#x7684;&#x8BBF;&#x95EE;&#x63A7;&#x5236;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鱼叉式网络钓鱼"><span class="nav-number">18.</span> <span class="nav-text"><a href="#&#x9C7C;&#x53C9;&#x5F0F;&#x7F51;&#x7EDC;&#x9493;&#x9C7C;" class="headerlink" title="&#x9C7C;&#x53C9;&#x5F0F;&#x7F51;&#x7EDC;&#x9493;&#x9C7C;"></a>&#x9C7C;&#x53C9;&#x5F0F;&#x7F51;&#x7EDC;&#x9493;&#x9C7C;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PBKDF2"><span class="nav-number">19.</span> <span class="nav-text"><a href="#PBKDF2" class="headerlink" title="PBKDF2"></a>PBKDF2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bcrypt"><span class="nav-number">20.</span> <span class="nav-text"><a href="#bcrypt" class="headerlink" title="bcrypt"></a>bcrypt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TOTP、HOTP"><span class="nav-number">21.</span> <span class="nav-text"><a href="#TOTP&#x3001;HOTP" class="headerlink" title="TOTP&#x3001;HOTP"></a>TOTP&#x3001;HOTP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CHAP"><span class="nav-number">22.</span> <span class="nav-text"><a href="#CHAP" class="headerlink" title="CHAP"></a>CHAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPTP和L2TP"><span class="nav-number">23.</span> <span class="nav-text"><a href="#PPTP&#x548C;L2TP" class="headerlink" title="PPTP&#x548C;L2TP"></a>PPTP&#x548C;L2TP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diameter"><span class="nav-number">24.</span> <span class="nav-text"><a href="#Diameter" class="headerlink" title="Diameter"></a>Diameter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OCSP"><span class="nav-number">25.</span> <span class="nav-text"><a href="#OCSP" class="headerlink" title="OCSP"></a>OCSP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SCADA"><span class="nav-number">26.</span> <span class="nav-text"><a href="#SCADA" class="headerlink" title="SCADA"></a>SCADA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可扩展身份验证协议-EAP"><span class="nav-number">27.</span> <span class="nav-text"><a href="#&#x53EF;&#x6269;&#x5C55;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x534F;&#x8BAE;-EAP" class="headerlink" title="&#x53EF;&#x6269;&#x5C55;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x534F;&#x8BAE; (EAP)"></a>&#x53EF;&#x6269;&#x5C55;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x534F;&#x8BAE; (EAP)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MOU"><span class="nav-number">28.</span> <span class="nav-text"><a href="#MOU" class="headerlink" title="MOU"></a>MOU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SLA"><span class="nav-number">29.</span> <span class="nav-text"><a href="#SLA" class="headerlink" title="SLA"></a>SLA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssl"><span class="nav-number">30.</span> <span class="nav-text"><a href="#ssl" class="headerlink" title="ssl"></a>ssl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS"><span class="nav-number">31.</span> <span class="nav-text"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#限制"><span class="nav-number">31.1.</span> <span class="nav-text"><a href="#&#x9650;&#x5236;" class="headerlink" title="&#x9650;&#x5236;"></a>&#x9650;&#x5236;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TLS"><span class="nav-number">32.</span> <span class="nav-text"><a href="#TLS" class="headerlink" title="TLS"></a>TLS</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016-2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lyy</span>
+  <span class="post-meta-divider">|</span>
+  您是第<span id="busuanzi_value_site_uv"></span>位小伙伴/
+  Total:<span id="busuanzi_value_site_pv"></span>
+</div>
+
+
+<div class="powered-by">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span>
+  <span class="post-meta-divider">|</span>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+    </a> 
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

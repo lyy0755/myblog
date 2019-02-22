@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="lyy, ksowo.com" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="本人环境介绍  123456ubuntu 14.04python 2.7kibana-5.5.2logstash-5.5.2elasticsearch-5.5.2paloalto软件版本7.1.14 1、ELK安装elasticsearch下载地址：https://www.elastic.co/cn/downloads/elasticsearch kibana下载地址：https://www.e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ELK接收paloalto日志并钉钉告警">
+<meta property="og:url" content="http://www.ksowo.com/2018/02/01/ELK接收paloalto日志并用钉钉告警/index.html">
+<meta property="og:site_name" content="Lyy&#39;s Blog">
+<meta property="og:description" content="本人环境介绍  123456ubuntu 14.04python 2.7kibana-5.5.2logstash-5.5.2elasticsearch-5.5.2paloalto软件版本7.1.14 1、ELK安装elasticsearch下载地址：https://www.elastic.co/cn/downloads/elasticsearch kibana下载地址：https://www.e">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/1.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/2.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/3.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/4.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/5.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/6.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/7.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/11.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/8.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/9.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/10.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/12.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/log/13.jpg">
+<meta property="og:updated_time" content="2018-02-01T07:18:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ELK接收paloalto日志并钉钉告警">
+<meta name="twitter:description" content="本人环境介绍  123456ubuntu 14.04python 2.7kibana-5.5.2logstash-5.5.2elasticsearch-5.5.2paloalto软件版本7.1.14 1、ELK安装elasticsearch下载地址：https://www.elastic.co/cn/downloads/elasticsearch kibana下载地址：https://www.e">
+<meta name="twitter:image" content="http://www.ksowo.com/images/blog/log/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.ksowo.com/2018/02/01/ELK接收paloalto日志并用钉钉告警/"/>
+
+
+
+
+
+  <title>ELK接收paloalto日志并钉钉告警 | Lyy's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lyy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.ksowo.com/2018/02/01/ELK接收paloalto日志并用钉钉告警/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ELK接收paloalto日志并钉钉告警</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T15:23:59+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日志分析/" itemprop="url" rel="index">
+                    <span itemprop="name">日志分析</span>
+                  </a>
+                </span>             
+                
+              
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本人环境介绍</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ubuntu 14.04</span><br><span class="line">python 2.7</span><br><span class="line">kibana-5.5.2</span><br><span class="line">logstash-5.5.2</span><br><span class="line">elasticsearch-5.5.2</span><br><span class="line">paloalto软件版本7.1.14</span><br></pre></td></tr></table></figure>
+<h2 id="1、ELK安装"><a href="#1、ELK安装" class="headerlink" title="1、ELK安装"></a>1、ELK安装</h2><p>elasticsearch下载地址：<a href="https://www.elastic.co/cn/downloads/elasticsearch" target="_blank" rel="noopener">https://www.elastic.co/cn/downloads/elasticsearch</a></p>
+<p>kibana下载地址：<a href="https://www.elastic.co/cn/downloads/kibana" target="_blank" rel="noopener">https://www.elastic.co/cn/downloads/kibana</a></p>
+<p>Logstash下载地址：<a href="https://www.elastic.co/cn/downloads/logstash" target="_blank" rel="noopener">https://www.elastic.co/cn/downloads/logstash</a></p>
+<p>elasticsearch和kibana配置就不多说了，比较简单。</p>
+<h2 id="2、logstash的配置"><a href="#2、logstash的配置" class="headerlink" title="2、logstash的配置"></a>2、logstash的配置</h2><p>新建syslog.conf文件，此版本的paloalto的有50多个字段，暴力配置如下，所有转发过来的日志直接丢到elasticsearch里面，最后用kibana展示</p>
+<p>启动logstash：nohup ./bin/logstash -f syslog.conf &amp;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">input&#123;</span><br><span class="line">    syslog&#123;#输入syslog</span><br><span class="line">    type =&gt; &quot;syslog&quot;</span><br><span class="line">    port =&gt; 514</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">filter &#123;  </span><br><span class="line">    grok &#123;  </span><br><span class="line">        match =&gt; [&quot;message&quot;, &quot;%&#123;DATA:Domain&#125;\,%&#123;DATA:Receive-Time&#125;\,%&#123;DATA:Serial&#125;\,%&#123;DATA:Type&#125;\,%&#123;DATA:Threat-Type&#125;\,%&#123;DATA:Config-Version&#125;\,%&#123;DATA:Generate-Time&#125;\,%&#123;IP:Source-address&#125;\,%&#123;IP:Destination-address&#125;\,%&#123;DATA:NAT-Source-IP&#125;\,%&#123;DATA:NAT-Destination-IP&#125;\,%&#123;DATA:Rule&#125;\,%&#123;DATA:Source-User&#125;\,%&#123;DATA:Destination-User&#125;\,%&#123;DATA:Application&#125;\,%&#123;DATA:Virtual-System&#125;\,%&#123;DATA:Source-Zone&#125;\,%&#123;DATA:Destination-Zone&#125;\,%&#123;DATA:Inbound-Interface&#125;\,%&#123;DATA:Outbound-Interface&#125;\,%&#123;DATA:Log-Action&#125;\,%&#123;DATA:Time-Logged&#125;\,%&#123;DATA:Session-ID&#125;\,%&#123;DATA:Repeat-Count&#125;\,%&#123;DATA:Source-Port&#125;\,%&#123;DATA:Destination-Port&#125;\,%&#123;DATA:NAT-Source-Port&#125;\,%&#123;DATA:NAT-Destination-Port&#125;\,%&#123;DATA:Flags&#125;\,%&#123;DATA:IP-Protocol&#125;\,%&#123;DATA:Action&#125;\,%&#123;DATA:URL&#125;\,%&#123;DATA:Threat-Content-Name&#125;\,%&#123;DATA:Category&#125;\,%&#123;DATA:Severity&#125;\,%&#123;DATA:Direction&#125;\,%&#123;DATA:Sequence-Number&#125;\,%&#123;DATA:Action-Flags&#125;\,%&#123;DATA:Source-Country&#125;\,%&#123;DATA:Destination-Country&#125;\,%&#123;DATA:cpadding&#125;\,%&#123;DATA:contenttype&#125;\,%&#123;DATA:pcap_id&#125;\,%&#123;DATA:filedigest&#125;\,%&#123;DATA:cloud&#125;\,%&#123;DATA:url_idx&#125;\,%&#123;DATA:user_agent&#125;\,%&#123;DATA:filetype&#125;\,%&#123;DATA:xff&#125;\,%&#123;DATA:referer&#125;\,%&#123;DATA:sender&#125;\,%&#123;DATA:subject&#125;\,%&#123;DATA:recipient&#125;\,%&#123;DATA:reportid&#125;\,%&#123;DATA:dg_hier_level_1&#125;\,%&#123;DATA:dg_hier_level_2&#125;\,%&#123;DATA:dg_hier_level_3&#125;\,%&#123;DATA:dg_hier_level_4&#125;\,%&#123;DATA:Virtual-System-Name&#125;\,%&#123;DATA:Device-Name&#125;\,%&#123;DATA:file_url&#125;&quot;]  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">output&#123;</span><br><span class="line">    elasticsearch&#123;</span><br><span class="line">      hosts =&gt; [&quot;x.x.x.x:9200&quot;]</span><br><span class="line">      index =&gt; &quot;syslog&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    # stdout&#123;#控制台打印输出</span><br><span class="line">    #     codec =&gt; rubydebug</span><br><span class="line">    # &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3、paloalto设置"><a href="#3、paloalto设置" class="headerlink" title="3、paloalto设置"></a>3、paloalto设置</h2><p>一共有寄个地方要注意一下，否则日志转发不成功</p>
+<blockquote>
+<p>  1、创建syslog，转发到logstash服务器</p>
+</blockquote>
+<p><img src="/images/blog/log/1.jpg" alt="">  </p>
+<blockquote>
+<p>  2、配置转发用syslog</p>
+</blockquote>
+<p><img src="/images/blog/log/2.jpg" alt="">  </p>
+<blockquote>
+<p>  3、配置你想要的日志类型和严重性</p>
+</blockquote>
+<p><img src="/images/blog/log/3.jpg" alt="">  </p>
+<blockquote>
+<p>  4、在安全策略出匹配设置的日志转发</p>
+</blockquote>
+<p><img src="/images/blog/log/4.jpg" alt=""><br><img src="/images/blog/log/5.jpg" alt=""> </p>
+<blockquote>
+<p>   5、最后记得提交配置，否则不生效</p>
+</blockquote>
+<p><img src="/images/blog/log/6.jpg" alt="">  </p>
+<p>最终效果</p>
+<p><img src="/images/blog/log/7.jpg" alt=""><br><img src="/images/blog/log/11.jpg" alt=""> </p>
+<h2 id="4、elastalert设置"><a href="#4、elastalert设置" class="headerlink" title="4、elastalert设置"></a>4、elastalert设置</h2><p>elastalert：<a href="https://github.com/Yelp/elastalert.git" target="_blank" rel="noopener">https://github.com/Yelp/elastalert.git</a><br>钉钉告警：<a href="https://github.com/xuyaoqiang/elastalert-dingtalk-plugin" target="_blank" rel="noopener">https://github.com/xuyaoqiang/elastalert-dingtalk-plugin</a><br>部分依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-dev libffi-dev</span><br></pre></td></tr></table></figure></p>
+<p>1、安装过程如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pip install elastalert</span><br><span class="line">或者</span><br><span class="line">git clone https://github.com/Yelp/elastalert.git </span><br><span class="line">cd elastalert</span><br><span class="line">sudo python setup.py install</span><br><span class="line">sudo pip install -r requirements.txt</span><br></pre></td></tr></table></figure></p>
+<p>其中有部分依赖可能安装错误，请单独下载安装既可。</p>
+<p>2、安装完继续<br>在elasticsearch中创建elastalert的日志索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo elastalert-create-index --index elastalert</span><br></pre></td></tr></table></figure></p>
+<p>根据自己的情况，填入elasticsearch的相关信息，关于<br>elastalert_status部分直接回车默认的即可。<br>如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Enter Elasticsearch host: localhost</span><br><span class="line">Enter Elasticsearch port: 9200</span><br><span class="line">Use SSL? t/f: </span><br><span class="line">Enter optional basic-auth username (or leave blank): </span><br><span class="line">Enter optional basic-auth password (or leave blank): </span><br><span class="line">Enter optional Elasticsearch URL prefix (prepends a string to the URL of every request): </span><br><span class="line">Name of existing index to copy? (Default None) </span><br><span class="line">Elastic Version:5</span><br><span class="line">Mapping used for string:&#123;&apos;index&apos;: &apos;not_analyzed&apos;, &apos;type&apos;: &apos;string&apos;&#125;</span><br><span class="line">New index elastalert created</span><br><span class="line">Done!</span><br></pre></td></tr></table></figure></p>
+<p>3、创建配置文件<br>3.1、修改elastalert的配置文件<br>下载<a href="https://github.com/xuyaoqiang/elastalert-dingtalk-plugin，把其中的把elastalert-dingtalk-plugin中的elastalert_modules、rules和config.yaml复制到elastalert下" target="_blank" rel="noopener">https://github.com/xuyaoqiang/elastalert-dingtalk-plugin，把其中的把elastalert-dingtalk-plugin中的elastalert_modules、rules和config.yaml复制到elastalert下</a><br>修改config.yaml对应配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">es_host: elasticsearch 地址</span><br><span class="line">es_port: elasticsearch 端口</span><br></pre></td></tr></table></figure></p>
+<p>3.2、修改rules的配置文件</p>
+<p>官方有很多rules规则可以去看官方文档：<br><a href="http://elastalert.readthedocs.io/en/latest/ruletypes.html#rule-types" target="_blank" rel="noopener">http://elastalert.readthedocs.io/en/latest/ruletypes.html#rule-types</a></p>
+<p>需添加必要的配置, 修改添加报警规则xxx.yaml，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">name: IPS安全告警</span><br><span class="line">#唯一值重复告警规则</span><br><span class="line">type: cardinality</span><br><span class="line"></span><br><span class="line">#es_host: localhost</span><br><span class="line">#es_port: 9200</span><br><span class="line"></span><br><span class="line"># Index to search, wildcard supported</span><br><span class="line">index: syslog</span><br><span class="line"></span><br><span class="line">#自定义的唯一值字段</span><br><span class="line">cardinality_field: Source-address.keyword</span><br><span class="line"></span><br><span class="line">#最小5次触发规则</span><br><span class="line">min_cardinality: 5</span><br><span class="line"></span><br><span class="line">#max_cardinality: 5</span><br><span class="line"></span><br><span class="line"># 60秒内</span><br><span class="line">timeframe:</span><br><span class="line">  seconds: 30</span><br><span class="line"></span><br><span class="line"># 5 分钟内相同的报警不会重复发送</span><br><span class="line">realert:</span><br><span class="line">  minutes: 5</span><br><span class="line"></span><br><span class="line"># 指数级扩大 realert 时间，中间如果有报警，</span><br><span class="line"># 则按照 5 -&gt; 10 -&gt; 20 -&gt; 40 -&gt; 60 不断增大报警时间到制定的最大时间，</span><br><span class="line"># 如果之后报警减少，则会慢慢恢复原始 realert 时间</span><br><span class="line">exponential_realert:</span><br><span class="line">  hours: 1</span><br><span class="line"></span><br><span class="line"># ES 查询，用以过滤</span><br><span class="line">#filter:</span><br><span class="line">#- term:</span><br><span class="line">#    Severity: &quot;high&quot;</span><br><span class="line"># (Required)</span><br><span class="line"># The alert is use when a match is found</span><br><span class="line">alert:</span><br><span class="line">- &quot;debug&quot;</span><br><span class="line">#你自己定义的钉钉告警脚本</span><br><span class="line">- &quot;elastalert_modules.dingtalk_alert.DingTalkAlerter&quot;</span><br><span class="line"></span><br><span class="line">dingtalk_webhook: 在钉钉群中添加机器人可以获取</span><br><span class="line">dingtalk_msgtype: &quot;text&quot;</span><br></pre></td></tr></table></figure></p>
+<p>4、钉钉的配置<br><img src="/images/blog/log/8.jpg" alt=""><br><img src="/images/blog/log/9.jpg" alt=""><br><img src="/images/blog/log/10.jpg" alt=""> </p>
+<p>5、配置elastalert，变为自定义告警内容<br>5.1、启用钉钉的报警<br>原生告警比较不友好<br><img src="/images/blog/log/12.jpg" alt=""><br>修改为：<br><img src="/images/blog/log/13.jpg" alt=""><br>修改了elastalert-dingtalk-plugin-master\elastalert_modules\dingtalk_alert.py里面的代码，代码如下：<br>为了获取告警时间，然后对这个时间变为时间段，到es里面查询，获取对应的字段值，这个里的时间转换比较乱，代码写的渣，大佬可以忽略<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"># 获取对应时间段，并查询到对应可疑ip地址</span><br><span class="line">get_time = body.split(&apos;\n&apos;)[4].split(&apos; &apos;)[1]</span><br><span class="line">times = get_time.split(&apos;.&apos;)[0].split(&apos;:&apos;)[:2]</span><br><span class="line">t = times[0]</span><br><span class="line">t1 = int(times[1]) - 2</span><br><span class="line">t2 = int(times[1]) + 2</span><br><span class="line"># 将其转换为时间数组 </span><br><span class="line">timeStruct = time.strptime(t + &apos;:&apos; + str(t1), &quot;%Y-%m-%dT%H:%M&quot;) </span><br><span class="line"># 转换为时间戳: </span><br><span class="line">timeStamp1 = int(time.mktime(timeStruct))</span><br><span class="line"># 时间戳转换为指定格式日期</span><br><span class="line">localTime = time.localtime(timeStamp1) </span><br><span class="line">gt = time.strftime(&quot;%Y-%m-%dT%H:%M&quot;, localTime) </span><br><span class="line">timeStruct = time.strptime(t + &apos;:&apos; + str(t2), &quot;%Y-%m-%dT%H:%M&quot;) </span><br><span class="line"># 转换为时间戳: </span><br><span class="line">timeStamp2 = int(time.mktime(timeStruct))</span><br><span class="line"># 时间戳转换为指定格式日期</span><br><span class="line">localTime = time.localtime(timeStamp2) </span><br><span class="line">lt = time.strftime(&quot;%Y-%m-%dT%H:%M&quot;, localTime)</span><br><span class="line"># print(gt+&apos;\n&apos;+lt)</span><br><span class="line">es = Elasticsearch(&quot;10.11.10.245:9200&quot;)</span><br><span class="line">body = &#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;range&quot; : &#123;</span><br><span class="line">            &quot;@timestamp&quot; : &#123;</span><br><span class="line">                &quot;gt&quot; : gt,</span><br><span class="line">                &quot;lt&quot;: lt</span><br><span class="line">                            &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">res = es.search(index=&quot;syslog&quot;, body=body)</span><br><span class="line">text = res[&apos;hits&apos;][&apos;hits&apos;]</span><br><span class="line">if len(text) != 0:</span><br><span class="line">    sip = text[0][&apos;_source&apos;][&apos;Source-address&apos;]</span><br><span class="line">    dip = text[0][&apos;_source&apos;][&apos;Destination-address&apos;]</span><br><span class="line">    dport = text[0][&apos;_source&apos;][&apos;Destination-Port&apos;]</span><br><span class="line">    atype = text[0][&apos;_source&apos;][&apos;Threat-Content-Name&apos;]</span><br><span class="line">    ntime = text[0][&apos;_source&apos;][&apos;Time-Logged&apos;]</span><br><span class="line">    payload = &#123;</span><br><span class="line">        &quot;msgtype&quot;: self.dingtalk_msgtype,</span><br><span class="line">        &quot;text&quot;: &#123;</span><br><span class="line">            &quot;content&quot;: &quot;IPS安全告警\n发现源ip地址: %s 在30秒内，对服务器ip：%s 的 %s 端口进行了5次攻击，攻击类型为 %s，请排除或确认攻击！\n(攻击时间点：%s)&quot; % (sip, dip, dport, atype, ntime) </span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;at&quot;: &#123;</span><br><span class="line">            &quot;isAtAll&quot;:False</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="6、最后开启所有组件"><a href="#6、最后开启所有组件" class="headerlink" title="6、最后开启所有组件"></a>6、最后开启所有组件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./elasticsearch-5.5.2/bin/elasticsearch &amp;</span><br><span class="line">./kibana-5.5.2-linux-x86_64/bin/kibana &amp;</span><br><span class="line">./logstash-5.5.2/bin/logstash -f /xxxx/logstash-5.5.2/syslog.conf &amp;</span><br><span class="line">python -m ./elastalert/elastalert.elastalert --verbose &amp;</span><br></pre></td></tr></table></figure>
+<p>至此大功告成，其实elk还可以接收各种日志，自己做分析，然后告警，本文只是其中一个场景，大家可以收集所有日志一起做集中告警。<br>谢谢各位大佬捧场。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>⭐您的支持将鼓励我继续创作⭐</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Lyy WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lyy Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/19/ISMS-B-19变更管理程序/" rel="next" title="ISMS-B-19变更管理程序">
+                <i class="fa fa-chevron-left"></i> ISMS-B-19变更管理程序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/06/excel工作表单保护破解/" rel="prev" title="excel工作表单保护破解">
+                excel工作表单保护破解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Lyy" />
+          <p class="site-author-name" itemprop="name">Lyy</p>
+           
+              <p class="site-description motion-element" itemprop="description">运气就是机会碰巧撞到了你的努力</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.dx-sven.info/" title="Sven" target="_blank">Sven</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://pirogue.org/" title="pirogue" target="_blank">pirogue</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://superhua.cc/" title="superhua" target="_blank">superhua</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.lovesec.com/" title="超级菜鸟" target="_blank">超级菜鸟</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、ELK安装"><span class="nav-number">1.</span> <span class="nav-text"><a href="#1&#x3001;ELK&#x5B89;&#x88C5;" class="headerlink" title="1&#x3001;ELK&#x5B89;&#x88C5;"></a>1&#x3001;ELK&#x5B89;&#x88C5;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、logstash的配置"><span class="nav-number">2.</span> <span class="nav-text"><a href="#2&#x3001;logstash&#x7684;&#x914D;&#x7F6E;" class="headerlink" title="2&#x3001;logstash&#x7684;&#x914D;&#x7F6E;"></a>2&#x3001;logstash&#x7684;&#x914D;&#x7F6E;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、paloalto设置"><span class="nav-number">3.</span> <span class="nav-text"><a href="#3&#x3001;paloalto&#x8BBE;&#x7F6E;" class="headerlink" title="3&#x3001;paloalto&#x8BBE;&#x7F6E;"></a>3&#x3001;paloalto&#x8BBE;&#x7F6E;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、elastalert设置"><span class="nav-number">4.</span> <span class="nav-text"><a href="#4&#x3001;elastalert&#x8BBE;&#x7F6E;" class="headerlink" title="4&#x3001;elastalert&#x8BBE;&#x7F6E;"></a>4&#x3001;elastalert&#x8BBE;&#x7F6E;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、最后开启所有组件"><span class="nav-number">5.</span> <span class="nav-text"><a href="#6&#x3001;&#x6700;&#x540E;&#x5F00;&#x542F;&#x6240;&#x6709;&#x7EC4;&#x4EF6;" class="headerlink" title="6&#x3001;&#x6700;&#x540E;&#x5F00;&#x542F;&#x6240;&#x6709;&#x7EC4;&#x4EF6;"></a>6&#x3001;&#x6700;&#x540E;&#x5F00;&#x542F;&#x6240;&#x6709;&#x7EC4;&#x4EF6;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016-2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lyy</span>
+  <span class="post-meta-divider">|</span>
+  您是第<span id="busuanzi_value_site_uv"></span>位小伙伴/
+  Total:<span id="busuanzi_value_site_pv"></span>
+</div>
+
+
+<div class="powered-by">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span>
+  <span class="post-meta-divider">|</span>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+    </a> 
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="程序文件," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="参考模版，仅供参考 1 目的为加强对第三方服务提供商（合作商）的控制，减少安全风险，防范公司信息资产损失，特制定本程序。 2 范围适用于组织信息安全第三方服务管理活动,包括第三方确定过程、第三方的服务安全控制措施、第三方的服务监督和评审方法、第三方的变更管理;包括对供应商、外来人员、公司外驻员工、废弃物处理方及客户的信息安全方面的管理和监督。 3 职责3.1 运维部负责信息处理设备、网络、系统、软">
+<meta name="keywords" content="程序文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ISMS-B-14第三方服务管理程序">
+<meta property="og:url" content="http://www.ksowo.com/2018/01/15/ISMS-B-14第三方服务管理程序/index.html">
+<meta property="og:site_name" content="Lyy&#39;s Blog">
+<meta property="og:description" content="参考模版，仅供参考 1 目的为加强对第三方服务提供商（合作商）的控制，减少安全风险，防范公司信息资产损失，特制定本程序。 2 范围适用于组织信息安全第三方服务管理活动,包括第三方确定过程、第三方的服务安全控制措施、第三方的服务监督和评审方法、第三方的变更管理;包括对供应商、外来人员、公司外驻员工、废弃物处理方及客户的信息安全方面的管理和监督。 3 职责3.1 运维部负责信息处理设备、网络、系统、软">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-15T09:26:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ISMS-B-14第三方服务管理程序">
+<meta name="twitter:description" content="参考模版，仅供参考 1 目的为加强对第三方服务提供商（合作商）的控制，减少安全风险，防范公司信息资产损失，特制定本程序。 2 范围适用于组织信息安全第三方服务管理活动,包括第三方确定过程、第三方的服务安全控制措施、第三方的服务监督和评审方法、第三方的变更管理;包括对供应商、外来人员、公司外驻员工、废弃物处理方及客户的信息安全方面的管理和监督。 3 职责3.1 运维部负责信息处理设备、网络、系统、软">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.ksowo.com/2018/01/15/ISMS-B-14第三方服务管理程序/"/>
+
+
+
+
+
+  <title>ISMS-B-14第三方服务管理程序 | Lyy's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lyy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.ksowo.com/2018/01/15/ISMS-B-14第三方服务管理程序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ISMS-B-14第三方服务管理程序</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T17:47:59+08:00">
+                2018-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ISO27001/" itemprop="url" rel="index">
+                    <span itemprop="name">ISO27001</span>
+                  </a>
+                </span>             
+                
+              
+                <span class="post-meta-divider">|</span>
+                  
+                    <span class="post-meta-item-icon">
+                      <i class="fa fa-tags"> </i>
+                    </span>
+                  <a href="/tags/程序文件/" rel="tag"> 程序文件</a>
+                  
+              
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>参考模版，仅供参考</strong></p>
+<h2 id="1-目的"><a href="#1-目的" class="headerlink" title="1 目的"></a>1 目的</h2><p>为加强对第三方服务提供商（合作商）的控制，减少安全风险，防范公司信息资产损失，特制定本程序。</p>
+<h2 id="2-范围"><a href="#2-范围" class="headerlink" title="2 范围"></a>2 范围</h2><p>适用于组织信息安全第三方服务管理活动,包括第三方确定过程、第三方的服务安全控制措施、第三方的服务监督和评审方法、第三方的变更管理;包括对供应商、外来人员、公司外驻员工、废弃物处理方及客户的信息安全方面的管理和监督。</p>
+<h2 id="3-职责"><a href="#3-职责" class="headerlink" title="3 职责"></a>3 职责</h2><h3 id="3-1-运维部"><a href="#3-1-运维部" class="headerlink" title="3.1 运维部"></a>3.1 运维部</h3><p>负责信息处理设备、网络、系统、软件的采购和第三方维护服务的管理。</p>
+<h3 id="3-2-信息安全部"><a href="#3-2-信息安全部" class="headerlink" title="3.2 信息安全部"></a>3.2 信息安全部</h3><ol>
+<li><p>组织各部门识别外部相关方对信息资产和信息处理设施造成的风险；</p>
+</li>
+<li><p>定期组织对相关方控制的实施活动进行检查与跟踪；</p>
+</li>
+</ol>
+<h3 id="3-3人力资源部"><a href="#3-3人力资源部" class="headerlink" title="3.3人力资源部"></a>3.3人力资源部</h3><ol>
+<li>负责与相关方人员签订保密协议。</li>
+</ol>
+<h3 id="3-4-其他部门"><a href="#3-4-其他部门" class="headerlink" title="3.4 其他部门"></a>3.4 其他部门</h3><ol>
+<li><p>负责确定合格的第三方服务商，并与第三方服务商签订服务合同和保密协议；</p>
+</li>
+<li><p>负责对第三方服务商的服务进行安全控制；</p>
+</li>
+<li><p>负责定期对第三方服务商进行监督和评审；</p>
+</li>
+<li><p>负责做好第三方服务商的变更管理；</p>
+</li>
+<li><p>负责对本部门、本项目外的部门的相关方进行控制和管理；</p>
+</li>
+<li><p>负责对客户提供的信息采取保密措施。</p>
+</li>
+</ol>
+<h2 id="4-相关文件"><a href="#4-相关文件" class="headerlink" title="4 相关文件"></a>4 相关文件</h2><p>《信息安全管理手册》</p>
+<p>《相关方信息安全管理程序》</p>
+<p>《安全区域管理程序》</p>
+<p>《信息系统访问与使用监控管理程序》</p>
+<p>《安全区域管理程序》</p>
+<p>《物理访问策略》</p>
+<p>《用户访问管理程序》</p>
+<h2 id="5-程序"><a href="#5-程序" class="headerlink" title="5 程序"></a>5 程序</h2><h3 id="5-1-第三方服务的确定"><a href="#5-1-第三方服务的确定" class="headerlink" title="5.1 第三方服务的确定"></a>5.1 第三方服务的确定</h3><p>本组织所需的第三方服务包括：</p>
+<ol>
+<li><p>技术开发项目需要分包；</p>
+</li>
+<li><p>信息处理设备、网络、系统、软件需要第三方进行开发和维护；</p>
+</li>
+<li><p>信息安全等需要委托第三方提供服务；</p>
+</li>
+<li><p>服务提供商：互联网服务提供商、电话提供商、IT维护和支持服务提供商、软件产品和IT系统开发商和供应商；</p>
+</li>
+<li><p>管理服务提供商，管理咨询，业务咨询，外部审核方；</p>
+</li>
+<li><p>清洁、物业、会计以及其他外包的支持性服务提供商；</p>
+</li>
+<li><p>外来人员：快递人员、供应商等临时人员、实习学生；</p>
+</li>
+<li><p>客户；</p>
+</li>
+<li><p>其他服务提供方。</p>
+</li>
+</ol>
+<p>在与第三方签署服务合同前，相关的主管部门应明确第三方服务的内容和要求，评估由于第三方服务带来的信息安全风险，并对第三方提供服务的能力进行评定，应确保第三方有充分的提供服务的能力，并且具备有效的工作计划，即便发生重大的服务故障或灾难也能保持服务的连贯性，必要时可以通过（招投标）,实力考察，确定合格的第三方服务提供商。</p>
+<p>对重要的第三方服务提供商，应确定其信息安全管理要求和提供服务的能力要求，制定《第三方信息安全核查计划》和《第三方信息安全核查表》并进行现场评定。</p>
+<p>确定合格的第三方服务提供商后，相关主管部门应与第三方签署第三方服务合同(SLA)，并在服务合同中体现信息安全风险金。如果服务中涉及需要第三方保密的信息，必须明确第三方的责任，并签订《第三方服务保密协议》。</p>
+<p>如果第三方服务涉及组织的知识产权，应合同中明确第三方的知识产权保护责任，与第三方签署《知识产权声明书》。</p>
+<h3 id="5-2-对第三方服务的安全控制"><a href="#5-2-对第三方服务的安全控制" class="headerlink" title="5.2 对第三方服务的安全控制"></a>5.2 对第三方服务的安全控制</h3><p>第三方需要提供服务人员的姓名、联系方式等信息，服务人员需持有效身份证明进入工作场所。</p>
+<p>第三方服务人员进入组织区域提供服务的，应按照《相关方信息安全管理程序》中有关临时人员的管理方法进行控制。</p>
+<p>第三方服务人员在现场提供服务的，应遵守现场有关规定。</p>
+<p>第三方服务人员在远程提供服务时，必须明确时间、地点、联系人、工作安排、预期结果、观察期等。</p>
+<p>对第三方技术人员在服务中需要设备入网时，第三方技术人员应填写《第三方逻辑访问申请授权表》，经相关主管部门审核、公司主管领导批准后，方可入网。</p>
+<p>第三方技术人员对系统进行检查和维护时，需要有组织的专业人员陪同，应按照《安全区域管理程序》和《信息系统访问与使用监控管理程序》进行控制，并需要填写《第三方工作记录单》，或在检查和维护记录、外来人员工作记录中填写第三方服务情况。</p>
+<h3 id="5-3-对第三方服务的监督和评审"><a href="#5-3-对第三方服务的监督和评审" class="headerlink" title="5.3 对第三方服务的监督和评审"></a>5.3 对第三方服务的监督和评审</h3><p>相关主管部门应按照《相关方信息安全管理程序》中相关方的监督管理的要求对第三方服务进行监督检查，对服务内容和质量进行记录和评审。</p>
+<p>第三方服务结束后，第三方应提交《第三方服务报告》，相关主管部门应对第三方服务情况和《第三方服务报告》进行评审。</p>
+<p>在第三方服务合同规定的保密期限内，相关主管部门应保存第三方服务期间的所有资料，尤其是第三方访问、处理和管理敏感信息、关键信息、信息处理设施的监控和技术分析等方面的资料。</p>
+<h3 id="5-4-对第三方服务的变更管理"><a href="#5-4-对第三方服务的变更管理" class="headerlink" title="5.4 对第三方服务的变更管理"></a>5.4 对第三方服务的变更管理</h3><p>当第三方发生变更时，相关主管部门应对第三方的服务和服务的现有状态进行评估，并编写《第三方变更报告》。对于变更过的第三方仍需要按照本程序的5.1至5.3条款进行控制和管理。</p>
+<p>当服务内容发生变更时，相关主管部门应对第三方的服务和服务的现有状态进行评估，还要对服务内容变更后对现有信息系统影响进行评估，确保信息系统的安全性，并编写《第三方变更报告》。对于变更过的第三方服务内容仍需要按照本程序的5.1至5.3条款进行控制和管理。</p>
+<h3 id="5-5-对第三方信息安全管理"><a href="#5-5-对第三方信息安全管理" class="headerlink" title="5.5 对第三方信息安全管理"></a>5.5 对第三方信息安全管理</h3><p>人事行政部组织各部门识别外部相关方对信息资产和信息处理设施造成的风险，并在批准外部相关方访问信息资产和信息处理设施前，对所识别的风险实施适当的控制。</p>
+<p>涉及对组织的信息资产物理访问、逻辑访问时，人事行政部应与相关方签署《相关方保密协议》。</p>
+<p>《相关方保密协议》中应反映所有与相关方合作而引起的内部管理需求或信息安全需求，《相关方保密协议》中还要提请相关方对其员工进行必要的信息安全意识、技能培训和教育，使其满足工作要求。在对信息安全的要求未实施适当的控制之前不应向外部相关方提供权限进行信息的访问。</p>
+<p>人事行政部应确保外部相关方认识到其义务，并接受与访问、处理、交流或管理组织信息和信息处理设施相关的责任和义务。</p>
+<h3 id="5-3-对第三方人员的管理"><a href="#5-3-对第三方人员的管理" class="headerlink" title="5.3 对第三方人员的管理"></a>5.3 对第三方人员的管理</h3><p>外来人员主要有：临时工、外来参观和检查人员、外来技术/服务人员、服务提供商（包括管理服务提供商）等。</p>
+<p>外来人员进入组织，应按《安全区域管理程序》和《物理访问策略》进行控制。</p>
+<p>外来人员的逻辑访问按《用户访问管理程序》进行控制。</p>
+<h3 id="5-4-对供应商的管理"><a href="#5-4-对供应商的管理" class="headerlink" title="5.4 对供应商的管理"></a>5.4 对供应商的管理</h3><p>供应商的业务管理部门应识别物资采购活动中的信息安全的风险，明确采购过程中的信息安全要求，在采购合同中明确规定对信息安全方面的要求，并在批准其访问组织信息资产和信息处理设施前实施适当的控制。</p>
+<p>供应商访问组织的安全区域和网络按对外来人员的管理进行控制。</p>
+<h3 id="5-5-第三方的监督管理"><a href="#5-5-第三方的监督管理" class="headerlink" title="5.5 第三方的监督管理"></a>5.5 第三方的监督管理</h3><p>行政部应建立《相关方一览表》，保存《相关方保密协议》和访问授权记录。</p>
+<p>行政部与相关主管部门负责定期组织对相关方控制的实施进行检查与跟踪：</p>
+<ol>
+<li><p>对相关方控制管理不严格、存在信息安全隐患的部门，提出整改意见，对问题较多或整改不力的，限令整改，提出信息安全考核意见和要求；</p>
+</li>
+<li><p>对不符合信息安全管理要求的相关方，整改后仍不符合要求或拒绝整改可能造成信息安全事件的相关方，做出限期整改、减少订货、经济扣罚、终止合同等决定意见。</p>
+</li>
+</ol>
+<h2 id="6-记录"><a href="#6-记录" class="headerlink" title="6 记录"></a>6 记录</h2><p>《第三方信息安全核查计划》</p>
+<p>《第三方信息安全核查表》</p>
+<p>《第三方服务合同》</p>
+<p>《第三方服务保密协议》</p>
+<p>《知识产权声明书》</p>
+<p>《第三方逻辑访问申请授权表》</p>
+<p>《第三方工作记录单》</p>
+<p>《第三方服务报告》</p>
+<p>《第三方变更报告》</p>
+<p>《第三方保密协议》</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>⭐您的支持将鼓励我继续创作⭐</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Lyy WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lyy Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/程序文件/" rel="tag"># 程序文件</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/15/ISMS-B-15安全区域管理程序/" rel="next" title="ISMS-B-15安全区域管理程序">
+                <i class="fa fa-chevron-left"></i> ISMS-B-15安全区域管理程序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/17/ISMS-B-16网络设备安全配置管理程序/" rel="prev" title="ISMS-B-15安全区域管理程序">
+                ISMS-B-15安全区域管理程序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Lyy" />
+          <p class="site-author-name" itemprop="name">Lyy</p>
+           
+              <p class="site-description motion-element" itemprop="description">运气就是机会碰巧撞到了你的努力</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.dx-sven.info/" title="Sven" target="_blank">Sven</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://pirogue.org/" title="pirogue" target="_blank">pirogue</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://superhua.cc/" title="superhua" target="_blank">superhua</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.lovesec.com/" title="超级菜鸟" target="_blank">超级菜鸟</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-目的"><span class="nav-number">1.</span> <span class="nav-text"><a href="#1-&#x76EE;&#x7684;" class="headerlink" title="1 &#x76EE;&#x7684;"></a>1 &#x76EE;&#x7684;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-范围"><span class="nav-number">2.</span> <span class="nav-text"><a href="#2-&#x8303;&#x56F4;" class="headerlink" title="2 &#x8303;&#x56F4;"></a>2 &#x8303;&#x56F4;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-职责"><span class="nav-number">3.</span> <span class="nav-text"><a href="#3-&#x804C;&#x8D23;" class="headerlink" title="3 &#x804C;&#x8D23;"></a>3 &#x804C;&#x8D23;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-运维部"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#3-1-&#x8FD0;&#x7EF4;&#x90E8;" class="headerlink" title="3.1 &#x8FD0;&#x7EF4;&#x90E8;"></a>3.1 &#x8FD0;&#x7EF4;&#x90E8;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-信息安全部"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#3-2-&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x90E8;" class="headerlink" title="3.2 &#x4FE1;&#x606F;&#x5B89;&#x5168;&#x90E8;"></a>3.2 &#x4FE1;&#x606F;&#x5B89;&#x5168;&#x90E8;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3人力资源部"><span class="nav-number">3.3.</span> <span class="nav-text"><a href="#3-3&#x4EBA;&#x529B;&#x8D44;&#x6E90;&#x90E8;" class="headerlink" title="3.3&#x4EBA;&#x529B;&#x8D44;&#x6E90;&#x90E8;"></a>3.3&#x4EBA;&#x529B;&#x8D44;&#x6E90;&#x90E8;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-其他部门"><span class="nav-number">3.4.</span> <span class="nav-text"><a href="#3-4-&#x5176;&#x4ED6;&#x90E8;&#x95E8;" class="headerlink" title="3.4 &#x5176;&#x4ED6;&#x90E8;&#x95E8;"></a>3.4 &#x5176;&#x4ED6;&#x90E8;&#x95E8;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-相关文件"><span class="nav-number">4.</span> <span class="nav-text"><a href="#4-&#x76F8;&#x5173;&#x6587;&#x4EF6;" class="headerlink" title="4 &#x76F8;&#x5173;&#x6587;&#x4EF6;"></a>4 &#x76F8;&#x5173;&#x6587;&#x4EF6;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-程序"><span class="nav-number">5.</span> <span class="nav-text"><a href="#5-&#x7A0B;&#x5E8F;" class="headerlink" title="5 &#x7A0B;&#x5E8F;"></a>5 &#x7A0B;&#x5E8F;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-第三方服务的确定"><span class="nav-number">5.1.</span> <span class="nav-text"><a href="#5-1-&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x786E;&#x5B9A;" class="headerlink" title="5.1 &#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x786E;&#x5B9A;"></a>5.1 &#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x786E;&#x5B9A;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-对第三方服务的安全控制"><span class="nav-number">5.2.</span> <span class="nav-text"><a href="#5-2-&#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x5B89;&#x5168;&#x63A7;&#x5236;" class="headerlink" title="5.2 &#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x5B89;&#x5168;&#x63A7;&#x5236;"></a>5.2 &#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x5B89;&#x5168;&#x63A7;&#x5236;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-对第三方服务的监督和评审"><span class="nav-number">5.3.</span> <span class="nav-text"><a href="#5-3-&#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x76D1;&#x7763;&#x548C;&#x8BC4;&#x5BA1;" class="headerlink" title="5.3 &#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x76D1;&#x7763;&#x548C;&#x8BC4;&#x5BA1;"></a>5.3 &#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x76D1;&#x7763;&#x548C;&#x8BC4;&#x5BA1;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-对第三方服务的变更管理"><span class="nav-number">5.4.</span> <span class="nav-text"><a href="#5-4-&#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x53D8;&#x66F4;&#x7BA1;&#x7406;" class="headerlink" title="5.4 &#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x53D8;&#x66F4;&#x7BA1;&#x7406;"></a>5.4 &#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x7684;&#x53D8;&#x66F4;&#x7BA1;&#x7406;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-对第三方信息安全管理"><span class="nav-number">5.5.</span> <span class="nav-text"><a href="#5-5-&#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x7BA1;&#x7406;" class="headerlink" title="5.5 &#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x7BA1;&#x7406;"></a>5.5 &#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x7BA1;&#x7406;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-对第三方人员的管理"><span class="nav-number">5.6.</span> <span class="nav-text"><a href="#5-3-&#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x4EBA;&#x5458;&#x7684;&#x7BA1;&#x7406;" class="headerlink" title="5.3 &#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x4EBA;&#x5458;&#x7684;&#x7BA1;&#x7406;"></a>5.3 &#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x4EBA;&#x5458;&#x7684;&#x7BA1;&#x7406;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-对供应商的管理"><span class="nav-number">5.7.</span> <span class="nav-text"><a href="#5-4-&#x5BF9;&#x4F9B;&#x5E94;&#x5546;&#x7684;&#x7BA1;&#x7406;" class="headerlink" title="5.4 &#x5BF9;&#x4F9B;&#x5E94;&#x5546;&#x7684;&#x7BA1;&#x7406;"></a>5.4 &#x5BF9;&#x4F9B;&#x5E94;&#x5546;&#x7684;&#x7BA1;&#x7406;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-第三方的监督管理"><span class="nav-number">5.8.</span> <span class="nav-text"><a href="#5-5-&#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x76D1;&#x7763;&#x7BA1;&#x7406;" class="headerlink" title="5.5 &#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x76D1;&#x7763;&#x7BA1;&#x7406;"></a>5.5 &#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x76D1;&#x7763;&#x7BA1;&#x7406;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-记录"><span class="nav-number">6.</span> <span class="nav-text"><a href="#6-&#x8BB0;&#x5F55;" class="headerlink" title="6 &#x8BB0;&#x5F55;"></a>6 &#x8BB0;&#x5F55;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016-2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lyy</span>
+  <span class="post-meta-divider">|</span>
+  您是第<span id="busuanzi_value_site_uv"></span>位小伙伴/
+  Total:<span id="busuanzi_value_site_pv"></span>
+</div>
+
+
+<div class="powered-by">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span>
+  <span class="post-meta-divider">|</span>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+    </a> 
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="lyy, ksowo.com" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1、应用系统编码安全 1.1基本代码安全要求 1.1.1输入验证 对函数入口参数的合法性和准确性进行检查，具体如下： l在B/S环境下，应进行服务端的验证而不仅仅是客户端的验证（例如基于Javascript的验证）。通过在客户端和服务器之间放置一个代理服务器，可以很容易绕过客户端验证。有了代理服务器，攻击者可以在数据被客户端“验证”后修改数据（与“中间人”攻击类似）。 l在实际的校验中，输入校验首">
+<meta property="og:type" content="article">
+<meta property="og:title" content="应用开发安全指南（下）">
+<meta property="og:url" content="http://www.ksowo.com/2017/12/19/应用开发安全指南（下）/index.html">
+<meta property="og:site_name" content="Lyy&#39;s Blog">
+<meta property="og:description" content="1、应用系统编码安全 1.1基本代码安全要求 1.1.1输入验证 对函数入口参数的合法性和准确性进行检查，具体如下： l在B/S环境下，应进行服务端的验证而不仅仅是客户端的验证（例如基于Javascript的验证）。通过在客户端和服务器之间放置一个代理服务器，可以很容易绕过客户端验证。有了代理服务器，攻击者可以在数据被客户端“验证”后修改数据（与“中间人”攻击类似）。 l在实际的校验中，输入校验首">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-27T02:58:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="应用开发安全指南（下）">
+<meta name="twitter:description" content="1、应用系统编码安全 1.1基本代码安全要求 1.1.1输入验证 对函数入口参数的合法性和准确性进行检查，具体如下： l在B/S环境下，应进行服务端的验证而不仅仅是客户端的验证（例如基于Javascript的验证）。通过在客户端和服务器之间放置一个代理服务器，可以很容易绕过客户端验证。有了代理服务器，攻击者可以在数据被客户端“验证”后修改数据（与“中间人”攻击类似）。 l在实际的校验中，输入校验首">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.ksowo.com/2017/12/19/应用开发安全指南（下）/"/>
+
+
+
+
+
+  <title>应用开发安全指南（下） | Lyy's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lyy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.ksowo.com/2017/12/19/应用开发安全指南（下）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">应用开发安全指南（下）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-19T14:28:41+08:00">
+                2017-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/信息安全管理/" itemprop="url" rel="index">
+                    <span itemprop="name">信息安全管理</span>
+                  </a>
+                </span>             
+                
+              
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1、应用系统编码安全</p>
+<p>1.1基本代码安全要求</p>
+<p>1.1.1输入验证</p>
+<p>对函数入口参数的合法性和准确性进行检查，具体如下：</p>
+<p>l在B/S环境下，应进行服务端的验证而不仅仅是客户端的验证（例如基于Javascript的验证）。通过在客户端和服务器之间放置一个代理服务器，可以很容易绕过客户端验证。有了代理服务器，攻击者可以在数据被客户端“验证”后修改数据（与“中间人”攻击类似）。</p>
+<p>l在实际的校验中，输入校验首先定义一个有效（可接受）的字符集，然后检查每个数据的字符是否在有效范围内。如果输入中包含无效的字符，应用程序应该返回错误页面并说明输入中包含无效字符。这样进行验证的原因是定义无效的字符集比较困难，并且一些不应该有效的字符通常不会被指出。</p>
+<p>l另外，边界检查（例如字符串的最大长度）应该在字符有效性检查以前进行，边界分析可以防止大多数缓冲区溢出漏洞。</p>
+<p>l从环境变量获得的数据也需要进行验证，同时避免在环境变量中存放敏感数据（例如密码）。</p>
+<p>1.1.2SQL语句</p>
+<p>如果应用程序需要连接后端数据库，使用存储过程而不能在代码中使用SQL</p>
+<p>语句，使用程序以外的嵌入在代码中的SQL语句调用特别危险，难以防止攻击</p>
+<p>者使用输入域或者配置文件（由应用程序载入）来执行嵌入式的SQL攻击。当然，输入验证有助于缓解这种风险。</p>
+<p>1.1.3注释代码</p>
+<p>当应用程序在实际环境中开始应用时，应该删除所有的注释代码。注释代码</p>
+<p>是用来调试或者测试的，它们不是最终应用程序的一部分。无论如何应该在实际的环境中删除它们以避免意外的执行（一般注释标识被删除后就无法激活休眠的代码，但还是存在可能性的，所以强烈建议执行这项工作）。</p>
+<p>1.1.4错误消息</p>
+<p>所有为用户显示的错误信息都不应该暴露任何关于系统、网络或应用程序的</p>
+<p>敏感信息。如果可能，应使用包含编号的一般的错误信息，这种信息不返回给访问用户，只返回404错误，如“发生了错误（代码1234），请您与系统维护部门联系。</p>
+<p>1.1.5URL内容</p>
+<p>对于Web应用，不能在URL上暴露任何重要信息，例如密码、服务器名称、IP地址或者文件系统路径（暴露了Web服务器的目录结构），这些信息可以在攻击时被使用。</p>
+<p>1.1.6设置PATH变量</p>
+<p>设置PATH为一个已知的值，而不是仅仅使用启动时的缺省值。攻击者可</p>
+<p>以在攻击应用程序时使用PATH变量，例如试图执行一个任意的程序，这些可</p>
+<p>以应用于大多数其他的语言。</p>
+<p>1.1.7其他要求</p>
+<p>1、禁止使用未经授权和验证的代码。</p>
+<p>2、使用第三方代码，应对代码安全性进行评估和测试。</p>
+<p>3、测试用的“后门”，应在发布版中去除。</p>
+<p>4、规范代码的格式。</p>
+<p>5、规范变量、函数的命名；</p>
+<p>6、规范程序的书写格式，确保程序的易读性。</p>
+<p>7、对代码进行版本控制，确保代码的可用性。</p>
+<p>8、防止程序员非授权修改代码</p>
+<p>9、对代码的访问权限进行严格的权限控制；</p>
+<p>1、禁止在程序中添加隐藏“恶意”的代码，防止与应用系统相关的程序员对系统的非授权修改。</p>
+<p>2、应用系统不应在程序或进程中固化账号和口令。</p>
+<p>3、系统应具备对口令猜测的防范机制和监控手段。</p>
+<p>4、避免应用程序以错误的顺序运行，或者防止出现故障时，后续程序以不正常的流程运行。</p>
+<p>5、采用正确的故障恢复程序，确保正确处理数据。</p>
+<p>6、采取会话控制或批次控制，确保更新前后数据文件的一致性，例如：检查操作前后文件打开和关闭的数目是否一致。</p>
+<p>7、检查执行操作前后对象的差额是否正常，如：句柄处理，堆栈等系统资源的占用与释放等。</p>
+<p>10、严格验证系统生成的数据。</p>
+<p>11、在网络传输过程中检查下载/上传的数据或软件的完整性。</p>
+<p>12、检查文件与记录是否被篡改。例如通过计算哈希值（HASH）进行对比。</p>
+<p>13、禁止私自讲代码上传到互联网。</p>
+<p>1.2Web编程安全基本要求</p>
+<p>1.2.1输入检查安全</p>
+<p>1、限制用户输入HTML和Script(JavaScript、VBScript)代码。输入恶意HTML或Script（JavaScript、VBScript）代码可能会对其他浏览者造成混淆、欺骗或恶意破坏的结果。</p>
+<p>2、检查用户输入数据的长度。输入超出限定长度的数据，可能造成服务器端程序溢出。</p>
+<p>3、防止用户输入特殊字符改变SQL语义。输入含特殊字符的字串，篡改SQL语句的语义，可能造成SQL查询执行不该执行的操作，以此绕</p>
+<p>4、过身份认证获取非法权限、甚至对数据进行破坏。</p>
+<p>5、限制用户能够访问的最顶层目录。编写对服务器端文件、目录操作的程序时应该注意限定此类程序能够访问的最顶层目录，防止用户构造输入字串借助程序功能访问服务器关键文件导致泄漏服务器敏感信息。</p>
+<p>6、对所有类型的用户输入都要做检查，并严格限定什么是合法的用户输入，限定一个合法输入的范围，同时过滤有可能造成危险的特殊字符。</p>
+<p>7、对不可信任域发送到可信任域的数据一定要进行检查。</p>
+<p>8、尽可能在服务器端完成用户输入检查，不能轻易相信客户端脚本的检查结果。虽然客户端的Script脚本能完成一部分的用户输入检查功能，但这种检查的结果是不可信任的，攻击者可以自己制作表单程序绕过客户端脚本验证，将非法数据提交到服务器。</p>
+<p>9、在输入变为输出时，也要对特殊字符做检查和转换。</p>
+<p>1.2.2敏感数据的存放和传递安全</p>
+<p>1、敏感数据不能存放在Web页中。</p>
+<p>2、不能把敏感的数据存储在cookie、隐藏字段或者潜在地可能会被用户修改的地方。</p>
+<p>3、客户端向服务器端提交敏感数据应该经过加密（例如使用SSL），尽量不能明文传输。</p>
+<p>4、密码等敏感信息存放在数据库中应该加密，并采用健壮的加密算法。</p>
+<p>5、防止数据库被攻破后泄漏用户密码。</p>
+<p>6、敏感数据需要脱敏显示。</p>
+<p>1.2.3缓冲区溢出安全</p>
+<p>1、所有的输入都必须进行正确的有效性检测。</p>
+<p>2、必须保证数组没有越界，增加数组操作函数的边界检查。</p>
+<p>3、安全地使用字符串处理函数，慎用有安全隐患的字符串处理函数</p>
+<p>4、使用Format字符串的时候特别注意Unicode和ANSI的大小不一致的情</p>
+<p>况。</p>
+<p>5、注意字符串结束符的保护。</p>
+<p>6、仔细研究库函数内部的缓冲区分配，明确其限制。不能使用realpath()</p>
+<p>等函数，如果功能需要必须使用时，一定要检查试图规范化的路径的长度，确保其不长于MAXPATHLEN。</p>
+<p>7、时刻进行边界检查。建议使用一些检查工具：Purify、Stackguard等检查代码，保证没有缓冲区溢出的问题。</p>
+<p>1.2.4格式化字符串安全</p>
+<p>1、使用固定的格式化字符串，或者来自可信源的格式化字符串。</p>
+<p>2、要检查并限定locale的请求为合法值。</p>
+<p>3、不能将用户输入直接作为格式化字符传给格式化函数。</p>
+<p>1.2.5整数溢出安全</p>
+<p>1、对于涉及到内存分配大小的计算，要进行仔细检查，确保计算不会产生溢出。</p>
+<p>2、对于涉及到数组索引的计算，要进行仔细检查，确保计算不会产生溢出。</p>
+<p>3、要使用无符号整数表示数组偏移和内存分配大小。</p>
+<p>1.2.6SQL注入代码安全</p>
+<p>1、要检查输入的有效性和可信度。</p>
+<p>2、要使用参数化的查询、占位符、或者参数绑定来构造SQL语句。</p>
+<p>3、要在程序之外存储数据库的连接信息，比如经过保护的配置文件或者Windows注册表。</p>
+<p>4、即使使用的是存储过程，也不能使用字符串连接来构造SQL语句。</p>
+<p>5、不能在存储过程内部使用字符串连接来构造SQL语句。</p>
+<p>6、不能在存储过程内部执行不可信的参数。</p>
+<p>7、不能简单地双写单引号或者双引号。</p>
+<p>8、不能使用高权限账号连接数据库，比如sa或者root。</p>
+<p>9、不能在程序或者连接字符串中存储登录口令。</p>
+<p>10、不能在Web根目录下存储数据库配置信息。</p>
+<p>11、应从数据库中删除对所有用户自定义表的访问权限，同时只对存储过程授权，然后使用存储过程以及参数化的查询来构造查询字符串。</p>
+<p>1.2.7命令注入代码安全</p>
+<p>1、在输入命令传递给命令处理程序之前要进行验证。</p>
+<p>2、如果输入验证失败，要安全地处理失败信息。</p>
+<p>3、不能向任何命令解释器传递未验证的输入信息，即使这些输入仅仅是数据信息。</p>
+<p>4、避免使用正则表达式来进行输入验证，应手工去写一些简单而又清晰的验证代码。</p>
+<p>1.2.8异常处理代码安全</p>
+<p>1、要检测每个安全相关函数的返回值。</p>
+<p>2、对于每一个更改用户设定或者及其设定的函数，都要检查其返回值。</p>
+<p>3、要有从错误条件中进行恢复的考虑，避免拒绝服务攻击。</p>
+<p>4、不能一次性处理所有的异常，要将异常情况进行分类处理，避免在异常处理代码中的漏洞发生。</p>
+<p>1.2.9跨站脚本代码安全</p>
+<p>1、要对所有基于Web的输入进行输入验证和可信度验证。</p>
+<p>2、在没有验证合法性之前，不能对基于Web的输入进行回显。</p>
+<p>3、不能在cookie中存储敏感数据。</p>
+<p>1.2.10保护网络流量的代码安全</p>
+<p>1、要使用强大的初始认证机制。</p>
+<p>2、对应用程序所产生的所有网络流量都要执行过程中消息认证。</p>
+<p>3、尽可能使用SSL/TLS进行网络加密传输。</p>
+<p>1.2.11.应用中的弱口令代码安全</p>
+<p>1、确保口令在网络上认证时不被窃听。</p>
+<p>2、要在登录失败时给出错误提示，并记录失败口令尝试。</p>
+<p>3、尽可能使用基于hash强壮的单向加密函数进行口令存储。</p>
+<p>4、为用户更改口令提供安全的机制。</p>
+<p>5、不得使用默认账号和默认口令，若使用，必须在首次登录后进行修改。</p>
+<p>6、不得在程序、后台存储明文的口令。</p>
+<p>7、口令要有一定的强度，应当满足系统的账号口令策略要求。</p>
+<p>1.2.12SOCKET网络编程安全基本要求</p>
+<p>1、在socket函数调用时，明确参数中绑定的端口、IP地址和网卡接。Windows环境下，在遇到多个网卡的情况时，需要通过注册表来获得网卡接口和IP地址的信息，包括WindowsNT和windows2008。</p>
+<p>2、判断连接的合法身份。即，为防止恶意的连接以及可能是无效的连接，建议在socket连接期间，判断连接的对端是否是合法的真正的连接。</p>
+<p>3、对于UDP连接，可以获得连接对方的IP地址和端口，从而可以判断对方的有效性和合法性；对于TCP连接，由于每次连接需要三次握手，而且还有超时机制，存在两种方式来控制。</p>
+<p>4、对于TCP连接，需要尽量在三次握手完成前完成判断，同时防止端口扫描的攻击。</p>
+<p>5、尽可能确保socket应用能通过合理设置的防火墙。</p>
+<p>6、在可能的情况下，尽量减少socket连接数目。</p>
+<p>7、尽量不能使用回拨的技术。</p>
+<p>8、尽量采用有连接状态的协议，例如TCP协议。由于防火墙一般采取禁止一切的策略，对于UDP协议比较难以设置。</p>
+<p>9、在一个应用程序中，尽量使用同一种协议，不能使用多种协议。</p>
+<p>10、尽量将客户端和服务器端的端口做成可以配置，不能硬编码在程序中。</p>
+<p>1.3JAVA安全开发要求</p>
+<p>JAVA语言安全规范参考OWASPTOP10要求，本指南列举了常见的</p>
+<p>JAVA开发安全要求。</p>
+<p>1.3.1防范跨站脚本（XSS）</p>
+<p>跨站脚本是最普遍的Web应用安全漏洞。当应用程序在发送给浏览器的页面中包含用户提供的数据，但没有经过适当验证或转译，就容易导致跨站脚本漏洞。</p>
+<p>攻击者能在受害者浏览器中执行脚本以劫持用户会话、危害网站、插入恶意内容和重定向用户等。</p>
+<p>已知三种著名跨站漏洞是：1）存储式；2）反射式；3）基于DOM。</p>
+<p>反射式跨站脚本通过测试或代码分析很容易找到。</p>
+<p>防范措施：</p>
+<p>1、验证输入</p>
+<p>检查每个输入的有效性，主要检查输入类型和数据的长度。</p>
+<p>2、编码输出</p>
+<p>对验证输入的另一面就是编码输出。编码输出是指确保字符被视为数据，而不是作为HTML元字符被浏览器解析。这些技术定义一些特殊的“转义”字符，没有正确转义的数据它仍然会在浏览器中正确解析。编码输出只是让浏览器知道数据是不是要被解析，达到攻击无法实现的目的。需要编码的部分：HTML实体、HTML属性、JavaScript、CSS、URL。</p>
+<p>1.3.2防范SQL注入</p>
+<p>简单来说，注入往往是应用程序缺少对输入进行安全性检查所引起的，攻击者把一些包含指令的数据发送给解释器，解释器把收到的数据转换成指令执行。注入漏洞十分普遍，通常能在SQL查询、LDAP查询、Xpath查询、OS命令、程序参数等中出现。</p>
+<p>注入能导致数据丢失或数据破坏、缺乏可审计性或是拒绝服务，注入漏洞有时甚至能导致完全接管主机。</p>
+<p>SQL注入包含了SQL注入、XPATH注入、LDAP注入、OS命令注入等。</p>
+<p>1.3.3防范恶意文件执行</p>
+<p>恶意文件执行是一种能够威胁任何网站形式的漏洞，只要攻击者在具有引入（include）功能程式的参数中修改参数内容，Web服务器便会引入恶意程序从而受到恶意文件执行漏洞攻击。</p>
+<p>攻击者可利用恶意文件执行漏洞进行攻击取得Web服务器控制权，进行不法利益或获取经济利益。</p>
+<p>1.3.4不安全的直接对象引用</p>
+<p>所谓“不安全的对象直接引用”，即Insecure direct object references，意指一个已经授权的用户，通过更改访问时的一个参数，从而访问到原本其并没有得到授权的对象。Web应用往往在生成Web页面时会用它的真实名字，且并不会对所有的目标对象访问时检查用户权限，所以这就造成了不安全的对象直接引用的漏洞。以下是不安全的对象直接引用示例：</p>
+<p>l攻击者发现他自己的参数是6065，即?acct=6065；</p>
+<p>l他可以直接更改参数为6066，即?acct=6066；</p>
+<p>l这样他就可以直接看到6066用户的账户信息了；</p>
+<p>l这种漏洞能损害参数所引用的所有数据。除非名字空间很稀疏，否则攻击者很容易访问该类型的所有数据。</p>
+<p>1.3.5防范跨站请求伪造</p>
+<p>跨站请求伪造，也被称成为“one-click attack”或者session riding，通常缩写为CSRF或者XSRF，是一种对网站的恶意利用。它与XSS非常不同，并且攻击方式几乎相左。XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求来利用受信任的网站。与XSS攻击相比，CSRF攻击往往不太流行（因此对其进行防范的资源也相当稀少）和难以防范，所以被认为比XSS更具危险性。</p>
+<p>攻击者能让受害用户修改可以修改的任何数据，或者是执行允许使用的任何功能。</p>
+<p>1.3.6信息泄露和错误处理不当</p>
+<p>应用程序常常产生错误信息并显示给使用者。很多时候，这些错误信息非常有用，因为它们揭示实施细则或有用的开发信息。泄露太多的细节（如错误堆栈跟踪信息、SQL语句等等）；</p>
+<p>登录失败后，通知用户是否用户ID或密码出错——登录失败可能是由于ID或密码错误造成的。这为一个对关键资产发动蛮力攻击的攻击者提供重要信息。</p>
+<p>1.3.7残缺的认证和会话管理</p>
+<p>与认证和会话管理相关的应用程序功能往往得不到正确实施，这就导致攻击者破坏密码、密钥、会话令牌或利用实施漏洞冒充其他用户身份。</p>
+<p>这些漏洞可能导致部分甚至全部账号遭受攻击。一旦攻击成功，攻击者能执行合法用户的任何操作，因此特权账号会造成更大的破坏。</p>
+<p>编程要求：</p>
+<p>l使用内置的会话管理功能；</p>
+<p>l通过认证的问候；</p>
+<p>l使用单一的入口点；</p>
+<p>l确保在一开始登录SSL保护的网页；</p>
+<p>l获取注销的权利；</p>
+<p>l添加超时；</p>
+<p>l确保你使用的是安全相关的功能；</p>
+<p>l使用强大的认证；</p>
+<p>l不进行默认身份验证。</p>
+<p>1.3.8不安全的加密存储</p>
+<p>保护敏感数据已经成为网络应用的最重要的组成部分，加密的敏感数据已是非常常见安全保护手段。不加密的应用程序、设计不当或者使用不恰当的密码技术等可能导致披露敏感数据。</p>
+<p>l攻击者能够取得或是篡改机密的或是私有的信息；</p>
+<p>l攻击者通过机密秘密的窃取从而进行进一步的攻击；</p>
+<p>l造成企业形象破损，用户满意度下降，甚至面临法律诉讼等。编程要求：</p>
+<p>l验证你的结构；</p>
+<p>l识别所有的敏感数据；</p>
+<p>l识别敏感数据存放的所有位置；</p>
+<p>l确保所应用的威胁模型能够应付这些攻击；</p>
+<p>l使用加密手段来应对威胁；</p>
+<p>l使用一定的机制来进行保护</p>
+<p>l文件加密；</p>
+<p>l数据库加密；</p>
+<p>l数据元素加密；</p>
+<p>l正确的使用这些机制；</p>
+<p>l使用标准的强算法；</p>
+<p>l合理的生成，分发和保护密钥；</p>
+<p>l准备密钥的变更；</p>
+<p>l验证实现方法；</p>
+<p>l确保所有的证书、密钥和密码都得到了安全的存放；</p>
+<p>l有一个安全的密钥分发和应急处理的方案。</p>
+<p>1.3.9不安全的通信</p>
+<p>对于不加密的应用程序的网络信息传输，需要保护敏感的通信。加密（通常SSL）必须用于所有身份验证的连接，特别是通过Internet访问的网页，以及后端的连接。否则，应用程序将暴露身份验证或会话令牌。</p>
+<p>l攻击者能够取得或是篡改机密的或是私有的信息；</p>
+<p>l攻击者通过这些秘密的窃取从而进行进一步的攻击；</p>
+<p>l造成企业形象破损，用户满意度下降，甚至面临法律诉讼等。</p>
+<p>l编程要求：</p>
+<p>l提供合理的保护机制；</p>
+<p>l对于敏感数据的传输，对所有连接都要使用TLS；</p>
+<p>l在传输前对单个数据都要进行加密；（如XML-Encryption）；</p>
+<p>l在传输前对信息进行签名；（如XML-Signature）；</p>
+<p>l正确的使用这些机制；</p>
+<p>l使用标准的强算法；</p>
+<p>l合理管理密钥和证书；</p>
+<p>l在使用前验证SSL证书。</p>
+<p>1.3.10限制URL访问失效</p>
+<p>这个漏洞事实上也是与认证相关的，与我们前面提到的不安全的直接对象引用也是类似的，不同在于这个漏洞是指系统已经对URL的访问做了限制，但这种限制却实际并没有生效。常见的错误是，我们在用户认证后只显示给用户认证过的页面和菜单选项，而实际上这些仅仅是表示层的访问控制而不能真正生效，攻击者能够很容易伪造请求直接访问未被授权的页面。</p>
+<p>编程要求：</p>
+<p>l如果URL不是公开的，那么必须限制能够访问的授权用户；</p>
+<p>l加强基于用户或角色的访问控制；</p>
+<p>l完全禁止访问未被授权的页面类型（如配置文件、日志文件、源文件等）；</p>
+<p>l验证你的构架；</p>
+<p>l在每一个层次都使用简单肯定的模型；</p>
+<p>l确保每一层都有一个访问机制；</p>
+<p>l验证你的实现；</p>
+<p>l不能使用自动化的分析工具；</p>
+<p>l确保每个URL都被外部过滤器或其他机制保护；</p>
+<p>l确保服务器的配置不允许对非授权页面的访问。</p>
+<p>1.4PHP安全开发要求</p>
+<p>1.4.1变量滥用</p>
+<p>PHP-4.1.0发布的时候建议关闭register_globals，并提供了7个特殊的数组变量来使用各种变量。对于从GET、POST、COOKIE等来的变量并不会直接注册成变量，必需通过数组变量来存取。PHP-4.2.0发布的时候，php.ini默认配置就是register_globals=Off。这使得程序使用PHP自身初始化的默认值，一般为0，避免了攻击者控制判断变量。通过以下解决方法实现：</p>
+<p>配置文件php.ini设置register_globals=Off。</p>
+<p>要求程序员对作为判断的变量在程序最开始初始化一个值。</p>
+<p>1.4.2文件打开</p>
+<p>如非特殊需要，把php的文件操作限制在Web目录里面。以下是修改apache配置文件httpd.conf的一个例子：</p>
+<p>php_admin_valueopen_basedir/usr/local/apache/htdocs</p>
+<p>重启apache后，/usr/local/apache/htdocs目录下的PHP脚本就只能操作它自己目录下的文件了，否则PHP就会报错：</p>
+<p>Warning:open_basedirrestrictionineffect.Fileisinwrongdirectoryinxxxonlinexx.</p>
+<p>使用safe_mode模式也能避免这种问题，前面已经讨论过。</p>
+<p>1.4.3文件包含</p>
+<p>要求程序员包含文件里的参数尽量不能使用变量，如果使用变量，就一定要严格检查要包含的文件名，绝对不能由用户任意指定。如前面文件打开中限PHP操作路径是一个必要的选项。另外，如非特殊需要，一定要关闭PHP的远程文件打开功能。修改php.ini文件：</p>
+<p>allow_url_fopen=Off</p>
+<p>重启apache。</p>
+<p>1.4.4文件上传</p>
+<p>PHP-4.0.3以后提供了is_uploaded_file和move_uploaded_file函数，可以检查操作的文件是否是用户上传的文件，从而避免把系统文件拷贝到Web目录。</p>
+<p>使用$HTTP_POST_FILES或$_FILES数组来读取用户上传的文件变量。严格检查上传变量。比如不允许是php脚本文件。把PHP脚本操作限制在Web目录可以避免程序员使用copy函数把系统文件拷贝到Web目录。move_uploaded_file不受open_basedir的限制，所以不必修改php.ini里upload_tmp_dir的值。把PHP脚本用phpencode进行加密，避免由于copy操作泄漏源码。严格配置文件和目录的权限，只允许上传的目录能够让nobody用户可写。</p>
+<p>对于上传目录去掉PHP解释功能，可以通过修改httpd.conf实现：</p>
+<p>php_flagengineoff</p>
+<p>#如果是php3换成php3_engineoff</p>
+<p>重启apache，upload目录的php文件就不能被apache解释了，即使上传了php文件也没有问题，只能直接显示源码。</p>
+<p>1.4.5命令执行</p>
+<p>解决方法：</p>
+<p>要求程序员使用escapeshellcmd()函数过滤用户输入的shell命令。启用safe_mode可以杜绝很多执行命令的问题，不过要注意PHP的版本一定要是最新的，小于PHP-4.2.2的都可能绕过safe_mode的限制去执行命令。</p>
+<p>变量类型缺陷逻辑比较时注意变量类型。</p>
+<p>必要的时候使用”===”，那么连变量类型一起比较。</p>
+<p>1.4.6警告及错误信息</p>
+<p>修改php.ini中关于Errorhandlingandlogging部分内容：</p>
+<p>error_reporting=E_ALLdisplay_errors=Offlog_errors=Onerror_log=/usr/local/apache/logs/php_error.log</p>
+<p>然后重启apache，注意文件/usr/local/apache/logs/php_error.log，必需可</p>
+<p>以让nobody用户可写。</p>
+<p>1.4.7PHP与MySQL组合的SQL注入</p>
+<p>解决方法：</p>
+<p>要求程序员对所有用户提交的要放到SQL语句的变量进行过滤。</p>
+<p>即使是数字类型的字段，变量也要用单引号扩起来，MySQL自己会把字串处理成数字。</p>
+<p>在MySQL里不能给PHP程序高级别权限的用户，只允许对自己的库进行操作。</p>
+<p>1.4.8跨站脚本</p>
+<p>解决方法：</p>
+<p>确认输入</p>
+<p>strip_tags()</p>
+<p>htmlspecialchars()</p>
+<p>清除危险的插入点。</p>
+<p>1.4.9禁用无用的函数</p>
+<p>如果觉得有些函数还有威胁，可以设置php.ini里的disable_functions（这个选项不能在httpd.conf里设置），比如：disable_functions=phpinfo,get_cfg_var</p>
+<p>可以指定多个函数，用逗号分开。重启apache后，phpinfo,get_cfg_var函数都被禁止了。建议关闭函数phpinfo,get_cfg_var，这两个函数容易泄漏服务器信息，而且没有实际用处。</p>
+<p>1.4.10禁用某些类</p>
+<p>这个选项是从PHP-4.3.2开始才有的，它可以禁用某些类，如果有多个用逗号分隔类名。disable_classes也不能在httpd.conf里设置，只能在php.ini配置文件里修改。</p>
+<p>1.4.11限制脚本操作路径</p>
+<p>前面分析例程的时候也多次提到用open_basedir对脚本操作路径进行限制，这里再介绍一下它的特性。用open_basedir指定的限制实际上是前缀，不是目录名。也就是说”open_basedir=/dir/incl”也会允许访问”/dir/include”和”/dir/incls”，如果它们存在的话。如果要将访问限制在仅为指定的目录，用斜线结束路径名。例如：”open_basedir=/dir/incl/“。</p>
+<p>可以设置多个目录，在Windows中，用分号分隔目录。在任何其它系统中用冒号分隔目录。作为Apache模块时，父目录中的open_basedir路径自动被继承。</p>
+<p>1.4.12其他安全配置</p>
+<p>1、取消其它用户对常用、重要系统命令的读写执行权限</p>
+<p>一般管理员维护只需一个普通用户和管理用户，除了这两个用户，给其它用户能够执行和访问的东西应该越少越好，所以取消其它用户对常用、重要系统命令的读写执行权限能在程序或者服务出现漏洞的时候给攻击者带来很大的迷惑。记住一定要连读的权限也去掉，否则在linux下可以用/lib/ld-linux.so.2/bin/ls这种方式来执行。</p>
+<p>如果要取消程序如果是在chroot环境里，这个工作比较容易实现，否则，这项工作还是有些挑战的。因为取消一些程序的执行权限会导致一些服务运行不正常。PHP的mail函数需要/bin/sh去调用sendmail发信，所以/bin/bash的执行权限不能去掉。</p>
+<p>2、去掉apache日志其它用户的读权限：</p>
+<p>apache的access-log给一些出现本地包含漏洞的程序提供了方便之门。通过提交包含PHP代码的URL，可以使access-log包含PHP代码，那么把包含文件指向access-log就可以执行那些PHP代码，从而获得本地访问权限；</p>
+<p>如果有其它虚拟主机，也应该相应去掉该日志文件其它用户的读权限；</p>
+<p>当然，如果你按照前面介绍的配置PHP那么一般已经是无法读取日志文件了。</p>
+<p>3、保持运行环境干净。</p>
+<p>4、不能在Web目录放测试文件。</p>
+<p>1.5C/C++安全开发要求</p>
+<p>C本质上是不安全的编程语言。例如如果不谨慎使用的话，其大多数标准的字符串库函数有可能被用来进行缓冲区攻击或者格式字符串攻击。但是，由于其灵活性、快速和相对容易掌握，它是一个广泛使用的编程语言。下面是针对开发安全的C语言程序的一些规范。</p>
+<p>1.5.1缓冲区溢出</p>
+<p>避免使用不执行边界检查的字符串函数，因为它们可能被用来进行缓冲区溢出攻击。下面是应该避免使用的函数。同时，也列出了每个函数相应的比较安全的替换方式。</p>
+<p>不使用strcpy()，使用strncpy()；</p>
+<p>不使用strcat()，使用strncat()；</p>
+<p>不使用sprintf()，使用snprintf()；</p>
+<p>不使用gets()，使用fgets()。</p>
+<p>在上面的前三个中函数中，每个替代函数的“n”表示了使用的缓冲区的大小。最后一个函数的“f”，表示格式，它允许用户指定期望的输入的格式。这些替换方程强制程序员定义使用的缓冲区的尺寸以及确定输入的类型。</p>
+<p>1.5.2格式化字符串攻击</p>
+<p>该类攻击往往与缓冲区溢出相关，因为它们主要利用了某些函数的假设，例如sprintf()和vsprintf()假设缓冲区的长度是无限的。然而即使使用snprintf()替换sprintf()也无法完全保护程序不受格式化字符串的攻击。这些攻击通过直接将格式说明符（formatspecifiers）(%d，%s，%n等)传递到输出函数接收缓冲区来进行。</p>
+<p>例如，以下的代码就是不安全的snprintf(buffer,sizeof(buffer),string)这种情况下，可以在字符串中插入格式说明符来操纵内存的栈，来写入攻击者的数据（这些数据中包含小的程序代码，并可由处理器接着执行）。对以上的例子建议使用下面的代码。</p>
+<p>snprintf(buffer,sizeof(buffer),“%s”,string)进行格式字符串攻击不太容易。首先攻击者必须能获得内存栈的内容情况（或者从应用导出或者使用调试器），然后必须知道如何精确访问特定的内存空间来操纵栈中的变量。</p>
+<p>执行外部程序推荐使用exec()函数而不是system()函数来执行外部程序。这是因为system()接收整个命令行的随机的缓冲区来执行程序。</p>
+<p>snprintf(buffer,sizeof(buffer),”emacs%s”,filename);</p>
+<p>system(buffer);</p>
+<p>在以上的例子中，可以通过使用分号利用文件名变量在sehll中插入额外的命令（例如文件名可以是/etc/hosts;rm*，这将在显示/etc/hosts目录文件的同时，删除目录中的所有文件）。而exec()函数只保证第一个参数被执行：</p>
+<p>execl(“usr/bin/emacs”,”usr/bin/emacs”,filename,NULL);</p>
+<p>上面的例子保证文件名仅仅作为一个参数输入Emacs工具，同样它在Emacs命令中使用完全的路径而不是使用可以被攻击者利用的PATH环境变量。</p>
+<p>1.5.3竞争条件</p>
+<p>进程需要访问资源时（无论是磁盘、内存或是文件）通常需要执行两个步骤：</p>
+<p>1、首先测试资源是否空闲可用；</p>
+<p>2、如果可用，就访问该资源，否则它等到资源不再使用为止再去访问它。当另一个进程在步骤1和2之间想要访问同一个资源时就出现问题了。</p>
+<p>这会导致不可预测的结果。进程可能会被锁定，或者一个进程劫持获得了另一个进程的较大的权限而导致安全问题。攻击主要集中在有较大权限的程序上（称为setuid程序）。竞争条件攻击通常利用程序执行时可以访问到的资源。另外权限低的程序也存在安全风险，因为攻击者可能会等待有较高权限的用户执行那个程序(例如root)，然后进行攻击。</p>
+<p>下面的建议有助于缓解竞争条件(racecondition)攻击：</p>
+<p>在进行文件操作时，利用那些使用文件描述符的函数而不能使用那些使用文件路径的函数（例如使用fdopen()而不能使用fopen()）。文件描述符使得恶意的用户在文件打开时或是在原始的进程对文件进行操作前，无法使用文件连接（符号式的或是物理的）来改变文件。</p>
+<p>在写文件甚至在读文件时使用fcntl()和flock()函数来对文件加锁，这样它们就不能被其他进程访问。它几乎可以建立原子级的操作。</p>
+<p>谨慎操纵临时文件，因为它往往会导致竞争条件。</p>
+<p>1.5.4检验有效的返回值</p>
+<p>检验有效的返回值非常重要。一个例子是旧的/bin/login的实现中不检验错误的返回值，导致当它找不到/etc/passwd文件时返回root的访问权限。如果该文件损坏了，那么这种情况是合理的，但如果该文件存在只是无法访问，那么这就是一个大问题。</p>
+<p>1.6Perl安全开发要求</p>
+<p>多年以来，Perl已经成为用于系统管理和WebCGI开发的功能最强的编程语言之一（几乎可以使用Perl做任何功能的程序）。但其扩展应用，即作为Internet上CGI的开发工具，使得它经常成为Web服务器上的攻击目标。</p>
+<p>另外，大多数CGI脚本有着比一般用户更高的权限，导致它更容易受攻击。下面列举了一些开发者（特别是CGI程序员）可以使用的主动的预防性的措施来增强Perl代码的整体安全性（请注意：这不是Web服务器CGI脚本安全性的指导原则）。</p>
+<p>1.6.1Taint验证</p>
+<p>Perl版本5.x包含一个叫做TaintChecking的数据验证措施。如果起用该功能，将不允许通过用户输入（任何程序外的输入）来操纵其他的外部程序（例如通过管道将数据导入另一个程序执行））。一般而言，程序员不能信任输入脚本和程序的数据（叫做Tainted数据），因为无法保证它不会产生危害（有意或者无意的）。Taint验证可以通过在命令行参数加入“-T”来开启。</p>
+<p>例如：你可以在Perl脚本的第一行这样加入“-T”：</p>
+<p>#!usr/bin/perl5-T</p>
+<p>Tainted数据包括命令行参数、环境变量和来自文件的数据。引用tainted</p>
+<p>数据的变量也称为tainted数据。如果脚本试图通过不安全的方式来使用tainted数据会产生一个致命错误（对这种情况称为“不安全的依赖”(Insecuredependency)或者其他的说法）。启用tainted验证在有些情况下会导致脚本停止运行，常常是由于Perl解释器要求所有脚本引用的外部程序的完全路径必须在PATH环境变量中列出，同时PATH中包含的每个目录除了目录的所有者及相应的所有者用户组外无法修改。Taint验证对于环境比较敏感，但是只要可能的话，应该使用taint验证，特别是代码执行其他程序功能时（例如在CGI脚本的情况下）。</p>
+<p>1.6.2安全模块</p>
+<p>如果不但输入数据不可信而且实际的代码也不可信，例如用户从网站上下载了一个ActiveX控件，而它实际是一个特洛伊木马(Trojanhorse)。这种情况下taint验证就不起作用。安全模块让程序员可以在Perl脚本中将不同的代码模块与安全对象联系。每个安全对象对于运行的每块代码建立了一个限制的环境。这与chroot在一个进程中只能在整体目录结构的一个子目录中运行类似。而saft对象限制perl代码只能在perl包结构的某些特定包中运行。如何使用安全模式超出了本文的范围，但是程序员应该在任何时候尽量使用这一功能。</p>
+<p>1.6.3警告参数</p>
+<p>使用-w参数可以在Perl解释脚本时显示所有的警告信息。警告可以在以下情况产生：只使用了一次的变量或者完全没有使用过得变量，未定义的文件句柄，未关闭的文件句柄，或者将非数值变量传递到数据变量。该功能不是针对安全处理的，但是可以有助于调试直接或者间接对安全有危害的错误。一般推荐总是使用-w参数。可以在taint验证时在第一行这样使用-w参数：</p>
+<p>#!usr/bin/perl5-Tw</p>
+<p>2、应用系统测试安全</p>
+<p>应用系统在正式上线前应对安全性进行测试，验证应用系统的安全性是否符合安全设计及安全需求，应用系统的安全测试包括以下内容：</p>
+<p>2.1测试前的要求</p>
+<p>测试之前，首先要确定测试大纲，在测试大纲中应当明确应用安全方面的测试内容、手段及方案（即测试用例）。包括：</p>
+<p>l安全性测试的环境要求；</p>
+<p>l安全性测试软件、测试设备要求；</p>
+<p>l安全性测试人员要求；</p>
+<p>l安全性测试的时间要求；</p>
+<p>l安全性测试的内容；</p>
+<p>l安全性测试的输入数据；安全性测试的预期结果；</p>
+<p>l安全性测试的详细过程；</p>
+<p>l安全性测试的风险和风险规避方案。</p>
+<p>测试大纲中安全性方面的描述是进行安全性测试的一个重要依据。大纲内容的编写应当依据应用系统需求说明书及应用系统设计说明书中，有关安全方面的内容来编写相应的测试用例。</p>
+<p>2.2测试方法及内容要求</p>
+<p>1、应根据应用系统的具体情况，设计安全性测试的具体方法和内容，通常主要的测试方法和内容分为功能性测试、压力测试、渗透性测试、审核性测试。</p>
+<p>2、功能性测试要求：对应用系统的安全功能点进行测试，确保安全功能的有效性、正确性。</p>
+<p>l这些功能点应全部包含在测试大纲中，在大纲的测试用例中体现具体的测试方法。测试大纲中的这些内容应当覆盖了需求说明书中安全功能部分的要求。</p>
+<p>l测试的具体内容主要涉及以下几个方面：</p>
+<p>n安全审计</p>
+<p>n通信安全</p>
+<p>n数据保护</p>
+<p>n身份认证</p>
+<p>n容错及资源分配方面的要求</p>
+<p>3、压力测试：对应用系统的安全功能进行压力测试，确保安全功能可以满足设计的需要。</p>
+<p>l压力测试的具体应全部包含在测试大纲中，在大纲的测试用例中体现具体的测试方法。</p>
+<p>l测试大纲中的这些要求应当参照设计说明书中所描述的设计目标进</p>
+<p>行测试用例的设计，包括但不限于：</p>
+<p>n应用系统服务器端和单个终端进行安全数据传输的最大容量。</p>
+<p>n应用系统服务器端能够与多少终端同时进行安全数据传输。</p>
+<p>n服务器承受的最大并发连接数。</p>
+<p>4、渗透性测试：模拟攻击手段，对应用系统抵抗攻击的能力进行测试。主要测试应用程序及应用系统配置上的安全漏洞。</p>
+<p>l渗透测试的具体应全部包含在测试大纲中，在大纲的测试用例中体现具体的测试方法。</p>
+<p>l测试大纲中渗透测试方法的选择需要依据设计说明书中描述的应用系统采用的开发工具及应用系统安装所需要的基础应用平台，如iis、apached等，来设计不同的测试方法，包括但不限于：</p>
+<p>n对webserver的渗透攻击测试或者工具扫描性测试。</p>
+<p>nSQL注入、跨栈攻击。</p>
+<p>5、审核性测试：</p>
+<p>l代码审核。这不是必需的测试手段，如果条件允许，可以针对容易出现代码漏洞的程序，特别是关于身份认证等方面的部分代码进行审核。</p>
+<p>l可以采用开发相关的专用扫描工具，或者编制相应的脚本程序，检查代码中的不安全函数的使用，如：strcpy()，strcat()等。</p>
+<p>6、测试过程中，应详细记录测试过程发生的每一件事情，列出测试过程中</p>
+<p>发现的问题。这些信息包括：发现了什么，在哪里发现的，当时的环境，这些问题是否可重现。</p>
+<p>7、应根据测试的过程和测试结果，提出被测试系统、测试过程等方面的改进说明。</p>
+<p>8、应确保测试用例、测试内容和测试结果的保密性。</p>
+<p>2.3测试环境及人员安全要求</p>
+<p>1、测试环境的物理、硬软件环境要求应当可以模拟真实环境。</p>
+<p>2、为确保测试环境的安全，应将测试环境与开发环境、生产环境相隔离，避免测试工作对业务的影响。</p>
+<p>3、测试数据如果选择是真实数据，应限定使用该数据的测试人员的数量，并在测试完成后全部删除。</p>
+<p>4、系统测试和验收通常需要大量的（真实数据）尽可能靠近实际运行数据的测试数据。应避免使用含有个人信息的业务数据库。如果要使用其中信息，在用之前应使其失去个性化。当把运行数据用于测试目的时，应采取以下措施保护运行数据。</p>
+<p>l如果该数据由测试人员使用，则需要相关授权业务人员参与，或者监督。</p>
+<p>l每次把运行信息复制到测试应用系统都应有单独的授权。</p>
+<p>l应记录运行信息的复制和使用，以提供一种检查追踪。</p>
+<p>5、在与其他系统的互操作性测试中，应充分考虑对其他系统的影响，选择适当的时间、方法。</p>
+<p>5.1测试后的要求</p>
+<p>测试完成后，在正式上线前，应进行安全检查，消除测试用的一切后门、用户名及口令等，包括但不限于：</p>
+<p>1、测试用的测试数据，即测试过程中的临时数据，特别注意要删除授权访问的那些重要测试数据。</p>
+<p>2、测试用的账号、口令，特别是有高级权限的账号。</p>
+<p>3、测试用时临时开通的系统服务、防火墙端口及策略。</p>
+<p>与外系统测试时，要求外系统上临时开启的服务、账号等。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>⭐您的支持将鼓励我继续创作⭐</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Lyy WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lyy Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/18/从无到有通过ISO27001认证-审核篇/" rel="next" title="从无到有通过ISO27001认证-审核篇">
+                <i class="fa fa-chevron-left"></i> 从无到有通过ISO27001认证-审核篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/19/应用开发安全指南（上）/" rel="prev" title="应用开发安全指南（上）">
+                应用开发安全指南（上） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Lyy" />
+          <p class="site-author-name" itemprop="name">Lyy</p>
+           
+              <p class="site-description motion-element" itemprop="description">运气就是机会碰巧撞到了你的努力</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.dx-sven.info/" title="Sven" target="_blank">Sven</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://pirogue.org/" title="pirogue" target="_blank">pirogue</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://superhua.cc/" title="superhua" target="_blank">superhua</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.lovesec.com/" title="超级菜鸟" target="_blank">超级菜鸟</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016-2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lyy</span>
+  <span class="post-meta-divider">|</span>
+  您是第<span id="busuanzi_value_site_uv"></span>位小伙伴/
+  Total:<span id="busuanzi_value_site_pv"></span>
+</div>
+
+
+<div class="powered-by">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span>
+  <span class="post-meta-divider">|</span>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+    </a> 
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

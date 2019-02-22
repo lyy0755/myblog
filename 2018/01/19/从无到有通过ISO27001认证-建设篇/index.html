@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="lyy, ksowo.com" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="安全是一个不断的持续的过程，每个环节都不可缺少，在安全的路上懂的越多发现自己不懂的越多。 1概述我在某做WL的公司负责公司整体安全，保护公司业务系统的安全（这个系统会有大部分看官的个人信息）。公司业务发展很快，但是信息化基础建设很落后，管理不规范，人员技术水平参差不齐，对网络和安全没有认识。领导对安全概念模糊，无法落实；因为是新来的，领导对提出的解决方案有选择的进行，但是有个好的地方就是公司发展太">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从无到有通过ISO27001认证-建设篇">
+<meta property="og:url" content="http://www.ksowo.com/2018/01/19/从无到有通过ISO27001认证-建设篇/index.html">
+<meta property="og:site_name" content="Lyy&#39;s Blog">
+<meta property="og:description" content="安全是一个不断的持续的过程，每个环节都不可缺少，在安全的路上懂的越多发现自己不懂的越多。 1概述我在某做WL的公司负责公司整体安全，保护公司业务系统的安全（这个系统会有大部分看官的个人信息）。公司业务发展很快，但是信息化基础建设很落后，管理不规范，人员技术水平参差不齐，对网络和安全没有认识。领导对安全概念模糊，无法落实；因为是新来的，领导对提出的解决方案有选择的进行，但是有个好的地方就是公司发展太">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-1.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-2.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-3.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-4.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-5.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-6.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-7.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-8.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-9.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-10.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-11.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-12.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-13.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-14.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-15.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-16.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-17.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-18.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-19.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-20.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-21.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-22.jpg">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-23.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-24.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-25.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-26.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-27.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-28.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-29.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-30.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-31.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-32.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-33.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-34.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-35.png">
+<meta property="og:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-36.png">
+<meta property="og:updated_time" content="2018-03-06T01:27:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从无到有通过ISO27001认证-建设篇">
+<meta name="twitter:description" content="安全是一个不断的持续的过程，每个环节都不可缺少，在安全的路上懂的越多发现自己不懂的越多。 1概述我在某做WL的公司负责公司整体安全，保护公司业务系统的安全（这个系统会有大部分看官的个人信息）。公司业务发展很快，但是信息化基础建设很落后，管理不规范，人员技术水平参差不齐，对网络和安全没有认识。领导对安全概念模糊，无法落实；因为是新来的，领导对提出的解决方案有选择的进行，但是有个好的地方就是公司发展太">
+<meta name="twitter:image" content="http://www.ksowo.com/images/blog/iso27001-1/iso27001-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.ksowo.com/2018/01/19/从无到有通过ISO27001认证-建设篇/"/>
+
+
+
+
+
+  <title>从无到有通过ISO27001认证-建设篇 | Lyy's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lyy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.ksowo.com/2018/01/19/从无到有通过ISO27001认证-建设篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lyy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从无到有通过ISO27001认证-建设篇</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T11:26:59+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/信息安全管理/" itemprop="url" rel="index">
+                    <span itemprop="name">信息安全管理</span>
+                  </a>
+                </span>             
+                
+              
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>安全是一个不断的持续的过程，每个环节都不可缺少，在安全的路上懂的越多发现自己不懂的越多。</p>
+<h2 id="1概述"><a href="#1概述" class="headerlink" title="1概述"></a>1概述</h2><p>我在某做WL的公司负责公司整体安全，保护公司业务系统的安全（这个系统会有大部分看官的个人信息）。公司业务发展很快，但是信息化基础建设很落后，管理不规范，人员技术水平参差不齐，对网络和安全没有认识。领导对安全概念模糊，无法落实；因为是新来的，领导对提出的解决方案有选择的进行，但是有个好的地方就是公司发展太快，出现过不少安全问题，给我们安全部带来了外部推动力（虽然不想出事，但是出事了可以加快安全建设的脚步）。</p>
+<p>一年的时间从什么都没到现在的逐渐成型、各种安全流程的建立和落地，建了ISO27001安全体系（通过了认证），此篇文章进行了一个总结，期间也碰到了的很多坑和挫折，自己也在这个过程中学习了成长了，这里再次感谢帮助过我的朋友们，感谢安全部另外一位X大牛。</p>
+<h2 id="2对ISO27001理解"><a href="#2对ISO27001理解" class="headerlink" title="2对ISO27001理解"></a>2对ISO27001理解</h2><p>通过一年的时间对从0到拿证的过程，简单说一下我对ISO27001的理解：不管是ISO27001还是安全我觉得都是围绕着业务进行的，一切的出发点都是保证业务的连续的、稳定的运行，要保证业务的连续的、稳定的运行，你需要知道你有什么资产，资产面临什么风险，这些风险要怎么处理，这样一个过程中还要循序PDCA的原则（plan-do-check-action）。做每一个制度和每一个要求的时候从业务角度出发去思考，这样做才可以最大化的保证所写的制度规范能执行，为后面落地提供依据。凭空或单纯从安全的角度看问题，很容易把问题想的很严重，给出的解决方案往往短时间无法执行，后面会简阐述一下当时的想法。</p>
+<p>脱离业务谈安全和脱离安全谈业务都是不现实的。</p>
+<p><img src="/images/blog/iso27001-1/iso27001-1.png" alt=""></p>
+<h2 id="3为什么要做"><a href="#3为什么要做" class="headerlink" title="3为什么要做"></a>3为什么要做</h2><p>我个人理解做这个事情的2大因素：</p>
+<h3 id="3-1外因"><a href="#3-1外因" class="headerlink" title="3.1外因"></a>3.1外因</h3><p>一个公司发展到一定程度和规模的时候，公司自身的安全已经不是自己的问题了，你会涉及到社会层面、合作层面、业务发展层面。如：我们公司的发起做ISO27001的需求其实就不是来自安全部，是业务部门在推广业务的过程中遇到了阻力，因为客户的系统过了ISO27001他们会要求你与他对接的系统有一定的安全性，这个要求就表现为ISO27001。</p>
+<p>我们就业找工作很多时候是看能力，但是有时候证书就像一个门票，没有门票就无法上车，ISO27001就是一个公司的证书。</p>
+<p>还有重要因素《网络安全法》出台了，国家对安全的要求肯定是先从政府自身开始，然后慢慢到要求企业，与其等出事不如从现在开始做。</p>
+<h3 id="3-2内因"><a href="#3-2内因" class="headerlink" title="3.2内因"></a>3.2内因</h3><p>每一个公司通过几年或更长时间的成长，公司会积累很多信息化系统，保障这些系统的正常运行就很重要，并且在对信息化管理过程中出现的很多职责不明确，边界不清，流程和制度不全，所有的操作规范和行为都靠约定俗成，没有体系化文档支撑，这些都影响系统稳定运行。</p>
+<h2 id="4控制项简单说明"><a href="#4控制项简单说明" class="headerlink" title="4控制项简单说明"></a>4控制项简单说明</h2><p>ISO27001相信做安全的同学都有接触，百度有很详细的说明，我简单说一下自己的理解，大牛勿喷。ISO27001是一套安全管理类的文档，为了保证信息化工作和生产正常稳定的运行，一切都是围绕业务展开的，很多安全管理思路从公司的核心业务出发去考虑很多制度和规范都可以合理的解释。说个题外话很多做技术的和做管理的都是相互不对路，相互看不起，说句实在很多时候纯粹靠技术或纯粹靠管理去达到某个防护目标是不可能实现的，技术的实现可以方便和简化管理，管理制度的要求可以推动技术的落地，2者是相辅相成。</p>
+<p>ISO27001从原来的15项标准要求变为了现在的18项，新增了2项、通信和操作管理拆除为2项。</p>
+<p><img src="/images/blog/iso27001-1/iso27001-2.png" alt=""></p>
+<p>下面简单说一下我对18个标准项的理解，并不是所有标准都要响应，如果实际情况没有可以不写，标准的要求不是重新编写公司已有的制度，只需要在原有制度上增加对安全相关的控制项：</p>
+<p><img src="/images/blog/iso27001-1/iso27001-3.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-4.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-5.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-6.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-7.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-8.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-9.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-10.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-11.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-12.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-13.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-14.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-15.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-16.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-17.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-18.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-19.jpg" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-20.jpg" alt=""></p>
+<h2 id="5文档编写架构"><a href="#5文档编写架构" class="headerlink" title="5文档编写架构"></a>5文档编写架构</h2><p>ISO27001对应的文档说明其实叫适用性声明，如上表文件和控制项是一一对应的，标准文档架构为：手册、程序文件、作业指导书、运行记录：</p>
+<p><img src="/images/blog/iso27001-1/iso27001-21.jpg" alt=""></p>
+<p>Ø 手册：就是对ISO27001体系的一个总体的说明文档</p>
+<p><img src="/images/blog/iso27001-1/iso27001-22.jpg" alt=""></p>
+<p>Ø 程序文件：具体描述每一个对应的标准要做什么</p>
+<p><img src="/images/blog/iso27001-1/iso27001-23.png" alt=""></p>
+<p>Ø 作业指导书：是对程序文件进一步解读，怎么做</p>
+<p><img src="/images/blog/iso27001-1/iso27001-24.png" alt=""></p>
+<p>Ø 运行记录：是对做了上述工作后的一个产出文档，可以是电子记录或纸质文件</p>
+<p><img src="/images/blog/iso27001-1/iso27001-25.png" alt=""></p>
+<p>针对这个情况咨询过评审老师，现在可以按照自己公司的实际情况去执行，但是手册文件必须都有。我们针对公司的实际情况做了修改，因为很多时候落地的时候都是以制度去要求和约束，我们把原有架构做了改变，重写全部的策略和要求，当然过程中有参考，整个过程耗费2人一个月时间（对于技术出身的人来说是艰苦的岁月），中途还修改了2个版本，跟领导对内容一个一个文档审。</p>
+<p>变为：手册、策略、制度、运行记录</p>
+<p>Ø 手册：一样没变</p>
+<p>Ø 策略：针对标准要求，提出我们自己公司的要求</p>
+<p><img src="/images/blog/iso27001-1/iso27001-26.png" alt=""></p>
+<p>Ø 制度：用制度明确需要做什么，要求怎么做</p>
+<p><img src="/images/blog/iso27001-1/iso27001-27.png" alt=""></p>
+<p>Ø 运行记录：不单纯为运行记录文件，还包含了怎么做的具体操作文档</p>
+<p><img src="/images/blog/iso27001-1/iso27001-28.png" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-29.png" alt=""></p>
+<p>最后强调一下最好不要拍脑袋写一些要求，尽量实事求是，做到什么程度就在这个程度是增加安全要求。</p>
+<h2 id="6体系运行"><a href="#6体系运行" class="headerlink" title="6体系运行"></a>6体系运行</h2><h3 id="6-1体系发布"><a href="#6-1体系发布" class="headerlink" title="6.1体系发布"></a>6.1体系发布</h3><p>安全的工作如果由上致下会很顺利很容易推动，但是，体系的发布一定需要领导层去帮你发布执行，让全公司知道有这样一件事情，然后给领导要讲解（洗脑）这个东西是做什么的，可以为公司带来什么好处，让领导认同或部分认同你的观点，这样对后面的体系建设会很有帮助。</p>
+<h3 id="6-2体系分解"><a href="#6-2体系分解" class="headerlink" title="6.2体系分解"></a>6.2体系分解</h3><p>按照正常套路来说ISO27001要做的东西很多，我把安全体系分割为了3大块：管理、技术、和运行（前面也有提到）。管理：主要是制度、规范约束；技术：主要是实现目标；运行：主要是让前面的2点不要成为空谈，要有定期检查产出。</p>
+<p><img src="/images/blog/iso27001-1/iso27001-30.png" alt=""></p>
+<p>本来在按照公司的现状我制定的安全是分三步走的：起步-成长-成熟，成熟后运行2-3年再通过ISO27001的审核，在我个人看来毫无压力。但是由于要拿证时间只有1年，所有的东西都需要重新做没法按照套路来。</p>
+<p><img src="/images/blog/iso27001-1/iso27001-31.png" alt=""></p>
+<p>​    如果大家的时间较多，建议做一次全面的风险评估，针对风险一个一个完善文档。</p>
+<h3 id="6-3体系执行"><a href="#6-3体系执行" class="headerlink" title="6.3体系执行"></a>6.3体系执行</h3><p>执行主要是看检查在上述文档中的产出，如：发布了《安全运维管理制度》，那么根据要求，可能需要对机房进行周期性巡检产出《机房巡检记录表》，进出机房需要产出《机房进出记录表》。</p>
+<p><img src="/images/blog/iso27001-1/iso27001-32.png" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-33.png" alt=""></p>
+<p><img src="/images/blog/iso27001-1/iso27001-34.png" alt=""></p>
+<p>按照个套路检查一个制度文件的产出，因此我们做了一个表，便于后面的审计：</p>
+<p><img src="/images/blog/iso27001-1/iso27001-35.png" alt=""></p>
+<p>​    大家可以把一些事情简单化，什么什么都用文档很繁琐，如：</p>
+<p>基于django 自主开发的资产管理系统，如果出现什么漏洞可以快速定位。</p>
+<p><img src="/images/blog/iso27001-1/iso27001-36.png" alt=""></p>
+<p>​    上面只是日常的执行要求，ISO27001还会有一个每年的内审和评审，内审：检查日常工作是否按照要求做好；评审：审核制度体系是否需要跟上公司的业务变化，做错对应的调整。</p>
+<h3 id="6-4体系培训"><a href="#6-4体系培训" class="headerlink" title="6.4体系培训"></a>6.4体系培训</h3><p>体系制度已经发布后，执行是有阻力的，因为打破了原有的约定俗成，增加了各个部门的工作量，这个需要非常耐心的去解释解答（这个过程很多人会找碴），需要培训去使大家有一定认识，从而配合你做事情。当然最重要的是从领导层面推动，那样阻力就少很多，我们在这个过程中也没少发生申请事件，被删文件夹、中勒索病毒、数据库被暴力破解还有来自合作伙伴的漏洞通报。</p>
+<p>培训可以从以下几块做：</p>
+<p>Ø 新员工培训</p>
+<p>Ø 平时公司内部培训、讨论、讲座</p>
+<p>Ø 真实案例延时（渗透测试、当场干公司的系统，顺便展示实力，不过这个度自己要把握好）</p>
+<p>多抛头露面准没坏处。</p>
+<h2 id="7总结"><a href="#7总结" class="headerlink" title="7总结"></a>7总结</h2><p>简单介绍了ISO27001的建设，一个体系文件写下来，深深的觉得这个东西就是套路，环环相扣，都是相互引用的。在刚开始的时候压力、阻力会很大，但是做好了后面是一劳永逸，让制度执行几个月后做内审和评审，发现问题并解决，做完这些就基本可以申请外审了。</p>
+<p>最后如果大家有想法要做的话可以先看一次标准，理解一下，再结合实际情况进行编写，因为在制度文档里面写到的就需要实现，外审的时候就要查的，尽量实事求是。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>⭐您的支持将鼓励我继续创作⭐</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Lyy WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Lyy Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/ISMS-B-17个人终端管理程序/" rel="next" title="ISMS-B-17个人终端管理程序">
+                <i class="fa fa-chevron-left"></i> ISMS-B-17个人终端管理程序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/19/ISMS-B-18移动设备和介质管理程序/" rel="prev" title="ISMS-B-18移动设备和介质管理程序">
+                ISMS-B-18移动设备和介质管理程序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Lyy" />
+          <p class="site-author-name" itemprop="name">Lyy</p>
+           
+              <p class="site-description motion-element" itemprop="description">运气就是机会碰巧撞到了你的努力</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.dx-sven.info/" title="Sven" target="_blank">Sven</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://pirogue.org/" title="pirogue" target="_blank">pirogue</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://superhua.cc/" title="superhua" target="_blank">superhua</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.lovesec.com/" title="超级菜鸟" target="_blank">超级菜鸟</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1概述"><span class="nav-number">1.</span> <span class="nav-text"><a href="#1&#x6982;&#x8FF0;" class="headerlink" title="1&#x6982;&#x8FF0;"></a>1&#x6982;&#x8FF0;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2对ISO27001理解"><span class="nav-number">2.</span> <span class="nav-text"><a href="#2&#x5BF9;ISO27001&#x7406;&#x89E3;" class="headerlink" title="2&#x5BF9;ISO27001&#x7406;&#x89E3;"></a>2&#x5BF9;ISO27001&#x7406;&#x89E3;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3为什么要做"><span class="nav-number">3.</span> <span class="nav-text"><a href="#3&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x505A;" class="headerlink" title="3&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x505A;"></a>3&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x505A;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1外因"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#3-1&#x5916;&#x56E0;" class="headerlink" title="3.1&#x5916;&#x56E0;"></a>3.1&#x5916;&#x56E0;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2内因"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#3-2&#x5185;&#x56E0;" class="headerlink" title="3.2&#x5185;&#x56E0;"></a>3.2&#x5185;&#x56E0;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4控制项简单说明"><span class="nav-number">4.</span> <span class="nav-text"><a href="#4&#x63A7;&#x5236;&#x9879;&#x7B80;&#x5355;&#x8BF4;&#x660E;" class="headerlink" title="4&#x63A7;&#x5236;&#x9879;&#x7B80;&#x5355;&#x8BF4;&#x660E;"></a>4&#x63A7;&#x5236;&#x9879;&#x7B80;&#x5355;&#x8BF4;&#x660E;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5文档编写架构"><span class="nav-number">5.</span> <span class="nav-text"><a href="#5&#x6587;&#x6863;&#x7F16;&#x5199;&#x67B6;&#x6784;" class="headerlink" title="5&#x6587;&#x6863;&#x7F16;&#x5199;&#x67B6;&#x6784;"></a>5&#x6587;&#x6863;&#x7F16;&#x5199;&#x67B6;&#x6784;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6体系运行"><span class="nav-number">6.</span> <span class="nav-text"><a href="#6&#x4F53;&#x7CFB;&#x8FD0;&#x884C;" class="headerlink" title="6&#x4F53;&#x7CFB;&#x8FD0;&#x884C;"></a>6&#x4F53;&#x7CFB;&#x8FD0;&#x884C;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1体系发布"><span class="nav-number">6.1.</span> <span class="nav-text"><a href="#6-1&#x4F53;&#x7CFB;&#x53D1;&#x5E03;" class="headerlink" title="6.1&#x4F53;&#x7CFB;&#x53D1;&#x5E03;"></a>6.1&#x4F53;&#x7CFB;&#x53D1;&#x5E03;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2体系分解"><span class="nav-number">6.2.</span> <span class="nav-text"><a href="#6-2&#x4F53;&#x7CFB;&#x5206;&#x89E3;" class="headerlink" title="6.2&#x4F53;&#x7CFB;&#x5206;&#x89E3;"></a>6.2&#x4F53;&#x7CFB;&#x5206;&#x89E3;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3体系执行"><span class="nav-number">6.3.</span> <span class="nav-text"><a href="#6-3&#x4F53;&#x7CFB;&#x6267;&#x884C;" class="headerlink" title="6.3&#x4F53;&#x7CFB;&#x6267;&#x884C;"></a>6.3&#x4F53;&#x7CFB;&#x6267;&#x884C;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4体系培训"><span class="nav-number">6.4.</span> <span class="nav-text"><a href="#6-4&#x4F53;&#x7CFB;&#x57F9;&#x8BAD;" class="headerlink" title="6.4&#x4F53;&#x7CFB;&#x57F9;&#x8BAD;"></a>6.4&#x4F53;&#x7CFB;&#x57F9;&#x8BAD;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7总结"><span class="nav-number">7.</span> <span class="nav-text"><a href="#7&#x603B;&#x7ED3;" class="headerlink" title="7&#x603B;&#x7ED3;"></a>7&#x603B;&#x7ED3;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016-2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lyy</span>
+  <span class="post-meta-divider">|</span>
+  您是第<span id="busuanzi_value_site_uv"></span>位小伙伴/
+  Total:<span id="busuanzi_value_site_pv"></span>
+</div>
+
+
+<div class="powered-by">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></span>
+  <span class="post-meta-divider">|</span>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+    </a> 
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
