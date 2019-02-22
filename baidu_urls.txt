@@ -16,8 +16,8 @@ http://www.ksowo.com/2018/11/22/ISMS-C-07账号权限管理制度/
 http://www.ksowo.com/2018/11/22/ISMS-C-02信息安全体系运行评审制度/
 http://www.ksowo.com/2018/11/22/ISMS-C-06资产安全管理制度/
 http://www.ksowo.com/2018/11/22/ISMS-B-07信息安全体系运行评审制度/
-http://www.ksowo.com/2018/11/22/ISMS-C-08机房安全管理制度/
 http://www.ksowo.com/2018/11/22/ISMS-C-09办公区域出入访问管理制度/
+http://www.ksowo.com/2018/11/22/ISMS-C-08机房安全管理制度/
 http://www.ksowo.com/2018/11/22/ISMS-C-10视频监控管理制度/
 http://www.ksowo.com/2018/11/22/ISMS-C-16软件开发版本安全管理制度/
 http://www.ksowo.com/2018/11/22/ISMS-C-22第三方安全管理制度/
@@ -25,6 +25,7 @@ http://www.ksowo.com/2018/11/22/ISMS-C-05人力资源安全管理制度/
 http://www.ksowo.com/2018/11/22/ISMS-C-17安全变更管理制度/
 http://www.ksowo.com/2018/11/22/ISMS-C-18数据备份恢复管理制度/
 http://www.ksowo.com/2018/11/22/ISMS-C-23运营中心信息安全行为制度/
+http://www.ksowo.com/2018/11/11/ISMS-B-01信息安全管理程序（多合一）/
 http://www.ksowo.com/2018/08/15/隐藏SSH远程登陆方法/
 http://www.ksowo.com/2018/07/20/docker用脏牛逃逸到宿主机/
 http://www.ksowo.com/2018/03/06/excel工作表单保护破解/
